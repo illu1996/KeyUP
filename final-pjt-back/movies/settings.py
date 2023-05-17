@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     #계정
     'accounts',
     'articles',
+    'movie',
     
     'rest_framework',
     "corsheaders",
