@@ -9,8 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .models import Movie, Review
-from .serializers import MovieDetailSerializer, ReviewSerializer, MovieLikeSerializer, MovieListSerializer
+from .models import Movie, Review, keyword
+from .serializers import MovieDetailSerializer, ReviewSerializer, MovieLikeSerializer, MovieListSerializer, KeywordListSerializer
 # Create your views here.
 
 @api_view(['GET'])
@@ -85,4 +85,49 @@ def like(request, movie_pk):
         if serializer.is_valid(raise_exception=True):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-    return Response({'error':'Unauthorized'},status=status.HTTP_401_UNAUTHORIZED)
+    return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+@api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
+def keyword_list(request):
+    if request.method == 'GET':
+        keywords = get_list_or_404(keyword)
+        serializer = KeywordListSerializer(keywords, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def keyword_list(request):
+    if request.method == 'GET':
+        keywords = get_list_or_404(keyword)
+        serializer = KeywordListSerializer(keywords, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def keyword_list(request):
+    if request.method == 'GET':
+        keywords = get_list_or_404(keyword)
+        serializer = KeywordListSerializer(keywords, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def keyword_detail_movies(request, keyword_pk):
+    movies = get_list_or_404(Movie)
+    filtered_movies =[]
+    for movie in movies:
+
+        if keyword_pk in movie.movie_keyword:
+            
+            filtered_movies.append(movie)
+        if len(filtered_movies) == 30:
+            break
+    return Response({'filtered_movies':filtered_movies})
+        
+    # if request.method == 'GET':
+    #     keywords = get_list_or_404(keyword)
+    #     serializer = KeywordListSerializer(keywords, many=True)
+    #     return Response(serializer.data, status=status.HTTP_200_OK)
+    
+     

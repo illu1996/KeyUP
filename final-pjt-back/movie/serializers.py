@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Review
+from .models import Movie, Review, keyword
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -27,3 +27,9 @@ class MovieListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = "__all__"
+        
+class KeywordListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = keyword
+        fields = "__all__"
+        read_only_fields =('movie_id',)
