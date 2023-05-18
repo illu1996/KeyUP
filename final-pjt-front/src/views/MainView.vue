@@ -1,20 +1,20 @@
 <template>
   <div>
     MainView
-    <LatestList />
-    <PopularList />
+    <MainLatestList />
+    <MainPopularList />
 
   </div>
 </template>
 
 <script>
-import LatestList from '@/components/LatestList.vue'
-import PopularList from '@/components/PopularList.vue'
+import MainLatestList from '@/components/MainLatestList.vue'
+import MainPopularList from '@/components/MainPopularList.vue'
 export default {
   name: 'MainView',
   components : {
-    LatestList,
-    PopularList,
+    MainLatestList,
+    MainPopularList,
   }
 }
 </script>

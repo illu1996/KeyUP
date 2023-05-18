@@ -6,6 +6,10 @@ import RecommendView from '../views/RecommendView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
+import MovieList from '@/components/MovieList.vue'
+import GenreList from '@/components/GenreList.vue'
+import LatestList from '@/components/LatestList.vue'
+import PopularList from '@/components/PopularList.vue'
 
 Vue.use(VueRouter)
 
@@ -18,7 +22,14 @@ const routes = [
   {
     path: '/movies',
     name: 'Movie',
-    component: MovieView
+    component: MovieView,
+    children : [
+      {path:'all',component:MovieList},
+      {path:'genre',component:GenreList},
+      {path:'latest',component:LatestList},
+      {path:'popular',component:PopularList},
+
+    ]
   },
   {
     path: '/recommend',

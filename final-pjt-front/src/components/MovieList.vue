@@ -1,16 +1,17 @@
 <template>
   <div>
     MovieList
-    <LatestListItem />
+    <MovieListItem />
   </div>
 </template>
 
 <script>
-import LatestListItem from './LatestListItem.vue'
+import MovieListItem from './MovieListItem.vue'
+
 export default {
-  name:'LatestList',
+  name:'MovieList',
   components : {
-    LatestListItem,
+    MovieListItem,
   }
 }
 </script>

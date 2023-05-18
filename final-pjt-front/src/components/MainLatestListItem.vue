@@ -1,12 +1,12 @@
 <template>
   <div>
-    MovieListItem
+    MainLatestListItem
   </div>
 </template>
 
 <script>
 export default {
-  name:'MovieListItem',
+  name:'MainLatestListItem',
 }
 </script>
 
