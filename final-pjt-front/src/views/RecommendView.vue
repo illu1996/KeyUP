@@ -1,0 +1,15 @@
+<template>
+  <div>
+    RecomendView
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'RecommendView',
+}
+</script>
+
+<style>
+
+</style>
