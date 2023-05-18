@@ -9,10 +9,10 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .models import Movie, Review, Keyword
+from .models import Movie, Review, Keyword, Genre
 from .serializers import MovieDetailSerializer, ReviewSerializer,\
     MovieLikeSerializer, MovieListSerializer, KeywordListSerializer,\
-    KeywordMovieSerializer
+    KeywordMovieSerializer, GenreSerializer
 # Create your views here.
 
 @api_view(['GET'])
@@ -27,10 +27,16 @@ def movie_list(request):
 @api_view(['GET'])
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
-
     if request.method == 'GET':
         serializer = MovieDetailSerializer(movie)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def genre_list(request):
+    genres = get_list_or_404(Genre)
+    serializer = GenreSerializer(genres, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 @api_view(['GET'])
 def review_list(request):
@@ -102,9 +108,7 @@ def keyword_list(request):
 @permission_classes([IsAuthenticated])
 def keyword_detail_movies(request, keyword_pk):
     keyword = get_object_or_404(Keyword, pk=keyword_pk)
-    print(keyword)
     movies = get_list_or_404(Movie, movie_keyword=keyword_pk)
-    print(movies)
     serializer = KeywordMovieSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

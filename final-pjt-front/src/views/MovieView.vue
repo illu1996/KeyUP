@@ -6,7 +6,6 @@
     <router-link to="/movies/latest">신작</router-link> |
     <router-link to="/movies/popular">인기</router-link> |
 
-
     <router-view></router-view>
   </div>
 </template>
