@@ -21,4 +21,9 @@ class MovieLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ('like_users',)
-        read_only_fields = ('user','title','content', )
+        # read_only_fields = ('user','title','content', )
+        
+class MovieListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = "__all__"

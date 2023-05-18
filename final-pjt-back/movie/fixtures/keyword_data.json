@@ -1,0 +1,1202 @@
+[
+{
+"pk": 380,
+"model": "movie.keyword",
+"fields": {
+"name": "sibling relationship",
+"translated": "형제 관계"
+}
+},
+{
+"pk": 3521,
+"model": "movie.keyword",
+"fields": {
+"name": "earthquake",
+"translated": "지진"
+}
+},
+{
+"pk": 3725,
+"model": "movie.keyword",
+"fields": {
+"name": "pregnancy",
+"translated": "임신"
+}
+},
+{
+"pk": 9663,
+"model": "movie.keyword",
+"fields": {
+"name": "sequel",
+"translated": "계속"
+}
+},
+{
+"pk": 10292,
+"model": "movie.keyword",
+"fields": {
+"name": "gore",
+"translated": "핏덩어리"
+}
+},
+{
+"pk": 12670,
+"model": "movie.keyword",
+"fields": {
+"name": "los angeles, california",
+"translated": "로스 엔젤레스, 캘리포니아"
+}
+},
+{
+"pk": 15001,
+"model": "movie.keyword",
+"fields": {
+"name": "demon",
+"translated": "악마"
+}
+},
+{
+"pk": 156075,
+"model": "movie.keyword",
+"fields": {
+"name": "evil",
+"translated": "사악한"
+}
+},
+{
+"pk": 157466,
+"model": "movie.keyword",
+"fields": {
+"name": "necronomicon",
+"translated": "Necronomicon"
+}
+},
+{
+"pk": 161184,
+"model": "movie.keyword",
+"fields": {
+"name": "reboot",
+"translated": "재부팅"
+}
+},
+{
+"pk": 161261,
+"model": "movie.keyword",
+"fields": {
+"name": "demonic possession",
+"translated": "악마 소유"
+}
+},
+{
+"pk": 176227,
+"model": "movie.keyword",
+"fields": {
+"name": "motherhood",
+"translated": "어머니"
+}
+},
+{
+"pk": 210281,
+"model": "movie.keyword",
+"fields": {
+"name": "sisterhood",
+"translated": "여성 단체"
+}
+},
+{
+"pk": 241738,
+"model": "movie.keyword",
+"fields": {
+"name": "sister sister relationship",
+"translated": "자매 자매 관계"
+}
+},
+{
+"pk": 283085,
+"model": "movie.keyword",
+"fields": {
+"name": "body horror",
+"translated": "바디 공포"
+}
+},
+{
+"pk": 286239,
+"model": "movie.keyword",
+"fields": {
+"name": "apartment",
+"translated": "아파트"
+}
+},
+{
+"pk": 296359,
+"model": "movie.keyword",
+"fields": {
+"name": "graphic violence",
+"translated": "그래픽 폭력"
+}
+},
+{
+"pk": 282,
+"model": "movie.keyword",
+"fields": {
+"name": "video game",
+"translated": "비디오 게임"
+}
+},
+{
+"pk": 1878,
+"model": "movie.keyword",
+"fields": {
+"name": "plumber",
+"translated": "배관공"
+}
+},
+{
+"pk": 9696,
+"model": "movie.keyword",
+"fields": {
+"name": "magic mushroom",
+"translated": "마법 버섯"
+}
+},
+{
+"pk": 41645,
+"model": "movie.keyword",
+"fields": {
+"name": "based on video game",
+"translated": "비디오 게임을 기반으로합니다"
+}
+},
+{
+"pk": 179430,
+"model": "movie.keyword",
+"fields": {
+"name": "aftercreditsstinger",
+"translated": "후 크레디 스티거"
+}
+},
+{
+"pk": 179431,
+"model": "movie.keyword",
+"fields": {
+"name": "duringcreditsstinger",
+"translated": "Creditsstinger 동안"
+}
+},
+{
+"pk": 188294,
+"model": "movie.keyword",
+"fields": {
+"name": "damsel in distress",
+"translated": "고통에 빠진다"
+}
+},
+{
+"pk": 243959,
+"model": "movie.keyword",
+"fields": {
+"name": "brother brother relationship",
+"translated": "형제 관계"
+}
+},
+{
+"pk": 1701,
+"model": "movie.keyword",
+"fields": {
+"name": "hero",
+"translated": "영웅"
+}
+},
+{
+"pk": 3126,
+"model": "movie.keyword",
+"fields": {
+"name": "ant",
+"translated": "개미"
+}
+},
+{
+"pk": 9715,
+"model": "movie.keyword",
+"fields": {
+"name": "superhero",
+"translated": "슈퍼 히어로"
+}
+},
+{
+"pk": 9717,
+"model": "movie.keyword",
+"fields": {
+"name": "based on comic",
+"translated": "만화를 기반으로합니다"
+}
+},
+{
+"pk": 18035,
+"model": "movie.keyword",
+"fields": {
+"name": "family",
+"translated": "가족"
+}
+},
+{
+"pk": 155030,
+"model": "movie.keyword",
+"fields": {
+"name": "superhero team",
+"translated": "슈퍼 히어로 팀"
+}
+},
+{
+"pk": 180547,
+"model": "movie.keyword",
+"fields": {
+"name": "marvel cinematic universe (mcu)",
+"translated": "Marvel Cinematic Universe (MCU)"
+}
+},
+{
+"pk": 514,
+"model": "movie.keyword",
+"fields": {
+"name": "spain",
+"translated": "스페인"
+}
+},
+{
+"pk": 588,
+"model": "movie.keyword",
+"fields": {
+"name": "rome, italy",
+"translated": "이탈리아 로마"
+}
+},
+{
+"pk": 716,
+"model": "movie.keyword",
+"fields": {
+"name": "vatican",
+"translated": "바티칸 궁전"
+}
+},
+{
+"pk": 717,
+"model": "movie.keyword",
+"fields": {
+"name": "pope",
+"translated": "로마 교황"
+}
+},
+{
+"pk": 4931,
+"model": "movie.keyword",
+"fields": {
+"name": "pig",
+"translated": "돼지"
+}
+},
+{
+"pk": 9712,
+"model": "movie.keyword",
+"fields": {
+"name": "possession",
+"translated": "소유"
+}
+},
+{
+"pk": 10410,
+"model": "movie.keyword",
+"fields": {
+"name": "conspiracy",
+"translated": "음모"
+}
+},
+{
+"pk": 14999,
+"model": "movie.keyword",
+"fields": {
+"name": "devil",
+"translated": "악마"
+}
+},
+{
+"pk": 159940,
+"model": "movie.keyword",
+"fields": {
+"name": "exorcist",
+"translated": "엑소시스트"
+}
+},
+{
+"pk": 161198,
+"model": "movie.keyword",
+"fields": {
+"name": "skepticism",
+"translated": "회의론"
+}
+},
+{
+"pk": 172391,
+"model": "movie.keyword",
+"fields": {
+"name": "catholic priest",
+"translated": "가톨릭 사제"
+}
+},
+{
+"pk": 208289,
+"model": "movie.keyword",
+"fields": {
+"name": "1980s",
+"translated": "1980 년대"
+}
+},
+{
+"pk": 256183,
+"model": "movie.keyword",
+"fields": {
+"name": "supernatural horror",
+"translated": "초자연적 인 공포"
+}
+},
+{
+"pk": 10125,
+"model": "movie.keyword",
+"fields": {
+"name": "mad scientist",
+"translated": "미친 과학자"
+}
+},
+{
+"pk": 161176,
+"model": "movie.keyword",
+"fields": {
+"name": "space opera",
+"translated": "우주 오페라"
+}
+},
+{
+"pk": 162881,
+"model": "movie.keyword",
+"fields": {
+"name": "raccoon",
+"translated": "너구리"
+}
+},
+{
+"pk": 231295,
+"model": "movie.keyword",
+"fields": {
+"name": "cosmic",
+"translated": "질서 있는"
+}
+},
+{
+"pk": 252634,
+"model": "movie.keyword",
+"fields": {
+"name": "outer space",
+"translated": "대기권 밖"
+}
+},
+{
+"pk": 267488,
+"model": "movie.keyword",
+"fields": {
+"name": "chosen family",
+"translated": "선택된 가족"
+}
+},
+{
+"pk": 4289,
+"model": "movie.keyword",
+"fields": {
+"name": "secret agent",
+"translated": "비밀 요원"
+}
+},
+{
+"pk": 697,
+"model": "movie.keyword",
+"fields": {
+"name": "loss of loved one",
+"translated": "사랑하는 사람의 상실"
+}
+},
+{
+"pk": 3737,
+"model": "movie.keyword",
+"fields": {
+"name": "dying and death",
+"translated": "죽음과 죽음"
+}
+},
+{
+"pk": 4862,
+"model": "movie.keyword",
+"fields": {
+"name": "alien life-form",
+"translated": "외계 생명체"
+}
+},
+{
+"pk": 6506,
+"model": "movie.keyword",
+"fields": {
+"name": "resurrection",
+"translated": "부활"
+}
+},
+{
+"pk": 10041,
+"model": "movie.keyword",
+"fields": {
+"name": "dysfunctional family",
+"translated": "기능 장애가있는 가족"
+}
+},
+{
+"pk": 10158,
+"model": "movie.keyword",
+"fields": {
+"name": "alien planet",
+"translated": "외계인 행성"
+}
+},
+{
+"pk": 11239,
+"model": "movie.keyword",
+"fields": {
+"name": "distant future",
+"translated": "먼 미래"
+}
+},
+{
+"pk": 185927,
+"model": "movie.keyword",
+"fields": {
+"name": "adopted child",
+"translated": "입양아"
+}
+},
+{
+"pk": 194421,
+"model": "movie.keyword",
+"fields": {
+"name": "rebirth",
+"translated": "갱생"
+}
+},
+{
+"pk": 205734,
+"model": "movie.keyword",
+"fields": {
+"name": "family dynamics",
+"translated": "가족 역학"
+}
+},
+{
+"pk": 209051,
+"model": "movie.keyword",
+"fields": {
+"name": "adopted son",
+"translated": "입양 된 아들"
+}
+},
+{
+"pk": 219826,
+"model": "movie.keyword",
+"fields": {
+"name": "stronger villain",
+"translated": "더 강한 악당"
+}
+},
+{
+"pk": 273967,
+"model": "movie.keyword",
+"fields": {
+"name": "war",
+"translated": "전쟁"
+}
+},
+{
+"pk": 10150,
+"model": "movie.keyword",
+"fields": {
+"name": "end of the world",
+"translated": "세상의 끝"
+}
+},
+{
+"pk": 33637,
+"model": "movie.keyword",
+"fields": {
+"name": "super power",
+"translated": "슈퍼 파워"
+}
+},
+{
+"pk": 229266,
+"model": "movie.keyword",
+"fields": {
+"name": "dc extended universe (dceu)",
+"translated": "DC 확장 우주 (DCEU)"
+}
+},
+{
+"pk": 296608,
+"model": "movie.keyword",
+"fields": {
+"name": "teenager",
+"translated": "십대"
+}
+},
+{
+"pk": 10039,
+"model": "movie.keyword",
+"fields": {
+"name": "racing",
+"translated": "경마"
+}
+},
+{
+"pk": 276,
+"model": "movie.keyword",
+"fields": {
+"name": "philadelphia, pennsylvania",
+"translated": "필라델피아, 펜실베니아"
+}
+},
+{
+"pk": 1157,
+"model": "movie.keyword",
+"fields": {
+"name": "husband wife relationship",
+"translated": "남편 아내 관계"
+}
+},
+{
+"pk": 1643,
+"model": "movie.keyword",
+"fields": {
+"name": "deaf",
+"translated": "청각 장애인"
+}
+},
+{
+"pk": 6075,
+"model": "movie.keyword",
+"fields": {
+"name": "sports",
+"translated": "스포츠"
+}
+},
+{
+"pk": 13014,
+"model": "movie.keyword",
+"fields": {
+"name": "orphan",
+"translated": "유아"
+}
+},
+{
+"pk": 41368,
+"model": "movie.keyword",
+"fields": {
+"name": "former best friend",
+"translated": "전 가장 친한 친구"
+}
+},
+{
+"pk": 156121,
+"model": "movie.keyword",
+"fields": {
+"name": "ex-con",
+"translated": "전 콘"
+}
+},
+{
+"pk": 160246,
+"model": "movie.keyword",
+"fields": {
+"name": "childhood friends",
+"translated": "어린 시절 친구"
+}
+},
+{
+"pk": 174258,
+"model": "movie.keyword",
+"fields": {
+"name": "juvenile detention center",
+"translated": "청소년 구금 센터"
+}
+},
+{
+"pk": 209476,
+"model": "movie.keyword",
+"fields": {
+"name": "boxing",
+"translated": "권투"
+}
+},
+{
+"pk": 228041,
+"model": "movie.keyword",
+"fields": {
+"name": "prodigy",
+"translated": "신동"
+}
+},
+{
+"pk": 242,
+"model": "movie.keyword",
+"fields": {
+"name": "new york city",
+"translated": "뉴욕시"
+}
+},
+{
+"pk": 2546,
+"model": "movie.keyword",
+"fields": {
+"name": "mask",
+"translated": "마스크"
+}
+},
+{
+"pk": 2754,
+"model": "movie.keyword",
+"fields": {
+"name": "trauma",
+"translated": "외상"
+}
+},
+{
+"pk": 3335,
+"model": "movie.keyword",
+"fields": {
+"name": "halloween",
+"translated": "할로윈"
+}
+},
+{
+"pk": 3616,
+"model": "movie.keyword",
+"fields": {
+"name": "college",
+"translated": "대학"
+}
+},
+{
+"pk": 3864,
+"model": "movie.keyword",
+"fields": {
+"name": "fake identity",
+"translated": "가짜 정체성"
+}
+},
+{
+"pk": 9748,
+"model": "movie.keyword",
+"fields": {
+"name": "revenge",
+"translated": "복수"
+}
+},
+{
+"pk": 9780,
+"model": "movie.keyword",
+"fields": {
+"name": "public murder",
+"translated": "공개 살인"
+}
+},
+{
+"pk": 9826,
+"model": "movie.keyword",
+"fields": {
+"name": "murder",
+"translated": "살인"
+}
+},
+{
+"pk": 10714,
+"model": "movie.keyword",
+"fields": {
+"name": "serial killer",
+"translated": "연쇄 살인범"
+}
+},
+{
+"pk": 11208,
+"model": "movie.keyword",
+"fields": {
+"name": "conspiracy theory",
+"translated": "음모 이론"
+}
+},
+{
+"pk": 11479,
+"model": "movie.keyword",
+"fields": {
+"name": "social commentary",
+"translated": "사회 논평"
+}
+},
+{
+"pk": 11734,
+"model": "movie.keyword",
+"fields": {
+"name": "police corruption",
+"translated": "경찰 부패"
+}
+},
+{
+"pk": 12339,
+"model": "movie.keyword",
+"fields": {
+"name": "slasher",
+"translated": "슬래셔"
+}
+},
+{
+"pk": 12570,
+"model": "movie.keyword",
+"fields": {
+"name": "whodunit",
+"translated": "추리 극"
+}
+},
+{
+"pk": 14688,
+"model": "movie.keyword",
+"fields": {
+"name": "multiple stabbings",
+"translated": "여러 찌르기"
+}
+},
+{
+"pk": 14707,
+"model": "movie.keyword",
+"fields": {
+"name": "brutality",
+"translated": "야만성"
+}
+},
+{
+"pk": 17987,
+"model": "movie.keyword",
+"fields": {
+"name": "killing spree",
+"translated": "연속 살인"
+}
+},
+{
+"pk": 160612,
+"model": "movie.keyword",
+"fields": {
+"name": "self-referential",
+"translated": "자기 참조"
+}
+},
+{
+"pk": 177695,
+"model": "movie.keyword",
+"fields": {
+"name": "crime spree",
+"translated": "범죄 행정"
+}
+},
+{
+"pk": 218048,
+"model": "movie.keyword",
+"fields": {
+"name": "movie fan",
+"translated": "영화 팬"
+}
+},
+{
+"pk": 220455,
+"model": "movie.keyword",
+"fields": {
+"name": "copycat killer",
+"translated": "카피 캣 살인자"
+}
+},
+{
+"pk": 234025,
+"model": "movie.keyword",
+"fields": {
+"name": "masked villain",
+"translated": "마스크 된 악당"
+}
+},
+{
+"pk": 238142,
+"model": "movie.keyword",
+"fields": {
+"name": "stabbed to death",
+"translated": "찔러 죽이기"
+}
+},
+{
+"pk": 272551,
+"model": "movie.keyword",
+"fields": {
+"name": "fbi agent",
+"translated": "FBI 에이전트"
+}
+},
+{
+"pk": 305143,
+"model": "movie.keyword",
+"fields": {
+"name": "post credit scene",
+"translated": "포스트 신용 장면"
+}
+},
+{
+"pk": 305666,
+"model": "movie.keyword",
+"fields": {
+"name": "masked killer",
+"translated": "가면을 쓴 살인자"
+}
+},
+{
+"pk": 779,
+"model": "movie.keyword",
+"fields": {
+"name": "martial arts",
+"translated": "무술"
+}
+},
+{
+"pk": 2708,
+"model": "movie.keyword",
+"fields": {
+"name": "hitman",
+"translated": "암살자"
+}
+},
+{
+"pk": 10291,
+"model": "movie.keyword",
+"fields": {
+"name": "organized crime",
+"translated": "조직 범죄"
+}
+},
+{
+"pk": 10642,
+"model": "movie.keyword",
+"fields": {
+"name": "osaka, japan",
+"translated": "일본 오사카"
+}
+},
+{
+"pk": 181644,
+"model": "movie.keyword",
+"fields": {
+"name": "hunted",
+"translated": "사냥"
+}
+},
+{
+"pk": 206041,
+"model": "movie.keyword",
+"fields": {
+"name": "professional assassin",
+"translated": "전문 암살자"
+}
+},
+{
+"pk": 207268,
+"model": "movie.keyword",
+"fields": {
+"name": "neo-noir",
+"translated": "네오 노이어"
+}
+},
+{
+"pk": 312965,
+"model": "movie.keyword",
+"fields": {
+"name": "berlin",
+"translated": "베를린"
+}
+},
+{
+"pk": 502,
+"model": "movie.keyword",
+"fields": {
+"name": "ambush",
+"translated": "매복"
+}
+},
+{
+"pk": 2297,
+"model": "movie.keyword",
+"fields": {
+"name": "interpreter",
+"translated": "통역사"
+}
+},
+{
+"pk": 3541,
+"model": "movie.keyword",
+"fields": {
+"name": "afghanistan",
+"translated": "아프가니스탄"
+}
+},
+{
+"pk": 7158,
+"model": "movie.keyword",
+"fields": {
+"name": "afghanistan war (2001- )",
+"translated": "아프가니스탄 전쟁 (2001-)"
+}
+},
+{
+"pk": 10084,
+"model": "movie.keyword",
+"fields": {
+"name": "rescue",
+"translated": "구조하다"
+}
+},
+{
+"pk": 470,
+"model": "movie.keyword",
+"fields": {
+"name": "spy",
+"translated": "스파이"
+}
+},
+{
+"pk": 782,
+"model": "movie.keyword",
+"fields": {
+"name": "assassin",
+"translated": "암살자"
+}
+},
+{
+"pk": 2051,
+"model": "movie.keyword",
+"fields": {
+"name": "intelligence",
+"translated": "지능"
+}
+},
+{
+"pk": 5265,
+"model": "movie.keyword",
+"fields": {
+"name": "spying",
+"translated": "스파이"
+}
+},
+{
+"pk": 254325,
+"model": "movie.keyword",
+"fields": {
+"name": "korea president",
+"translated": "한국 대통령"
+}
+},
+{
+"pk": 261681,
+"model": "movie.keyword",
+"fields": {
+"name": "south korea",
+"translated": "대한민국"
+}
+},
+{
+"pk": 267761,
+"model": "movie.keyword",
+"fields": {
+"name": "inter-korean relations",
+"translated": "코어 간 관계"
+}
+},
+{
+"pk": 295022,
+"model": "movie.keyword",
+"fields": {
+"name": "nis",
+"translated": "니스"
+}
+},
+{
+"pk": 1721,
+"model": "movie.keyword",
+"fields": {
+"name": "fight",
+"translated": "싸움"
+}
+},
+{
+"pk": 4152,
+"model": "movie.keyword",
+"fields": {
+"name": "kingdom",
+"translated": "왕국"
+}
+},
+{
+"pk": 4933,
+"model": "movie.keyword",
+"fields": {
+"name": "battle for power",
+"translated": "힘을위한 전투"
+}
+},
+{
+"pk": 5515,
+"model": "movie.keyword",
+"fields": {
+"name": "heir to the throne",
+"translated": "왕위 후계자"
+}
+},
+{
+"pk": 9994,
+"model": "movie.keyword",
+"fields": {
+"name": "crown",
+"translated": "왕관"
+}
+},
+{
+"pk": 13084,
+"model": "movie.keyword",
+"fields": {
+"name": "king",
+"translated": "왕"
+}
+},
+{
+"pk": 14643,
+"model": "movie.keyword",
+"fields": {
+"name": "battle",
+"translated": "전투"
+}
+},
+{
+"pk": 180059,
+"model": "movie.keyword",
+"fields": {
+"name": "death of king",
+"translated": "왕의 죽음"
+}
+},
+{
+"pk": 208951,
+"model": "movie.keyword",
+"fields": {
+"name": "invaders",
+"translated": "침략자"
+}
+},
+{
+"pk": 253463,
+"model": "movie.keyword",
+"fields": {
+"name": "heirs",
+"translated": "상속인"
+}
+},
+{
+"pk": 2041,
+"model": "movie.keyword",
+"fields": {
+"name": "island",
+"translated": "섬"
+}
+},
+{
+"pk": 2343,
+"model": "movie.keyword",
+"fields": {
+"name": "magic",
+"translated": "마법"
+}
+},
+{
+"pk": 2710,
+"model": "movie.keyword",
+"fields": {
+"name": "fairy",
+"translated": "요정"
+}
+},
+{
+"pk": 3205,
+"model": "movie.keyword",
+"fields": {
+"name": "fairy tale",
+"translated": "동화"
+}
+},
+{
+"pk": 4332,
+"model": "movie.keyword",
+"fields": {
+"name": "peter pan",
+"translated": "피터 팬"
+}
+},
+{
+"pk": 4978,
+"model": "movie.keyword",
+"fields": {
+"name": "immortality",
+"translated": "불사"
+}
+},
+{
+"pk": 9714,
+"model": "movie.keyword",
+"fields": {
+"name": "remake",
+"translated": "다시 만들다"
+}
+},
+{
+"pk": 12988,
+"model": "movie.keyword",
+"fields": {
+"name": "pirate",
+"translated": "해적"
+}
+},
+{
+"pk": 15101,
+"model": "movie.keyword",
+"fields": {
+"name": "based on children's book",
+"translated": "어린이 책을 기반으로합니다"
+}
+},
+{
+"pk": 170362,
+"model": "movie.keyword",
+"fields": {
+"name": "fantasy world",
+"translated": "환상의 세계"
+}
+},
+{
+"pk": 245230,
+"model": "movie.keyword",
+"fields": {
+"name": "live action remake",
+"translated": "라이브 액션 리메이크"
+}
+}
+]

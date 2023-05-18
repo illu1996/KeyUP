@@ -3,9 +3,14 @@ from django.conf import settings
 
 # Create your models here.
 class Genre(models.Model):
-    name: models.TextField()
+    name = models.TextField()
+    
+class keyword(models.Model): 
+    name = models.TextField(null=True)
+    translated = models.TextField(null=True)
     
 class Movie(models.Model):
+    movie_id = models.IntegerField()
     adult = models.BooleanField()
     title = models.TextField()
     original_title = models.TextField()
@@ -16,6 +21,7 @@ class Movie(models.Model):
     vote_count = models.IntegerField()
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
     genre_ids = models.ManyToManyField(Genre, related_name='movie_genre')
+    movie_keyword = models.ManyToManyField(keyword, related_name='movie_keyword')
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

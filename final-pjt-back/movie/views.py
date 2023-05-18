@@ -10,8 +10,17 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import Movie, Review
-from .serializers import MovieDetailSerializer, ReviewSerializer, MovieLikeSerializer
+from .serializers import MovieDetailSerializer, ReviewSerializer, MovieLikeSerializer, MovieListSerializer
 # Create your views here.
+
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def movie_list(request):
+    if request.method == 'GET':
+        # articles = Article.objects.all()
+        movies = get_list_or_404(Movie)
+        serializer = MovieListSerializer(movies, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET'])
 def movie_detail(request, movie_pk):
@@ -32,7 +41,7 @@ def review_list(request):
 @api_view(['GET', 'DELETE', 'PUT'])
 def review_detail(request, review_pk):
     # review = review.objects.get(pk=review_pk)
-    review = get_object_or_404(review, pk=review_pk)
+    review = get_object_or_404(Review, pk=review_pk)
 
     if request.method == 'GET':
         serializer = ReviewSerializer(review)
