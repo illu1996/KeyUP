@@ -1,6 +1,9 @@
 <template>
-  <div>
+  <div >
     MainView
+    <div>
+      Box 메인 배네
+    </div>
     <MainLatestList />
     <MainPopularList />
 

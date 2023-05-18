@@ -1,6 +1,6 @@
 <template>
   <div>
-    MainPopularList
+    인기 박스오피스 <button>더보기</button>
     <MainPopularListItem />
   </div>
 </template>
