@@ -5,12 +5,48 @@
       <router-link to="/movies">Movie</router-link> |
       <router-link to="/recommend">Recommend</router-link> |
       <router-link to="/profile">Profile</router-link> |
+      <span @click="logout">로그아웃</span>
+    </nav>
+    <nav v-if="!displayLogin">
       <router-link to="/signup">Sign-Up</router-link> |
       <router-link to="/login">Login</router-link> |
     </nav>
     <router-view/>
   </div>
 </template>
+
+
+<script>
+import axios from 'axios'
+const API_URL = 'http://127.0.0.1:8000'
+
+export default {
+  name : 'app',
+  computed: {
+    displayLogin() {
+      return this.$store.getters.isLogin
+    }
+  },
+  methods : {
+    logout() {
+      axios({
+        method:'post',
+        url: `${API_URL}/accounts/logout/`,
+        headers : {
+          Authorization : `Token ${this.$store.state.token}`
+        }
+      })
+      .then((res)=>{
+        console.log(res)
+        this.$router.push({name:'Login'})
+      })
+      .catch((err)=>{
+        console.log(err)        
+      })
+    }
+  },
+}
+</script>
 
 <style>
 #app {

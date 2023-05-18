@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer, UserProfileSerializer
 from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
 @api_view(['POST'])
@@ -25,7 +26,7 @@ def follow(request, user_pk):
                 'person': serializer.data
             }
             return Response(response_data)
-    return Response({'error': 'Unauthorized'}, status=401)   
+    return Response(status=status.HTTP_401_UNAUTHORIZED)   
 
 
 
@@ -39,5 +40,5 @@ def updateprofile(request, user_pk):
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
                 return Response(serializer.data)
-    return Response({'error': 'Unauthorized'}, status=401) 
+    return Response(status=status.HTTP_401_UNAUTHORIZED) 
             
