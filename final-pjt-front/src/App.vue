@@ -5,11 +5,9 @@
       <router-link to="/movies">Movie</router-link> |
       <router-link to="/recommend">Recommend</router-link> |
       <router-link to="/profile">Profile</router-link> |
-      <span @click="logout">로그아웃</span>
-    </nav>
-    <nav v-if="!displayLogin">
       <router-link to="/signup">Sign-Up</router-link> |
       <router-link to="/login">Login</router-link> |
+      <span @click="logout">로그아웃</span>
     </nav>
     <router-view/>
   </div>
@@ -24,6 +22,7 @@ export default {
   name : 'app',
   computed: {
     displayLogin() {
+      console.log(this.$store.getters.isLogin)
       return this.$store.getters.isLogin
     }
   },

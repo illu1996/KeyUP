@@ -30,15 +30,20 @@ def follow(request, user_pk):
 
 
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def updateprofile(request, user_pk):
-    if request.user.is_authenticated:
-        person = get_object_or_404(get_user_model(), pk=user_pk)
-        user = request.user
-        if person == user:
-            serializer = UserProfileSerializer(person, data=request.data)
-            if serializer.is_valid(raise_exception=True):
-                serializer.save()
-                return Response(serializer.data)
+    user = get_object_or_404(get_user_model(), pk=user_pk)
+    if request.method =='GET':
+        serializer = UserProfileSerializer(user)
+        return Response(serializer.data)
+    if request.method=='POST':
+        if request.user.is_authenticated:
+            person = get_object_or_404(get_user_model(), pk=user_pk)
+            user = request.user
+            if person == user:
+                serializer = UserProfileSerializer(person, data=request.data)
+                if serializer.is_valid(raise_exception=True):
+                    serializer.save()
+                    return Response(serializer.data)
     return Response(status=status.HTTP_401_UNAUTHORIZED) 
             
