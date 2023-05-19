@@ -29,7 +29,10 @@ export default new Vuex.Store({
     },
     CHANGE_MOVIE(state, movieinfo) {
       state.movie_info = movieinfo
-    }
+    },
+    REMOVE_TOKEN(state){
+      state.token = null
+    },
   },
   actions: {
     login(context, payload) {
