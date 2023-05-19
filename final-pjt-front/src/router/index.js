@@ -16,6 +16,8 @@ import MovieDetail from '@/views/MovieDetail.vue'
 import ArticleCreate from '@/components/ArticleCreate.vue'
 import ArticleList from '@/components/ArticleList.vue'
 import ArticleDetail from '@/components/ArticleDetail.vue'
+import ProfileDetail from '@/components/ProfileDetail.vue'
+import ProfileUpdate from '@/components/ProfileUpdate.vue'
 
 Vue.use(VueRouter)
 
@@ -45,7 +47,11 @@ const routes = [
   {
     path: '/profile',
     name: 'Profile',
-    component: ProfileView
+    component: ProfileView,
+    children : [
+      {path:'detail',component:ProfileDetail},
+      {path:'update',component:ProfileUpdate},
+    ]
   },
   {
     path: '/login',

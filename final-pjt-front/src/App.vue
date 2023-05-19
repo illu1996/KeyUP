@@ -6,7 +6,7 @@
       <router-link to="/recommend">Recommend</router-link> |
       <router-link to="/community">community</router-link> |
 
-      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/profile/detail">Profile</router-link> |
       <div v-if="!displayLogin">
       <router-link to="/signup">Sign-Up</router-link> |
       <router-link to="/login">Login</router-link> |

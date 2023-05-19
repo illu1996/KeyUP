@@ -16,6 +16,7 @@ export default new Vuex.Store({
   state: {
     token : null,
     movie_info : null,
+    username : null,
   },
   getters: {
     isLogin(state) {
@@ -47,6 +48,8 @@ export default new Vuex.Store({
         }
       })
       .then((res)=>{
+        console.log(res)
+        this.state.username = username
         context.commit('SAVE_TOKEN', res.data.key)
       })
       .catch((err)=>{

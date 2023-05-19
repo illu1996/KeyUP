@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div class="body container d-flex">
+    <div class="loginform">
     <h2>로그인</h2>
     <form @submit.prevent="login">
-      <label for="username">아이디 </label>
+      <label for="username">ID </label>
       <input type="text" id="username" v-model="username"><br>
 
-      <label for="password">비밀번호 </label>
+      <label for="password">PASSWORD </label>
       <input type="password" id="password" v-model="password"><br>
 
-      <button>로그인</button>
+      <button>LOGIN</button>
     </form>
+    </div>
   </div>
 </template>
 
@@ -39,5 +41,11 @@ export default {
 </script>
 
 <style>
+.loginform {
+box-sizing: border-box;
+background: #FFFFFF;
+border: 1px solid #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 </style>
