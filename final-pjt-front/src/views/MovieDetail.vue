@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="this.movie">
-      <input @click="likelike" type="button" value="좋아요">
+      <input @click="likelike" type="button" :value=likevalue>
       <p>좋아요 수 : {{ like_users }}</p>
       <p>상세정보</p>
       <img :src=poster_path alt="">
@@ -10,7 +10,7 @@
       <p>{{ this.movie.runtime }}분</p>
       <p>{{ this.vote_average }}</p>
       <p>{{ this.movie.release_date }}</p>
-      <p>{{ this.movie.production_companies[0].name }}</p>
+      <p>{{ this.movie.production_companies[0]?.name }}</p>
       <span v-for="gen in this.genres_name" :key="gen">{{ gen }},</span>
       
       <MovieDetailCast v-for="cast in this.cast_list_ko" :key="cast" :cast="cast" :original_language="original_language"/>
@@ -43,7 +43,7 @@ export default {
       original_language : null,
       cast_list_ko : [],
       cast_list : [],
-      likevalue:false,
+      likevalue:'좋아요',
       like_users : 0,
     }
   },
@@ -94,8 +94,13 @@ export default {
       })
       .then((res)=>{
         console.log(res.data)
+        if (this.likevalue==='좋아요'){
+          this.likevalue = '좋아요취소'
+        }
+        else {
+          this.likevalue==='좋아요'
+        }
         this.like_users = res.data.like_users
-        this.likevalue=!this.likevalue
       })
       .catch((err)=>{
         console.log(err)
@@ -147,7 +152,9 @@ export default {
           }
         }
         for (let cast of res.data.cast.slice(0, 5)) {
-          this.cast_list_ko.push(cast.id)
+          if (!this.cast_list_ko.includes(cast.id)){
+            this.cast_list_ko.push(cast.id)
+          }
         }
       }
       })

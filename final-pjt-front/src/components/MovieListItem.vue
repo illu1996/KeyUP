@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     changeMovie() {
-      const movieinfo = this.movie
+      const movieinfo = this.randomMovie
       this.$store.dispatch('changeMovie', movieinfo)
       this.$router.push({name:'MovieDetail'})
     }

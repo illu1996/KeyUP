@@ -24,10 +24,11 @@ class MovieDataBaseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MovieLikeSerializer(serializers.ModelSerializer):
+    user = serializers.IntegerField(source='like_users', read_only=True)
     like_users = serializers.IntegerField(source='like_users.count', read_only=True)
     class Meta:
         model = Movie
-        fields = ('like_users',)
+        fields = ('like_users','user',)
         # read_only_fields = ('user','title','content', )
         
 class MovieListSerializer(serializers.ModelSerializer):

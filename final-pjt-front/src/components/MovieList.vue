@@ -1,7 +1,7 @@
 <template>
   <div>
     MovieList
-    <MovieListItem v-for="randomMovie in randomMovieList" :key="randomMovie.id" :randomMovie="randomMovie" />
+    <MovieListItem v-for="randomMovie in randomMovieList" :key="randomMovie.movie_id" :randomMovie="randomMovie" />
   </div>
 </template>
 
