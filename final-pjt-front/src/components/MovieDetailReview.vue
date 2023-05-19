@@ -1,7 +1,14 @@
 <template>
   <div>
     <h3>리뷰입니당 :)</h3>
-    <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review"/>
+    <div>
+      <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review"/>
+    </div>
+    <div>
+      <label for="content">리뷰를 작성해주세요</label>
+      <input type="text" id="content" v-model="content">
+      <button @click="addReview">작성하기</button>
+    </div>
   </div>
 </template>
 
@@ -21,7 +28,8 @@ export default {
   },
   data() {
     return {
-      reviews: []
+      reviews: [],
+      content : null,
     }
   },
   methods: {
@@ -40,6 +48,27 @@ export default {
           console.error('Error:', err)
         }})
     },
+
+    addReview() {
+      const content = this.content
+      axios({
+        method:'post',
+        url : `${MY_URL}/movies/${this.movie_id}/reviews/`,
+        data : {
+          content
+        },
+        headers : {
+          Authorization : `Token ${this.$store.state.token}`
+        }
+      })
+      .then(()=>{
+        this.getReviews()
+        this.content = null
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    }
   },
   created() {
     this.getReviews()
