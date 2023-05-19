@@ -24,5 +24,3 @@ class UserProfileSerializer(serializers.ModelSerializer):
         return liked_movie_ids
 
 
-
- 
