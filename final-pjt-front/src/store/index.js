@@ -17,6 +17,7 @@ export default new Vuex.Store({
     token : null,
     movie_info : null,
     username : null,
+    userInfo : null,
   },
   getters: {
     isLogin(state) {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     },
     CHANGE_MOVIE(state, movieinfo) {
       state.movie_info = movieinfo
+    },
+    CHANGE_PROFILE(state, userInfo){
+      state.userInfo = userInfo
     },
     REMOVE_TOKEN(state){
       state.token = null
@@ -77,6 +81,9 @@ export default new Vuex.Store({
     },
     changeMovie(context, payload) {
       context.commit('CHANGE_MOVIE', payload)
+    },
+    changeProfile(context, payload) {
+      context.commit('CHANGE_PROFILE', payload)
     }
   },
   modules: {

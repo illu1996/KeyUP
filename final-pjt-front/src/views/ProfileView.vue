@@ -1,26 +1,17 @@
 <template>
   <div>
     <h3>마이페이지</h3>
-    <router-link to="/profile/detail">상세페이지</router-link> |
     <router-link to="/profile/update">마이페이지 정보 수정</router-link> |
-    <router-view :user="user"/>
-    <!-- <ProfileDetail :user="user"/>
-    <ProfileUpdate :user="user"/> -->
+    <router-view/>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-// import ProfileDetail from '@/components/ProfileDetail.vue'
-// import ProfileUpdate from '@/components/ProfileUpdate.vue'
 const API_URL = 'http://127.0.0.1:8000'
 
 export default {
   name: 'ProfileView',
-  // components: {
-  //   ProfileDetail,
-  //   ProfileUpdate
-  // },
   data() {
     return {
       user : null,
@@ -36,10 +27,14 @@ export default {
         }
       })
       .then((res)=>{
-        console.log(res.data)
         this.user = res.data
+        this.changeProfile()
       })
     },
+    changeProfile() {
+      const userInfo = this.user
+      this.$store.dispatch('changeProfile', userInfo)
+    }
   },
   created() {
     this.getUserProfile()

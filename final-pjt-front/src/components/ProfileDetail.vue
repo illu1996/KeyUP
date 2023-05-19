@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>닉네임 : {{ user?.nickname }}</p>
-    <p>사진... : {{ user?.profileimg }}</p>
+    <p>사진... : <img :src=imgInfo alt=""></p>
     <p>소개말 : {{ user?.introduce }}</p>
     <p>좋아요 한 영화</p>
     <div v-for="movie in movielist" :key="movie.id">
@@ -16,13 +16,15 @@ import axios from 'axios';
 
 export default {
   name: 'ProfileDetail',
-  props: {
-    user: Object
-  },
   data() {
     return {
-      movielist :[]
+      movielist :[],
+      user : this.$store.state.userInfo,
+      imgInfo : null,
     }
+  },
+  beforeRouteUpdate(to, from, next)  {
+    next()
   },
   computed: {
     
@@ -55,9 +57,10 @@ export default {
         })
         .then((res)=>{
           this.movielist.push(res.data)
+          this.imgInfo = `http://127.0.0.1:8000/` + this.$store.state.userInfo.profileimg
         })
       }
-    }
+    },
   },
 }
 </script>
