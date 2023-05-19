@@ -12,6 +12,7 @@
       <span v-for="gen in this.genres_name" :key="gen">{{ gen }},</span>
       
       <MovieDetailCast v-for="cast in this.cast_list_ko" :key="cast" :cast="cast" :original_language="original_language"/>
+      <MovieDetailReview :movie_id="movie_id"/>
     </div>
   </div>
 </template>
@@ -19,11 +20,13 @@
 <script>
 import axios from 'axios';
 import MovieDetailCast from '@/components/MovieDetailCast.vue'
+import MovieDetailReview from '@/components/MovieDetailReview.vue'
 
 export default {
   name: 'MovieDetail',
   components:{
-    MovieDetailCast
+    MovieDetailCast,
+    MovieDetailReview,
   },
   data() {
     return {
