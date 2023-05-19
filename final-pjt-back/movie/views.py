@@ -107,11 +107,26 @@ def keyword_list(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def keyword_detail_movies(request, keyword_pk):
+<<<<<<< Updated upstream
     keyword = get_object_or_404(Keyword, pk=keyword_pk)
     movies = get_list_or_404(Movie, movie_keyword=keyword_pk)
     serializer = KeywordMovieSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+=======
+    movies = get_list_or_404(Movie)
+    filtered_movies =[]
+
+    for movie in movies:
+        for keywords in movie.movie_keyword.all():    
+            if keywords.id == keyword_pk:
+                filtered_movies.append(movie)
+                break
+        if len(filtered_movies) == 30:
+            break
+    return Response({'filtered_movies':filtered_movies})
+        
+>>>>>>> Stashed changes
     # if request.method == 'GET':
     #     keywords = get_list_or_404(keyword)
     #     serializer = KeywordListSerializer(keywords, many=True)
