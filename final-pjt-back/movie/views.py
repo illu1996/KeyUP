@@ -31,6 +31,14 @@ def movie_detail(request, movie_pk):
         serializer = MovieDetailSerializer(movie)
         return Response(serializer.data)
 
+@api_view(['POST'])   
+def movie_create(request):
+    serializer = MovieListSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
 @api_view(['GET'])
 def genre_list(request):
     genres = get_list_or_404(Genre)
@@ -71,14 +79,21 @@ def review_detail(request, review_pk):
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
         
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def review_create(request, movie_pk):
     # article = Article.objects.get(pk=article_pk)
     movie = get_object_or_404(Movie, pk=movie_pk)
-    serializer = ReviewSerializer(data=request.data)
-    if serializer.is_valid(raise_exception=True):
-        serializer.save(movie=movie, user=request.user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    if request.method=='GET':
+        reviews = Review.objects.filter(movie=movie)
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data)
+
+    if request.method=='POST':
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(movie=movie, user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 @api_view(['POST'])
 def like(request, movie_pk):
@@ -110,7 +125,7 @@ def keyword_detail_movies(request, keyword_pk):
 <<<<<<< Updated upstream
     keyword = get_object_or_404(Keyword, pk=keyword_pk)
     movies = get_list_or_404(Movie, movie_keyword=keyword_pk)
-    serializer = KeywordMovieSerializer(movies, many=True)
+    serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 =======

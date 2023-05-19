@@ -4,12 +4,14 @@
       <router-link to="/">Main</router-link> |
       <router-link to="/movies/all">Movie</router-link> |
       <router-link to="/recommend">Recommend</router-link> |
+      <router-link to="/community">community</router-link> |
+
       <router-link to="/profile">Profile</router-link> |
-      <span @click="logout">로그아웃</span>
-    </nav>
-    <nav v-if="!displayLogin">
+      <div v-if="!displayLogin">
       <router-link to="/signup">Sign-Up</router-link> |
       <router-link to="/login">Login</router-link> |
+    </div>
+      <span v-else @click="logout">로그아웃</span>
     </nav>
     <router-view/>
   </div>
@@ -36,8 +38,9 @@ export default {
           Authorization : `Token ${this.$store.state.token}`
         }
       })
-      .then((res)=>{
-        console.log(res)
+      .then(()=>{
+
+        this.$store.commit('REMOVE_TOKEN')
         this.$router.push({name:'Login'})
       })
       .catch((err)=>{

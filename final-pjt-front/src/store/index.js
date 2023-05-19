@@ -14,7 +14,8 @@ export default new Vuex.Store({
     createPersistedStated(),
   ],
   state: {
-    token : null, 
+    token : null,
+    movie_info : null,
   },
   getters: {
     isLogin(state) {
@@ -25,6 +26,12 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token
       router.push({name:'Main'})
+    },
+    CHANGE_MOVIE(state, movieinfo) {
+      state.movie_info = movieinfo
+    },
+    REMOVE_TOKEN(state){
+      state.token = null
     },
   },
   actions: {
@@ -65,6 +72,9 @@ export default new Vuex.Store({
         console.log(err)
       })
     },
+    changeMovie(context, payload) {
+      context.commit('CHANGE_MOVIE', payload)
+    }
   },
   modules: {
   }

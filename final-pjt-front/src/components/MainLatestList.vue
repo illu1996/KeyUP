@@ -26,18 +26,17 @@ export default {
     getPopularMovie() {
       axios({
         method: 'get',
-        url: "https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=1",
+        url: "https://api.themoviedb.org/3/movie/now_playing?language=ko-kr&page=1",
         headers: {
           "accept": "application/json",
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDVjMWRmOTg2NTkyMzcwM2I3ZThmYzk5NmM4YjRhMiIsInN1YiI6IjYzZDMxN2IxNWEwN2Y1MDA5ZTk4MDA3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YcCaSDAbUQtDs3hXhi0xmf0sAnBzQklq7dEIq1oTlNs"
         }
       })
-        .then((res) => {
-          console.log(res.data)
-          this.movieList = res.data.results
-        })
+      .then((res) => {
+        console.log(res.data)
+        this.movieList = res.data.results
+      })
     }
-
   },
   computed: {
 

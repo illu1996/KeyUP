@@ -6,10 +6,16 @@ import RecommendView from '../views/RecommendView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
+import CommunityView from '../views/CommunityView.vue'
+
 import MovieList from '@/components/MovieList.vue'
 import GenreList from '@/components/GenreList.vue'
 import LatestList from '@/components/LatestList.vue'
 import PopularList from '@/components/PopularList.vue'
+import MovieDetail from '@/views/MovieDetail.vue'
+import ArticleCreate from '@/components/ArticleCreate.vue'
+import ArticleList from '@/components/ArticleList.vue'
+import ArticleDetail from '@/components/ArticleDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -51,7 +57,26 @@ const routes = [
     name: 'Signup',
     component: SignupView
   },
-
+  {
+    path: '/moviedetail',
+    name: 'MovieDetail',
+    component: MovieDetail
+  },
+  {
+    path: '/community',
+    name: 'CommunityView',
+    component: CommunityView,
+    children : [
+      {path:'create',component:ArticleCreate},
+      {path:'list',component:ArticleList},
+    ]
+  },
+  {
+    path: '/article/:id',
+    name: 'ArticleDetail',
+    component: ArticleDetail
+  },
+  
 ]
 
 const router = new VueRouter({
