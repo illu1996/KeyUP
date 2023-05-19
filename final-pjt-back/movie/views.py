@@ -109,7 +109,7 @@ def keyword_list(request):
 def keyword_detail_movies(request, keyword_pk):
     keyword = get_object_or_404(Keyword, pk=keyword_pk)
     movies = get_list_or_404(Movie, movie_keyword=keyword_pk)
-    serializer = KeywordMovieSerializer(movies, many=True)
+    serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
     # if request.method == 'GET':
