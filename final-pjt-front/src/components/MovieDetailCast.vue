@@ -1,6 +1,7 @@
 <template>
   <div>
     {{ peopleName }}
+    <img :src=imgsrc alt="">
   </div>
 </template>
 
@@ -13,13 +14,21 @@ export default {
   data() {
     return {
       peopleName : null,
+      people : null,
+      imgsrc : null,
     }
   },
   props: {
     cast : Number,
     original_language : String,
   },
+  computed: {
+
+  },
   methods: {
+    getImage() {
+      this.imgsrc = `https://image.tmdb.org/t/p/original/${this.people.profile_path}`
+    },
     getPeopleInfo() {
       axios({
         method:'get',
@@ -30,8 +39,9 @@ export default {
         }
       })
       .then((res)=>{
+        this.people = res.data
+        this.getImage()
         if (this.original_language ==='ko') {
-          this.people = res.data
           for (let peoplename of res.data.also_known_as) {
             if (korean.test(peoplename)) {
               this.peopleName = peoplename
@@ -42,7 +52,7 @@ export default {
           this.peopleName = res.data.name
         }
       })
-    }
+    },
   },
   created() {
     this.getPeopleInfo()
@@ -51,5 +61,7 @@ export default {
 </script>
 
 <style>
-
+  img {
+    width: 100px;
+  }
 </style>
