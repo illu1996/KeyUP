@@ -22,3 +22,51 @@
 | movie앱   | 리뷰 생성        | 이지혁 | 23-05-18 | 23-05-18 | 23-05-18 |
 |          | 영화 좋아요       | 이지혁 | 23-05-18 | 23-05-18 | 23-05-18 |
 |          | 무비, 리뷰 모델 생성 | 이지혁 | 23-05-18 | 23-05-18 |          |
+|          |              |     |          |          |          |
+|          |              |     |          |          |          |
+|          |              |     |          |          |          |
+|          |              |     |          |          |          |
+
+.
+
+##### ⅱ.  서버, 클라이언트 URL
+
+| 서버 URL(http://127.0.0.1:8000)      | 역할         |
+| ---------------------------------- | ---------- |
+| accounts/login/                    | 로그인        |
+| accounts/logout/                   | 로그아웃       |
+| accounts/signup/                   | 회원가입       |
+| accounts/user/                     | 유저 정보 조회   |
+| articles/                          | 게시글 목록 조회  |
+| articles/\<int:article_pk>/        | 게시글 상세 조회  |
+| \<int:article_pk>/like/            | 게시글 좋아요    |
+| articles/comments/                 | 댓글 목록 조회   |
+| articles/\<int:comment_pk>/        | 댓글 상세 조회   |
+| \<int:article_pk>/comments/        | 댓글 생성      |
+| movies/                            | 영화 목록 조회   |
+| movies/\<int:movie_pk>/            | 영화 상세 조회   |
+| movies/\<int:movie_pk>/like/       | 영화 좋아요     |
+| movies/\<int:movie_pk>/reviews/    | 영화별 리뷰 조회  |
+| movies/reviews/                    | 리뷰 목록 조회   |
+| movies/reviews/\<int:review_pk>    | 리뷰 상세 조회   |
+| movies/keywords/                   | 키워드 조회     |
+| movies/keywords/\<int:keyword_pk>/ | 키워드별 영화 조회 |
+| movies/genres/                     | 장르 전체 조회   |
+
+.
+
+| 클라이언트 URL(http://localhost:8080) | 역할           |
+| -------------------------------- | ------------ |
+| /                                | 메인 페이지(홈)    |
+| /movies/                         | 영화 조회 페이지    |
+| /movies/all/                     | 영화 전체 조회(랜덤) |
+| /movies/genre/                   | 장르별 영화 조회    |
+| /movies/latest/                  | 최신 영화 조회     |
+| /movies/popular/                 | 인기 영화 조회     |
+| /recommend/                      | 키워드별 추천 영화   |
+| /profile/                        | 유저별 프로필 조회   |
+| /login/                          | 로그인          |
+| /signup/                         | 회원가입         |
+|                                  |              |
+
+.
