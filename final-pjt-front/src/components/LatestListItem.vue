@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="changeMovie">
     <div class="card" style="width: 18rem;" @mouseover="showDetails = true" @mouseout="showDetails = false">
       <img :src="getImage" class="card-img-top" alt="NONONO">
       <div class="card-overlay" :class="{ 'show-details': showDetails }">
@@ -21,6 +21,13 @@ export default {
     return {
       showDetails: false
     };
+  },
+  methods: {
+    changeMovie() {
+      const movieinfo = this.movie
+      this.$store.dispatch('changeMovie', movieinfo)
+      this.$router.push({name:'MovieDetail'})
+    }
   },
   computed: {
     getImage() {

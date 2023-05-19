@@ -10,6 +10,7 @@ import MovieList from '@/components/MovieList.vue'
 import GenreList from '@/components/GenreList.vue'
 import LatestList from '@/components/LatestList.vue'
 import PopularList from '@/components/PopularList.vue'
+import MovieDetail from '@/views/MovieDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,11 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: SignupView
+  },
+  {
+    path: '/moviedetail',
+    name: 'MovieDetail',
+    component: MovieDetail
   },
 
 ]

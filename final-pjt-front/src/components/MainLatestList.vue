@@ -32,12 +32,11 @@ export default {
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDVjMWRmOTg2NTkyMzcwM2I3ZThmYzk5NmM4YjRhMiIsInN1YiI6IjYzZDMxN2IxNWEwN2Y1MDA5ZTk4MDA3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YcCaSDAbUQtDs3hXhi0xmf0sAnBzQklq7dEIq1oTlNs"
         }
       })
-        .then((res) => {
-          console.log(res.data)
-          this.movieList = res.data.results
-        })
+      .then((res) => {
+        console.log(res.data)
+        this.movieList = res.data.results
+      })
     }
-
   },
   computed: {
 
