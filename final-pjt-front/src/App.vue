@@ -2,7 +2,7 @@
   <div id="app">
     <nav>
       <router-link to="/">Main</router-link> |
-      <router-link to="/movies">Movie</router-link> |
+      <router-link to="/movies/all">Movie</router-link> |
       <router-link to="/recommend">Recommend</router-link> |
       <router-link to="/community">community</router-link> |
 

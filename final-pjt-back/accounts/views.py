@@ -28,6 +28,12 @@ def follow(request, user_pk):
             return Response(response_data)
     return Response(status=status.HTTP_401_UNAUTHORIZED)   
 
+@api_view(['GET'])
+def profile(request, username):
+    user = get_object_or_404(get_user_model(), username=username)
+    serializer = UserProfileSerializer(user)
+    return Response(serializer.data)
+
 
 
 @api_view(['POST', 'GET'])
