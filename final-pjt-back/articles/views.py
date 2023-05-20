@@ -34,7 +34,7 @@ def article_detail(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
 
     if request.method == 'GET':
-        serializer = ArticleListSerializer(article)
+        serializer = ArticleSerializer(article)
         return Response(serializer.data)
     
     elif request.method == 'DELETE':

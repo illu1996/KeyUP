@@ -28,14 +28,16 @@ export default {
       userInfo : null,
       follower : null,
       following : null,
+      userName : this.$route.params.username
     }
-  },
-  beforeRouteUpdate(to, from, next)  {
-    next()
   },
   computed: {
   },
   watch: {
+    $route(to) {
+      this.userName = to.params.username;
+      this.infoOfuser();
+    },
     userInfo: {
       immediate: true,
       handler(newValue) {
