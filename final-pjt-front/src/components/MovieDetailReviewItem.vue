@@ -3,12 +3,12 @@
     <p @click="goUser">작성자: {{ review.username }}</p>
     <p v-if="!editing">{{ review.content }}</p>
     <input type="text" v-model="editContent" v-if="editing">
-    <button v-if="!editing" @click="editing = true">수정</button>
-    <div v-else>
+    <button v-if="compareUser" @click="editing = true, compared =true" v-show="!compared">수정</button>
+    <div v-if="editing">
       <button @click="changeEditing">취소</button>
       <button @click="updateReview">수정 완료</button>
     </div>
-    <button v-if="!editing" @click="deleteReview">삭제</button>
+    <button v-if="compareUser" @click="deleteReview" v-show="!compared">삭제</button>
   </div>
 </template>
 
@@ -23,11 +23,21 @@ export default {
   },
   data() {
     return {
+      compared: false,
       editing: false,
       editContent: '',
     };
   },
   computed: {
+    compareUser(){
+      if (this.review.username === this.$store.state.username) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+
   },
   methods: {
     deleteReview() {
@@ -57,6 +67,8 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.editing = false;
+          this.compared = !this.compared
+                
           this.$emit('review-updated');
         });
       },
@@ -65,6 +77,8 @@ export default {
     },
     changeEditing() {
       this.editing = !this.editing
+      this.compared = !this.compared
+
     }
   },
   created() {

@@ -4,20 +4,18 @@
     <p>글 번호 : {{ article?.id }}</p>
     <p>제목 : {{ article?.title }}</p>
     <p>내용 : {{ article?.content }}</p>
-    <p>작성자 : {{ article?.username }}</p>
+    <p @click="goUser" >작성자 : {{ article?.username }}</p>
 
     <p>작성시간 : {{ article?.created_at.replace('T',' ').slice(0,16) }} </p>
     <p>수정시간 : {{ article?.created_at.replace('T',' ').slice(0,16) }}</p>
-    <button @click="updateArticle">수정</button>
-    <button>삭제</button>
+    <button v-if="compareUser" @click="updateArticle">수정</button>
+    <button v-if="compareUser" @click="deleteArticle">삭제</button>
     <hr>
-
-
 
     <div v-if="commentList">
       <p>댓글리스트 :)</p>
       <ArticleDetailComment v-for="comment in commentList" :key="comment.id"
-      :comment="comment"/>
+      :comment="comment" @comment-deleted="getArticleDetail"/>
     </div>
     <form @submit.prevent="createComment">
       <input type="text" v-model="content">
@@ -47,7 +45,33 @@ export default {
   created() {
     this.getArticleDetail()
   },
+  computed:{
+    compareUser(){
+      if (this.article.username === this.$store.state.username) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+  },
   methods: {
+    goUser() {
+    this.$router.push(`/profile/detail/${this.article.username}`)
+    },
+    deleteArticle() {
+      axios({
+        method:'DELETE',
+        url : `${API_URL}/articles/${this.article.id}/`,
+        headers : {
+          "Authorization" : `Token ${this.$store.state.token}`,
+        },
+      })
+      .then((res)=>{
+        console.log(res.data)
+        this.$router.push({path:'/community/list'})
+      })
+    },
     getArticleDetail(){
       axios({
         method:'get',

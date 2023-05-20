@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5>{{ article.id }}</h5>
-    <P>작성자 : {{ article.username }}</P>
+    <P @click="goUser">작성자 : {{ article.username }}</P>
     <p>{{ article.title }}</p>
     <router-link :to="{
       name: 'ArticleDetail',
@@ -17,6 +17,11 @@ export default {
   name: 'ArticleListItem',
   props: {
     article: Object,
+  },
+  methods:{
+    goUser() {
+    this.$router.push(`/profile/detail/${this.article.username}`)
+    },
   }
 }
 </script>

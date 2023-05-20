@@ -76,6 +76,7 @@ const routes = [
     children : [
       {path:'create',component:ArticleCreate, name: 'ArticleCreate'},
       {path:'list',component:ArticleList},
+
     ]
   },
   {

@@ -11,6 +11,7 @@
 
         <button>LOGIN</button>
       </form>
+      <router-link :to="{name:'Signup'}">회원가입</router-link>
     </div>
   </div>
 </template>
@@ -29,12 +30,9 @@ export default {
     login() {
       const username = this.username
       const password = this.password
-      
-
       const payload = {
         username, password
       }
-      
       this.$store.dispatch('login', payload)
     }
   }

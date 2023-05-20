@@ -86,6 +86,7 @@ export default new Vuex.Store({
         }
       })
       .then((res)=>{
+        this.state.username = username
         context.commit('SAVE_TOKEN', res.data.key)
       })
       .catch((err)=>{
