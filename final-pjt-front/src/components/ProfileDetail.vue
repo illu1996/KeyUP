@@ -1,11 +1,14 @@
 <template>
   <div>
-    <div v-if="this.$store.state.username != userInfo.username">
-      <button @click="follow">팔로우하기</button>
-      <p>팔로워 : {{ follower }} | 팔로잉 : {{ following }}</p>
+    <div v-if="userInfo && this.$store.state.username != userInfo.username">
+
+      <button v-if="!followers.includes(this.$store.state.username)" @click="follow">팔로우</button>
+      <button v-else @click="follow">팔로우 취소</button>
+
     </div>
+    <p>팔로워 : {{ follower }} | 팔로잉 : {{ following }}</p>
     <p>닉네임 : {{ userInfo?.nickname }}</p>
-    <p>사진... : <img :src=imgInfo alt=""></p>
+    <p>사진 : <img :src=imgInfo alt=""></p>
     <p>소개말 : {{ userInfo?.introduce }}</p>
     <p>좋아요 한 영화</p>
     <div v-for="movie in movielist" :key="movie.id">
@@ -65,18 +68,26 @@ export default {
         })
         .then((res)=>{
           this.movielist.push(res.data)
-          this.imgInfo = `http://127.0.0.1:8000/` + this.userInfo.profileimg
+          if (this.userInfo.profileimg) {
+            this.imgInfo = `http://127.0.0.1:8000/` + this.userInfo.profileimg
+          }
         })
       }
     },
+
+    
     infoOfuser() {
-      for (let info of this.$store.state.usersInfo) {
-        if (info.username === this.$route.params.username) {
-          this.userInfo = info
-          break
-        }
-      }
+      axios({
+        method:'get',
+        url: `http://127.0.0.1:8000/accounts/about/${this.$route.params.username}/profile/`
+      })
+      .then((res)=>{
+        this.userInfo = res.data
+        this.getMovies()
+        this.creatfollow()
+      })
     },
+
     follow() {
       axios({
           method: 'post',
@@ -89,8 +100,24 @@ export default {
         console.log(res.data)
         this.follower = res.data.followers_count
         this.following = res.data.followings_count
+        this.followers = res.data.person.followers
       })
-    }
+    },
+
+    creatfollow() {
+      axios({
+          method: 'get',
+          url: `http://127.0.0.1:8000/accounts/about/${this.userInfo.id}/follow/`,
+      })
+      .then((res)=>{
+        console.log(res.data.person.followers)
+        this.follower = res.data.followers_count
+        this.following = res.data.followings_count
+        this.followers = res.data.person.followers
+      })
+    },
+
+
   },
   created() {
     this.infoOfuser()

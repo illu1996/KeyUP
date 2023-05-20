@@ -4,11 +4,15 @@ from movie.models import Movie
 
 
 class UserSerializer(serializers.ModelSerializer):
+    followers = serializers.SerializerMethodField()
 
     class Meta:
         model = User
         fields = '__all__'
 
+    def get_followers(self, obj):
+        followers_usernames = obj.followers.values_list('username', flat=True)
+        return followers_usernames
 
 
 
