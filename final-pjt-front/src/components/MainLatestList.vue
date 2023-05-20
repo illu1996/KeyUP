@@ -1,7 +1,7 @@
 <template>
   <div class="container page-container">
   <div class="row">
-    이달의 신작 <button>더보기</button>
+    <p>이달의 신작</p> <span @click="goLatest">더보기</span>
     <MainLatestListItem class="col-4" v-for="movie in movieList" :key="movie.id" :movie="movie" />
   </div>
 </div>
@@ -36,6 +36,9 @@ export default {
         console.log(res.data)
         this.movieList = res.data.results
       })
+    },
+    goLatest() {
+      this.$router.push(`/movies/latest`)
     }
   },
   computed: {

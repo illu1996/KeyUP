@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      인기 박스오피스 <button>더보기</button>
+      <p>인기 박스오피스</p> <span @click="goPopular">더보기</span>
       <MainPopularListItem class="col-4" v-for="movie in movieList" :key="movie.id" :movie="movie"/>
     </div>
   </div>
@@ -35,6 +35,9 @@ export default {
         console.log(res.data)
         this.movieList = res.data.results
       })
+    },
+    goPopular() {
+      this.$router.push(`/movies/popular`)
     }
   },
   created() {

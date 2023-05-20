@@ -2,7 +2,8 @@
   <div>
     <h3>리뷰입니당 :)</h3>
     <div>
-      <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review"/>
+      <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review"
+      @review-deleted="getReviews" @review-updated="getReviews"/>
     </div>
     <div>
       <label for="content">리뷰를 작성해주세요</label>
@@ -68,11 +69,11 @@ export default {
       .catch((err)=>{
         console.log(err)
       })
-    }
+    },
   },
   created() {
     this.getReviews()
-  }
+  },
 }
 </script>
 
