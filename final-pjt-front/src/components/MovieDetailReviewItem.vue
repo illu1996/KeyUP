@@ -1,11 +1,14 @@
 <template>
-  <div>
+<div>
     <p @click="goUser">작성자: {{ review.username }}</p>
     <p v-if="!editing">{{ review.content }}</p>
     <input type="text" v-model="editContent" v-if="editing">
     <button v-if="!editing" @click="editing = true">수정</button>
-    <button v-else @click="updateReview">수정 완료</button>
-    <button @click="deleteReview">삭제</button>
+    <div v-else>
+      <button @click="changeEditing">취소</button>
+      <button @click="updateReview">수정 완료</button>
+    </div>
+    <button v-if="!editing" @click="deleteReview">삭제</button>
   </div>
 </template>
 
@@ -23,6 +26,8 @@ export default {
       editing: false,
       editContent: '',
     };
+  },
+  computed: {
   },
   methods: {
     deleteReview() {
@@ -57,6 +62,9 @@ export default {
       },
     goUser() {
     this.$router.push(`/profile/detail/${this.review.username}`)
+    },
+    changeEditing() {
+      this.editing = !this.editing
     }
   },
   created() {
