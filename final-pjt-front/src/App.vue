@@ -19,7 +19,7 @@
         <button @click="searchMovie">검색하기</button>
       </div>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -29,7 +29,7 @@ import axios from 'axios'
 const API_URL = 'http://127.0.0.1:8000'
 
 export default {
-  name : 'app',
+  name: 'app',
   computed: {
     displayLogin() {
       return this.$store.getters.isLogin
@@ -40,29 +40,29 @@ export default {
   },
   data() {
     return {
-      search:null,
+      search: null,
     }
   },
-  methods : {
+  methods: {
     logout() {
       axios({
-        method:'post',
+        method: 'post',
         url: `${API_URL}/accounts/logout/`,
-        headers : {
-          Authorization : `Token ${this.$store.state.token}`
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`
         }
       })
-      .then(()=>{
+        .then(() => {
 
-        this.$store.commit('REMOVE_TOKEN')
-        this.$router.push({name:'Login'})
-      })
-      .catch((err)=>{
-        console.log(err)        
-      })
+          this.$store.commit('REMOVE_TOKEN')
+          this.$router.push({ name: 'Login' })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
     searchMovie() {
-      this.$router.push({path:'/search', query:{keyword:this.search}})
+      this.$router.push({ path: '/search', query: { keyword: this.search } })
       this.search = null
     }
   },

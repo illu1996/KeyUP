@@ -146,9 +146,11 @@ def keyword_detail_movies(request, keyword_pk):
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-    # if request.method == 'GET':
-    #     keywords = get_list_or_404(keyword)
-    #     serializer = KeywordListSerializer(keywords, many=True)
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
-    
-     
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search_movies_list(request, keyword_str):
+    movies = Movie.objects.all()
+    movies = Movie.objects.filter(title__icontains=keyword_str)
+    print(movies)
+    serializer = MovieListSerializer(movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
