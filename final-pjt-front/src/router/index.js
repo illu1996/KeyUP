@@ -7,6 +7,7 @@ import ProfileView from '../views/ProfileView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
 import CommunityView from '../views/CommunityView.vue'
+import SearchView from '../views/SearchView.vue'
 
 import MovieList from '@/components/MovieList.vue'
 import GenreList from '@/components/GenreList.vue'
@@ -81,6 +82,11 @@ const routes = [
     path: '/article/:id',
     name: 'ArticleDetail',
     component: ArticleDetail
+  },
+  {
+    path: '/search',
+    name: 'SearchView',
+    component: SearchView
   },
   
 ]

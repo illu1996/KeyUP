@@ -31,14 +31,26 @@ export default {
       userInfo : null,
       follower : null,
       following : null,
-      isLoading: true,
-      followers : [],
+      userName : this.$route.params.username
     }
   },
-
   computed: {
   },
-
+  watch: {
+    $route(to) {
+      this.userName = to.params.username;
+      this.infoOfuser();
+    },
+    userInfo: {
+      immediate: true,
+      handler(newValue) {
+        if (newValue && newValue.like_movies) {
+          this.movielist = []; // 기존 영화 목록 초기화
+          this.getMovies();
+        }
+      }
+    }
+  },
   methods: {
     getImageUrl(posterPath) {
       return `https://image.tmdb.org/t/p/original/${posterPath}`;
