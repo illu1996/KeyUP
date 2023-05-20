@@ -33,23 +33,6 @@ export default new Vuex.Store({
     CHANGE_MOVIE(state, movieinfo) {
       state.movie_info = movieinfo
     },
-    // CHANGE_PROFILE(state, userInfo){
-    //   state.userInfo = userInfo
-
-    //   for (let info of state.usersInfo) {
-    //     if (info.id === userInfo.id) {
-    //       state.usersInfo = state.usersInfo.map((info)=>{
-    //         if (info.id === userInfo.id) {
-    //           return userInfo
-    //         } else {
-    //           return info
-    //         }
-    //       })
-    //     } else {
-    //       state.usersInfo.push(userInfo)
-    //     }
-    //   }
-    // },
     CHANGE_PROFILE(state, userInfo) {
       state.userInfo = userInfo;
     
@@ -60,10 +43,13 @@ export default new Vuex.Store({
       } else {
         state.usersInfo.push(userInfo);
       }
-      // console.log(state.usersInfo)
+
     },
     REMOVE_TOKEN(state){
       state.token = null
+      state.movie_info = null
+      state.username = null
+      state.userInfo = null
     },
   },
   actions: {
