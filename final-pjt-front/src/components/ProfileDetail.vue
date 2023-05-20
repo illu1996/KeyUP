@@ -11,7 +11,7 @@
     <p>사진 : <img :src=imgInfo alt=""></p>
     <p>소개말 : {{ userInfo?.introduce }}</p>
     <p>좋아요 한 영화</p>
-    <div v-for="(movie, index) in movielist" :key="index">
+    <div v-for="(movie, index) in movielist" :key="index" @click="changeMovie(movie)">
       <p>{{ movie.title }}</p>
       <img :src="getImageUrl(movie.poster_path)" alt="">
     </div>
@@ -31,7 +31,8 @@ export default {
       userInfo : null,
       follower : null,
       following : null,
-      userName : this.$route.params.username
+      userName : this.$route.params.username,
+      followers : [],
     }
   },
   computed: {
@@ -52,6 +53,11 @@ export default {
     }
   },
   methods: {
+    changeMovie(movie) {
+      const movieinfo = movie
+      this.$store.dispatch('changeMovie', movieinfo)
+      this.$router.push({name:'MovieDetail'})
+    },
     getImageUrl(posterPath) {
       return `https://image.tmdb.org/t/p/original/${posterPath}`;
     },
