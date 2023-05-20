@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h3>마이페이지</h3>
-    <router-link to="/profile/update">마이페이지 정보 수정</router-link> |
+    <h3>회원정보</h3>
+    <div v-if="this.$route.params.username === this.$store.state.username">
+    <router-link to="/profile/update">마이페이지 정보 수정</router-link>
+    </div>
     <router-view/>
   </div>
 </template>

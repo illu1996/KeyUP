@@ -31,7 +31,8 @@ export default {
       userInfo : null,
       follower : null,
       following : null,
-      userName : this.$route.params.username
+      userName : this.$route.params.username,
+      followers : [],
     }
   },
   computed: {
