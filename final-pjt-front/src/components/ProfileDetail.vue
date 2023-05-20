@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div v-if="this.$store.state.username != userInfo.username">
+      <button @click="follow">팔로우하기</button>
+      <p>팔로워 : {{ follower }} | 팔로잉 : {{ following }}</p>
+    </div>
     <p>닉네임 : {{ userInfo?.nickname }}</p>
     <p>사진... : <img :src=imgInfo alt=""></p>
     <p>소개말 : {{ userInfo?.introduce }}</p>
@@ -22,6 +26,8 @@ export default {
       user : this.$store.state.userInfo,
       imgInfo : null,
       userInfo : null,
+      follower : null,
+      following : null,
     }
   },
   beforeRouteUpdate(to, from, next)  {
@@ -72,16 +78,15 @@ export default {
     follow() {
       axios({
           method: 'post',
-          url: `http://127.0.0.1:8000/accounts/about/follow/`,
+          url: `http://127.0.0.1:8000/accounts/about/${this.userInfo.id}/follow/`,
           headers: {
             Authorization : `Token ${this.$store.state.token }`
           },
-          data: {
-            user_pk : this.$store.state.userInfo.id
-          }
       })
       .then((res)=>{
         console.log(res.data)
+        this.follower = res.data.followers_count
+        this.following = res.data.followings_count
       })
     }
   },
