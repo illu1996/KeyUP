@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div v-if="displayLogin">
     <nav>
       <router-link to="/">Main</router-link> |
       <router-link to="/movies/all">Movie</router-link> |
@@ -19,6 +20,7 @@
         <button @click="searchMovie">검색하기</button>
       </div>
     </nav>
+    </div>
     <router-view />
   </div>
 </template>
