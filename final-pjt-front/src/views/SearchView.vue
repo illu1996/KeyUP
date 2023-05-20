@@ -41,8 +41,9 @@ export default {
         this.keyword = newKeyword;
         this.searchMovie();
       } else {
-        if (this.$route.fullPath !== `/search?keyword=${newKeyword}`) {
-          this.$router.replace({ path: this.$route.path });
+        const newFullPath = `/search?keyword=${newKeyword}`;
+        if (this.$route.fullPath !== newFullPath) {
+          this.$router.push(newFullPath).catch(() => {});
         }
       }
     },
