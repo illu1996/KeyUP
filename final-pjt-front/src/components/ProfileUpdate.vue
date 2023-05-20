@@ -45,7 +45,7 @@ export default {
       })
       .then((res)=>{
         this.changeProfile(res.data)
-        this.$router.push('/profile/detail')
+        this.$router.push(`/profile/detail/${this.$store.state.username}`)
       })
     },
     changeProfile(info) {

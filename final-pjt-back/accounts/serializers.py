@@ -17,7 +17,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'nickname', 'introduce', 'profileimg', 'like_movies')
+        fields = ('id', 'username', 'nickname', 'introduce', 'profileimg', 'like_movies')
+        read_only_fields = ('username',)
 
     def get_like_movies(self, obj):
         liked_movie_ids = obj.like_movies.values_list('id', flat=True)

@@ -6,12 +6,14 @@
       <router-link to="/recommend">Recommend</router-link> |
       <router-link to="/community">community</router-link> |
 
-      <router-link to="/profile/detail">Profile</router-link> |
       <div v-if="!displayLogin">
-      <router-link to="/signup">Sign-Up</router-link> |
-      <router-link to="/login">Login</router-link> |
-    </div>
-      <span v-else @click="logout">로그아웃</span>
+        <router-link to="/signup">Sign-Up</router-link> |
+        <router-link to="/login">Login</router-link> |
+      </div>
+      <div v-else>
+        <router-link :to="`/profile/detail/${username}`">Profile</router-link> |
+        <span @click="logout">로그아웃</span>
+      </div>
     </nav>
     <router-view/>
   </div>
@@ -27,6 +29,9 @@ export default {
   computed: {
     displayLogin() {
       return this.$store.getters.isLogin
+    },
+    username() {
+      return this.$store.state.username
     }
   },
   methods : {

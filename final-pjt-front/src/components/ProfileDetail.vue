@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>닉네임 : {{ user?.nickname }}</p>
+    <p>닉네임 : {{ userInfo?.nickname }}</p>
     <p>사진... : <img :src=imgInfo alt=""></p>
-    <p>소개말 : {{ user?.introduce }}</p>
+    <p>소개말 : {{ userInfo?.introduce }}</p>
     <p>좋아요 한 영화</p>
     <div v-for="movie in movielist" :key="movie.id">
       <p>{{ movie.title }}</p>
@@ -21,16 +21,16 @@ export default {
       movielist :[],
       user : this.$store.state.userInfo,
       imgInfo : null,
+      userInfo : null,
     }
   },
   beforeRouteUpdate(to, from, next)  {
     next()
   },
   computed: {
-    
   },
   watch: {
-    user: {
+    userInfo: {
       immediate: true,
       handler(newValue) {
         if (newValue && newValue.like_movies) {
@@ -45,7 +45,7 @@ export default {
       return `https://image.tmdb.org/t/p/original/${posterPath}`;
     },
     getMovies() {
-      const movies = this.user?.like_movies
+      const movies = this.userInfo?.like_movies
       for (let movie of movies) {
         axios({
           method: 'get',
@@ -57,11 +57,37 @@ export default {
         })
         .then((res)=>{
           this.movielist.push(res.data)
-          this.imgInfo = `http://127.0.0.1:8000/` + this.$store.state.userInfo.profileimg
+          this.imgInfo = `http://127.0.0.1:8000/` + this.userInfo.profileimg
         })
       }
     },
+    infoOfuser() {
+      for (let info of this.$store.state.usersInfo) {
+        if (info.username === this.$route.params.username) {
+          this.userInfo = info
+          break
+        }
+      }
+    },
+    follow() {
+      axios({
+          method: 'post',
+          url: `http://127.0.0.1:8000/accounts/about/follow/`,
+          headers: {
+            Authorization : `Token ${this.$store.state.token }`
+          },
+          data: {
+            user_pk : this.$store.state.userInfo.id
+          }
+      })
+      .then((res)=>{
+        console.log(res.data)
+      })
+    }
   },
+  created() {
+    this.infoOfuser()
+  }
 }
 </script>
 

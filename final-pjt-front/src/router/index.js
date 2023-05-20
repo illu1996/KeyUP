@@ -49,7 +49,7 @@ const routes = [
     name: 'Profile',
     component: ProfileView,
     children : [
-      {path:'detail',component:ProfileDetail},
+      {path:'detail/:username',component:ProfileDetail},
       {path:'update',component:ProfileUpdate},
     ]
   },
