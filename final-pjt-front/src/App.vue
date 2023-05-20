@@ -14,6 +14,10 @@
         <router-link :to="`/profile/detail/${username}`">Profile</router-link> |
         <span @click="logout">로그아웃</span>
       </div>
+      <div>
+        <input type="text" v-model="search">
+        <button @click="searchMovie">검색하기</button>
+      </div>
     </nav>
     <router-view/>
   </div>
@@ -34,6 +38,11 @@ export default {
       return this.$store.state.username
     }
   },
+  data() {
+    return {
+      search:null,
+    }
+  },
   methods : {
     logout() {
       axios({
@@ -51,6 +60,10 @@ export default {
       .catch((err)=>{
         console.log(err)        
       })
+    },
+    searchMovie() {
+      this.$router.push({path:'/search', query:{keyword:this.search}})
+      this.search = null
     }
   },
 }
