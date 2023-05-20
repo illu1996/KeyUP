@@ -98,6 +98,7 @@ def review_create(request, movie_pk):
 @api_view(['POST'])
 def like(request, movie_pk):
     if request.user.is_authenticated:
+        print(request.data)
         movies = Movie.objects.all()
         # movieIdList = [movie['movie_id'] for movie in movies ]
         # print(movieIdList)

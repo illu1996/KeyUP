@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-if="this.movie">
-      <input @click="likelike" type="button" :value=likevalue>
-      <p>좋아요 수 : {{ like_users }}</p>
+      <input @click="likewithForm" type="button" :value=likevalue>
+      <p>좋아요 수 : {{ like_users_cnt }}</p>
       <p>상세정보</p>
       <img :src=poster_path alt="">
       <p>{{ this.movie.title }}</p>
@@ -43,8 +43,9 @@ export default {
       original_language : null,
       cast_list_ko : [],
       cast_list : [],
-      likevalue:'좋아요',
-      like_users : 0,
+      likevalue:null,
+      like_users_cnt : 0,
+      like_users :[],
     }
   },
   computed: {
@@ -55,7 +56,7 @@ export default {
 
   },
   methods: {
-    like(){
+    getLike(){
       axios({
         method:'get',
         url: `${MY_URL}/movies/${this.movie_id}/`,
@@ -75,32 +76,44 @@ export default {
         }
       })
       .then((res)=>{
+        console.log(res.data)
+
+        this.like_users_cnt = res.data.like_users_cnt
         this.like_users = res.data.like_users
+        if (res.data.like_users.includes(this.$store.state.username)){
+          this.likevalue = '좋아요 취소'
+        }
+        else {
+          this.likevalue='좋아요'
+        }
       })
       .catch((err)=>{
         console.log(err)
       })
     },
-    likelike(){
+    likewithForm(){
       axios({
         method:'post',
         url: `${MY_URL}/movies/${this.movie_id}/like/`,
         headers:{
           Authorization : `Token ${this.$store.state.token }`
         },
-        data:{
-
-        }
+        // data:{
+        //   id:1
+        // }
       })
       .then((res)=>{
         console.log(res.data)
-        if (this.likevalue==='좋아요'){
-          this.likevalue = '좋아요취소'
+        console.log(this.$store.state.username)
+
+        this.like_users_cnt = res.data.like_users_cnt
+        this.like_users = res.data.like_users
+        if (res.data.like_users.includes(`${this.$store.state.username}`) ){
+          this.likevalue = '좋아요 취소'
         }
         else {
-          this.likevalue==='좋아요'
+          this.likevalue='좋아요'
         }
-        this.like_users = res.data.like_users
       })
       .catch((err)=>{
         console.log(err)
@@ -125,7 +138,7 @@ export default {
         this.movie = res.data
         this.title = res.data.title
         this.getImage()
-        this.like()
+        this.getLike()
         this.vote_average = Math.round(res.data.vote_average*10)/10
         for (let genre of res.data.genres) {
           if (genre.name) {
