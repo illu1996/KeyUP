@@ -8,7 +8,12 @@
 
     <p>작성시간 : {{ article?.created_at.replace('T',' ').slice(0,16) }} </p>
     <p>수정시간 : {{ article?.created_at.replace('T',' ').slice(0,16) }}</p>
+    <button @click="updateArticle">수정</button>
+    <button>삭제</button>
     <hr>
+
+
+
     <div v-if="commentList">
       <p>댓글리스트 :)</p>
       <ArticleDetailComment v-for="comment in commentList" :key="comment.id"
@@ -80,6 +85,12 @@ export default {
       .catch((err) => {
         console.log(err)
       })
+    },
+    updateArticle() {
+      this.$router.push({
+        name: 'ArticleCreate',
+        params: { article: this.article}
+      });
     }
   }
 

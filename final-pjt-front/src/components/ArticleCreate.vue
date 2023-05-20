@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>게시글 작성</h1>
-    <form @submit.prevent="createArticle">
+    <form @submit.prevent="handleSubmit">
       <label for="title">제목 : </label>
       <input type="text" id="title" v-model.trim="title"><br>
       <label for="content">내용 : </label>
@@ -21,9 +21,17 @@ export default {
     return {
       title: null,
       content: null,
+      article : null,
     }
   },
   methods: {
+    handleSubmit() {
+      if (this.article) {
+        this.updateArticle();
+      } else {
+        this.createArticle();
+      }
+    },
     createArticle() {
       const title = this.title
       const content = this.content
@@ -50,6 +58,40 @@ export default {
       .catch((err) => {
         console.log(err)
       })
+    },
+    updateArticle() {
+      const title = this.title
+      const content = this.content
+
+      if (!title) {
+        alert('제목 입력해주세요')
+        return
+      } else if (!content){
+        alert('내용 입력해주세요')
+        return
+      }
+      axios({
+        method: 'put',
+        url: `${API_URL}/articles/${this.$route.params.article.id}/`,
+        data: { title, content },
+        headers:{
+          Authorization : `Token ${ this.$store.state.token }`
+        }
+      })
+      .then(() => {
+        // console.log(res)
+        this.$router.push({name: 'CommunityView'})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    },
+  },
+  created() {
+    if (this.$route.params) {
+      this.article = this.$route.params?.article
+      this.title = this.$route.params.article?.title
+      this.content = this.$route.params.article?.content
     }
   }
 }
