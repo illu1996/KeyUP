@@ -1,16 +1,16 @@
 <template>
   <div>
     <div>
-    <div class="title-container">
-      <div class="title-line"></div>
-      <span class="title-text">이달의 신작</span>
-      <span class="more-link" @click="goLatest">더보기</span>
+      <div class="title-container d-flex justify-content-start align-items-end">
+  <div class="title-line"></div>
+  <span class="title-text ml-3">이달의 신작</span>
+  <span class="more-link" @click="goLatest">더보기</span>
+</div>
     </div>
-  </div>
     <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
-        <div class="carousel-item " v-for="(chunk, index) in chunkedMovieList"
-        :key="index" :class="{ active: index === currentIndex }">
+        <div class="carousel-item " v-for="(chunk, index) in chunkedMovieList" :key="index"
+          :class="{ active: index === currentIndex }">
           <div class="row d-flex justify-content-center">
             <div class="col-2" v-for="movie in chunk" :key="movie.id">
               <MainLatestListItem :movie="movie" />
@@ -18,15 +18,13 @@
           </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button"
-      data-bs-target="#carouselExample"
-      data-bs-slide="prev" @click.stop="previousSlide">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+        @click="previousSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-left"></i></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button"
-      data-bs-target="#carouselExample" data-bs-slide="next"
-        @click.stop="nextSlide">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+        @click="nextSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-right"></i></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -134,15 +132,30 @@ export default {
   color: black;
 }
 
-.title-container{
+.title-container {
   margin-bottom: 10px;
+  margin-left: 50px;
 }
+
+@media screen and (min-width: 768px) {
+  .title-container {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .title-container {
+    margin-left: 160px;
+  }
+}
+
 
 .title-line {
   width: 3px;
-  height: 25px;
+  height: 28px;
   background-color: black;
   margin-right: 8px;
+  margin-bottom: 7px;
   display: inline-block;
 }
 
@@ -151,11 +164,13 @@ export default {
   font-size: 30px;
   margin-right: 10px;
   margin-bottom: 10px;
+  padding: 0px;
+  margin: 0px;
+  margin-right: 10px;
 }
 
 .more-link {
   font-size: 18px;
   color: rgb(75, 75, 75);
 }
-
 </style>

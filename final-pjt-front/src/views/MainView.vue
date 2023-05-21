@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="all">
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="5000">
@@ -55,6 +55,14 @@ export default {
 
 .mainlatest {
   margin-bottom: 100px;
+}
+
+.carousel-control-prev {
+  width: 80px;
+}
+
+.carousel-control-next {
+  width: 80px;
 }
 
 </style>

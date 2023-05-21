@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="title-container">
+    <div class="title-container d-flex justify-content-start align-items-end">
       <div class="title-line"></div>
-      <span class="title-text">인기 박스오피스</span>
+      <span class="title-text ml-3">인기 박스오피스</span>
       <span class="more-link" @click="goPopular">더보기</span>
     </div>
     <div id="carouselExample" class="carousel slide">
@@ -18,13 +18,13 @@
       </div>
       <button class="carousel-control-prev" type="button"
       data-bs-target="#carouselExample"
-      data-bs-slide="prev" @click.stop="previousSlide">
+      data-bs-slide="prev" @click="previousSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-left"></i></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button"
       data-bs-target="#carouselExample" data-bs-slide="next"
-        @click.stop="nextSlide">
+        @click="nextSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-right"></i></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -133,15 +133,29 @@ export default {
   color: black;
 }
 
-.title-container{
+.title-container {
   margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .title-container {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .title-container {
+    margin-left: 160px;
+  }
 }
 
 .title-line {
   width: 3px;
-  height: 25px;
+  height: 28px;
   background-color: black;
   margin-right: 8px;
+  margin-bottom: 7px;
   display: inline-block;
 }
 
@@ -150,6 +164,9 @@ export default {
   font-size: 30px;
   margin-right: 10px;
   margin-bottom: 10px;
+  padding: 0px;
+  margin: 0px;
+  margin-right: 10px;
 }
 
 .more-link {
