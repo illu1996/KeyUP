@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .carousel {
   margin-bottom: 80px;
 }

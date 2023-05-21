@@ -18,12 +18,14 @@
           </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+      <button class="carousel-control-prev" type="button"
+      data-bs-target="#carouselExample"
       data-bs-slide="prev" @click.stop="previousSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-left"></i></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+      <button class="carousel-control-next" type="button"
+      data-bs-target="#carouselExample" data-bs-slide="next"
         @click.stop="nextSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-right"></i></span>
         <span class="visually-hidden">Next</span>
