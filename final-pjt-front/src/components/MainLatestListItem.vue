@@ -1,15 +1,15 @@
 <template>
-  <div @click="changeMovie">
-    <div class="card" style="width: 18rem;" @mouseover="showDetails = true" @mouseout="showDetails = false">
-      <img :src="getImage" class="card-img-top" alt="NONONO">
-      <div class="card-overlay" :class="{ 'show-details': showDetails }">
-        <h5 class="card-title">{{ movie.title }}</h5>
-        <h6>{{ movie.vote_average }}</h6>
-        <p class="card-text">{{ truncateOverview }}</p>
-      </div>
+  <div @click="changeMovie" class="movieCard" @mouseover="showDetails = true" @mouseout="showDetails = false">
+    <img :src="getImage" class="card-img-top" alt="NONONO">
+    <div class="card-overlay" :class="{ 'show-details': showDetails }">
+      <h5 class="card-title"><b>{{ movie.title }}</b></h5>
+      <h6>평점 {{ movie.vote_average }}</h6>
+      <p class="card-text">{{ truncateOverview }}</p>
     </div>
   </div>
 </template>
+
+
 
 <script>
 export default {
@@ -27,8 +27,8 @@ export default {
       return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
     },
     truncateOverview() {
-      if (this.movie.overview.length > 30) {
-        return this.movie.overview.slice(0, 30) + '...';
+      if (this.movie.overview.length > 40) {
+        return this.movie.overview.slice(0, 40) + '...';
       } else {
         return this.movie.overview;
       }
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-.card {
+.movieCard {
   position: relative;
   display: inline-block;
 }
@@ -64,6 +64,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+
 }
 
 .show-details {
@@ -76,5 +77,12 @@ export default {
   margin: 0;
   padding: 0;
   color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.card-overlay h6{
+  opacity: 0.8;
 }
 </style>
