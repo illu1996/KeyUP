@@ -1,27 +1,34 @@
 <template>
   <div id="app">
-    <div v-if="displayLogin">
-    <nav>
-      <router-link to="/">Main</router-link> |
-      <router-link to="/movies/all">Movie</router-link> |
-      <router-link to="/recommend">Recommend</router-link> |
-      <router-link to="/community">community</router-link> |
+    <header id="header">
+      <div v-if="displayLogin">
+        <nav id="navbar" class="navbar">
+          <ul>
+            <router-link class="nav-link active" to="/">Main</router-link>
+            <router-link class="nav-link" to="/movies/all">Movie</router-link>
+            <router-link class="nav-link" to="/recommend">Recommend</router-link>
+            <router-link class="nav-link" to="/community">community</router-link>
+          </ul>
+          <ul>
+            <div class='d-flex' v-if="!displayLogin">
+              <router-link class="nav-link" to="/signup">Sign-Up</router-link>
+              <router-link class="nav-link" to="/login">Login</router-link>
+            </div>
+            <div class='d-flex' v-else>
+              <input type="text" v-model="search">
+              <button @click="searchMovie">검색하기</button>
+              <router-link class="nav-link" :to="`/profile/detail/${username}`">Profile</router-link>
+              <span id="logout" @click="logout">로그아웃</span>
+            </div>
+          </ul>
 
-      <div v-if="!displayLogin">
-        <router-link to="/signup">Sign-Up</router-link> |
-        <router-link to="/login">Login</router-link> |
+        </nav>
       </div>
-      <div v-else>
-        <router-link :to="`/profile/detail/${username}`">Profile</router-link> |
-        <span @click="logout">로그아웃</span>
-      </div>
-      <div>
-        <input type="text" v-model="search">
-        <button @click="searchMovie">검색하기</button>
-      </div>
-    </nav>
-    </div>
-    <router-view />
+    </header>
+
+    <section>
+      <router-view />
+    </section>
   </div>
 </template>
 
@@ -71,25 +78,117 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style scoped>
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  /* display: flex;
+  flex-direction: row; */
+
+  z-index: 997;
+  overflow-y: auto;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/**
+* Desktop Navigation 
+*/
+ul {
+  display: flex;
 }
 
 nav {
   padding: 30px;
+  display: flex;
+  direction: row;
+  justify-content: space-between;
 }
-
+nav div a,
 nav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+nav #logout:hover,
+nav a:hover {
+  color: #35e888;
+}
+
+.navbar {
+  padding: 0;
+  /* margin-top: 35px; */
+  /* display: flex;
+  direction: row;
+  justify-content: space-between;
+   */
+
+}
+
+.navbar ul {
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar #logout,
+.navbar div a,
+.navbar a {
+  position: relative;
+  
+}
+
+.navbar a+a {
+  margin-left: 20px;
+  
+}
+.navbar div a,
+.navbar div a:focus,
+.navbar #logout,
+.navbar #logout:focus,
+.navbar a,
+.navbar a:focus {
+  display: flex;
+  direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  /* color: rgba(255, 255, 255, 0.7); */
+  white-space: nowrap;
+  transition: 0.3s;
+}
+.navbar div a:before,
+.navbar #logout:before,
+.navbar a:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #18d26e;
+  visibility: hidden;
+  width: 0px;
+  transition: all 0.3s ease-in-out 0s;
+
+}
+.navbar div a:hover:before,
+.navbar #logout:hover:before,
+.navbar a:hover:before{
+  visibility: visible;
+  width: 100%;
+  
+}
+.navbar .active:focus {
+
 }
 </style>
