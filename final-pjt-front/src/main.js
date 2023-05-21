@@ -5,19 +5,19 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-// router.beforeEach((to, from, next) => {
-//   const isLoggedIn = store.getters.isLogin;
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = store.getters.isLogin;
 
-//   if (!isLoggedIn) {
-//     if (to.name !== 'Login') {
-//       next({ name: 'Login' }); 
-//     } else {
-//       next()
-//     }
-//   } else {
-//     next()
-//   }
-// });
+  if (!isLoggedIn) {
+    if (to.name !== 'Login' && to.path !== '/signup')  {
+      next({ name: 'Login' }); 
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+});
 
 
 
