@@ -9,8 +9,8 @@
   </div>
     <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
-        <div class="carousel-item " v-for="(chunk, index) in chunkedMovieList" :key="index"
-          :class="{ active: index === currentIndex }">
+        <div class="carousel-item " v-for="(chunk, index) in chunkedMovieList"
+        :key="index" :class="{ active: index === currentIndex }">
           <div class="row d-flex justify-content-center">
             <div class="col-2" v-for="movie in chunk" :key="movie.id">
               <MainLatestListItem :movie="movie" />
@@ -18,13 +18,13 @@
           </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-        @click="previousSlide">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+      data-bs-slide="prev" @click.stop="previousSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-left"></i></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-        @click="nextSlide">
+        @click.stop="nextSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-right"></i></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -52,8 +52,18 @@ export default {
       itemsPerPage: 5,
     }
   },
+  computed: {
+    chunkedMovieList() {
+      const chunks = [];
+      for (let i = 0; i < this.movieList.length; i += this.itemsPerPage) {
+        const chunk = this.movieList.slice(i, i + this.itemsPerPage);
+        chunks.push(chunk);
+      }
+      return chunks;
+    },
+  },
   methods: {
-    getPopularMovie() {
+    getLatestMovie() {
       axios({
         method: 'get',
         url: "https://api.themoviedb.org/3/movie/now_playing?language=ko-kr&page=1",
@@ -81,19 +91,9 @@ export default {
       this.$router.push(`/movies/latest`)
     }
   },
-  computed: {
-    chunkedMovieList() {
-      const chunks = [];
-      for (let i = 0; i < this.movieList.length; i += this.itemsPerPage) {
-        const chunk = this.movieList.slice(i, i + this.itemsPerPage);
-        chunks.push(chunk);
-      }
-      return chunks;
-    },
-  },
   created() {
-    this.getPopularMovie()
-  }
+    this.getLatestMovie()
+  },
 }
 </script>
 
@@ -132,10 +132,13 @@ export default {
   color: black;
 }
 
+.title-container{
+  margin-bottom: 10px;
+}
 
 .title-line {
   width: 3px;
-  height: 16px;
+  height: 25px;
   background-color: black;
   margin-right: 8px;
   display: inline-block;
@@ -143,12 +146,14 @@ export default {
 
 .title-text {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 30px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .more-link {
-  font-size: 16px;
-  color: gray;
+  font-size: 18px;
+  color: rgb(75, 75, 75);
 }
 
 </style>
