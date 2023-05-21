@@ -6,6 +6,15 @@
       <span class="title-text">인기 박스오피스</span>
       <span class="more-link" @click="goPopular">더보기</span>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" @click="previousSlide">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" @click="nextSlide">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
   </div>
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
@@ -88,9 +97,6 @@ export default {
       this.currentIndex = 0;
     }
     },
-    goPopular() {
-      this.$router.push(`/movies/popular`)
-    }
   },
   created() {
     this.getPopularMovie();
