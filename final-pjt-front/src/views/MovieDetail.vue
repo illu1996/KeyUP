@@ -1,38 +1,82 @@
 <template>
   <div>
-    <div class="background" :style="{ 'background-image': `url(https://image.tmdb.org/t/p/original/${this.backdrops})` }">
-    </div>
     <main id="">
+      <div class="background" id="background"
+        :style="{ 'background-image': `url(https://image.tmdb.org/t/p/original/${this.backdrops})` }">
+      </div>
       <header id="header" :class="{ 'header-scroll': isHeaderScrolled }">
         <div class="d-flex flex-column">
           <nav id="navbar" class="nav-menu navbar">
             <ul>
-              <li><a href="#Imagebg" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Image</span></a>
+              <li><a href="#background" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Image</span></a>
               </li>
               <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-              <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-                  <span>LIKE MOVIES</span></a></li>
-
+              <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i><span></span></a></li>
+              <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i><span>LIKE
+                    MOVIES</span></a></li>
             </ul>
           </nav>
         </div>
       </header>
       <div class="information" v-if="this.movie">
+        <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+          <div class="hero-container" data-aos="fade-in">
+            <h1>{{ this.movie.title }}</h1>
+          </div>
+        </section>
 
-        <a href="Imagebg">
-          <h1>{{ this.movie.title }}</h1>
-        </a>
+        <section id="about" class="about">
+          <div class="container">
+            <div class="section-title">
+              <h2>상세페이지</h2>
+            </div>
+            <div class="row">
+              <div class="col-lg-4" data-aos="fade-right">
+                <img :src=poster_path alt="" style="width:80%">
+              </div>
+              <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+                <h3>{{ this.movie.title }}</h3>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <ul class="no_dot">
+                      <li><i class="bi bi-chevron-right"></i> <strong>개봉일 :</strong> <span>{{ this.movie.release_date
+                      }}</span></li>
+                      <li><i class="bi bi-chevron-right"></i> <strong>평점 :</strong> <span>{{ this.vote_average }}</span>
+                      </li>
+                     
+                      <li><i class="bi bi-chevron-right"></i> <strong>장르 :</strong>
 
-        <input @click="likewithForm" type="button" :value=likevalue>
-        <p>좋아요 수 : {{ like_users_cnt }}</p>
-        <p>상세정보</p>
-        <img :src=poster_path alt="">
-        <p>{{ this.movie.overview }}</p>
-        <p>{{ this.movie.runtime }}분</p>
-        <p>{{ this.vote_average }}</p>
-        <p>{{ this.movie.release_date }}</p>
-        <p>{{ this.movie.production_companies[0]?.name }}</p>
-        <span v-for="gen in this.genres_name" :key="gen">{{ gen }},</span>
+                        <span v-for="(gen, index) in this.genres_name" :key="index">
+                          <span> {{ gen }}</span>
+                          <span v-if="index !== genres_name.length - 1">,</span>
+                        </span>
+                      </li>
+
+
+                      <li><i class="bi bi-chevron-right"></i> <strong>상영시간 :</strong> <span>{{ this.movie.runtime }}분
+                        </span></li>
+                      <li v-if="this.movie.production_companies"><i class="bi bi-chevron-right"></i> <strong>제작사
+                          :</strong> <span>{{
+                            this.movie.production_companies[0]?.name }}</span></li>
+                      <li><i class="bi bi-chevron-right"></i> <strong>줄거리 :</strong> <span>{{ this.movie.overview }}</span>
+                      </li>
+
+
+                      <br>
+                      <br>
+
+                      <div class="d-flex"> <input @click="likewithForm" type="button" :value=likevalue>
+                        <p>좋아요 수 : {{ like_users_cnt }}</p>
+                      </div>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section><!-- End About Section -->
 
         <MovieDetailCast v-for="cast in this.cast_list_ko" :key="cast" :cast="cast"
           :original_language="original_language" />
@@ -255,11 +299,31 @@ export default {
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll)
-  },  
+  },
 }
 </script>
 
 <style scoped>
+.no_dot {
+  list-style-type: none;
+}
+
+.no_dot i {
+  color: #149ddd;
+}
+
+main {
+  margin: 0px;
+}
+
+ul {
+  margin: 0px;
+}
+
+li {
+  margin: 0px;
+}
+
 img {
   width: 200px;
 }
@@ -270,10 +334,10 @@ img {
   padding: 0px;
   display: block;
   width: 100%;
-  height: 100%;
+  height: 95vh;
   position: absolute;
   background: top right no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-attachment: fixed;
 
   z-index: -1;
@@ -302,7 +366,7 @@ img {
 
 #header {
   position: fixed;
-  top: 60px;
+  top: 56px;
   left: 0;
   bottom: 0;
   width: 300px;
@@ -313,8 +377,11 @@ img {
   background: #040b14;
   overflow-y: auto;
   transition: all ease-in-out 0.5s;
-  opacity: 1;
+  opacity: 0.1;
 }
+
+
+
 /* .header-scroll {
   top: 0px;
 } */
@@ -324,13 +391,15 @@ img {
 --------------------------------------------------------------*/
 /* Desktop Navigation */
 .nav-menu {
-  padding: 30px 0 0 0;
+  padding: 30px;
+
 }
 
 .nav-menu * {
   margin: 0;
   padding: 0;
   list-style: none;
+  opacity: 0.5;
 }
 
 .nav-menu>ul>li {
@@ -370,12 +439,44 @@ img {
 .nav-menu li:hover>a i {
   color: #149ddd;
 }
-.information{
+
+.information {
   margin-left: 320px;
+  background-color: rgba(0, 0, 0, 0, 1);
 }
 
 /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
 .scroll::-webkit-scrollbar {
   display: none;
 }
-</style>
+
+#hero {
+  width: 100%;
+  height: 100vh;
+
+}
+
+#hero:before {
+  content: "";
+  background: rgba(5, 13, 24, 0.3);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#hero .hero-container {
+  position: relative;
+  z-index: 2;
+  min-width: 300px;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}</style>
