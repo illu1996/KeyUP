@@ -5,7 +5,7 @@
       <span class="title-text ml-3">인기 박스오피스</span>
       <span class="more-link" @click="goPopular">더보기</span>
     </div>
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample1" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item " v-for="(chunk, index) in chunkedMovieList"
         :key="index" :class="{ active: index === currentIndex }">
@@ -17,13 +17,13 @@
         </div>
       </div>
       <button class="carousel-control-prev" type="button"
-      data-bs-target="#carouselExample"
+      data-bs-target="#carouselExample1"
       data-bs-slide="prev" @click="previousSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-left"></i></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button"
-      data-bs-target="#carouselExample" data-bs-slide="next"
+      data-bs-target="#carouselExample1" data-bs-slide="next"
         @click="nextSlide">
         <span aria-hidden="true"><i class="bi bi-chevron-double-right"></i></span>
         <span class="visually-hidden">Next</span>
