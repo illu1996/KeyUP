@@ -2,13 +2,12 @@
   <div>
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center" :style="heroBackground">
       <div class="hero-container" data-aos="fade-in">
-        <h1>{{ this.$route.params.username }}</h1>
-        <p><span class="typed" data-typed-items="">{{ userInfo?.introduce}}</span></p>
+        <h1>{{ userInfo?.nickname }}</h1>
+        <p><span class="typed" data-typed-items="">{{ userInfo?.introduce }}</span></p>
       </div>
     </section>
 
     <main id="main">
-
       <section id="about" class="about">
         <div class="container">
 
@@ -17,39 +16,49 @@
               <img v-if="imgInfo" :src=imgInfo class="img-fluid" alt="">
             </div>
             <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-              <h3>{{ this.$route.params.username }}님</h3>
-
-              <div v-if="userInfo && this.$store.state.username != userInfo.username">
-                <button v-if="!followers.includes(this.$store.state.username)" @click="follow">팔로우</button>
-                <button v-else @click="follow">팔로우 취소</button>
+              <div class="followbox d-flex justify-content-between">
+                <div>
+                  <h3>{{ this.$route.params.username }}님</h3>
+                  <div v-if="userInfo && this.$store.state.username != userInfo.username">
+                    <button class="gradient-btn" v-if="!followers.includes(this.$store.state.username)"
+                      @click="follow">follow</button>
+                    <button class="gradient-btn" v-else @click="follow"><i class="bi bi-check2-all"></i></button>
+                  </div>
+                </div>
+                <div class="follownum d-flex text-center">
+                  <div>
+                    <p class="follower">팔로워</p>
+                    <p>{{ follower }}</p>
+                  </div>
+                  <div>
+                    <p class="following">팔로잉</p>
+                    <p>{{ following }}</p>
+                  </div>
+                </div>
               </div>
-              <p>팔로워 : {{ follower }} | 팔로잉 : {{ following }}</p>
               <div class="row">
                 <div class="col-lg-6">
                   <ul>
                     <li><i class="bi bi-chevron-right"></i> <strong>닉네임 : </strong> <span>{{ userInfo?.nickname }}</span>
                     </li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>나의 한마디 : </strong> <span>{{ userInfo?.introduce}}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>나의 한마디 : </strong> <span>{{
+                      userInfo?.introduce }}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>{{ userInfo?.nickname }}님의 영화</strong> <span></span>
+                    </li>
                   </ul>
                 </div>
-              </div>
-            </div>
-            <ul class="no_dot">
-              <li><i class="bi bi-chevron-right"></i> <strong>관심있어요</strong> <span></span>
-              </li>        
-            </ul>
-          </div>
-        </div>
-      </section>
-
-
-      <section id="portfolio" class="portfolio section-bg">
-        <div class="container">
-          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-            <div v-for="(movie, index) in movielist" :key="index" @click="changeMovie(movie)"
-              class="col-lg-3 col-md-6 portfolio-item filter-card">
-              <div class="portfolio-wrap">
-                <img :src="getImageUrl(movie.poster_path)" class="img-fluid">
+                <section id="portfolio" class="portfolio section-bg">
+                  <div class="container">
+                    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                      <div v-for="(movie, index) in movielist" :key="index" @click="changeMovie(movie)"
+                        class="col-lg-3 col-md-6 portfolio-item filter-card">
+                        <div class="portfolio-wrap">
+                          <img :src="getImageUrl(movie.poster_path)" class="img-fluid">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
@@ -83,7 +92,7 @@ export default {
       return {
         'background': `url(${this.imgInfo}) top center`,
         'background-size': 'cover',
-        'background-repeat' : 'no-repeat'
+        'background-repeat': 'no-repeat'
       };
     },
   },
@@ -191,16 +200,44 @@ export default {
   height: auto;
 }
 
-.button {
-	overflow: hidden;
-	padding: 0;
-	-webkit-transition: border-color 0.3s, background-color 0.3s;
-	transition: border-color 0.3s, background-color 0.3s;
-	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+.gradient-btn {
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  width: 100px;
+  border-radius: 0;
+  color: #040b14;
+  font-weight: bold;
+  font-size: 0.678rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: linear-gradient(to right, rgba(178, 135, 111, 0) 25%, rgba(65, 73, 129, 0.8) 75%);
+  background-position: 1% 50%;
+  background-size: 400% 300%;
+  border: 1px solid #040b14;
+  transition: all 0.3s;
 }
 
+.gradient-btn:hover {
+  color: white;
+  background-position: 99% 50%;
+}
 
+.follower,
+.following {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.followbox {
+  margin-bottom: 16px;
+}
+
+.follownum p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 #main {
   margin-left: 300px;
@@ -301,7 +338,7 @@ export default {
 
 #hero p {
   color: #fff;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   font-size: 26px;
   font-family: "Poppins", sans-serif;
 }
@@ -441,7 +478,6 @@ export default {
 }
 
 .portfolio-item .img-fluid {
-    height: 100%; /* 이미지의 세로 높이를 100%로 설정 */
-    object-fit: cover; /* 이미지가 부모 요소에 맞게 조절되도록 설정 */
-  }
-</style>
+  height: 100%;
+  object-fit: cover;
+}</style>
