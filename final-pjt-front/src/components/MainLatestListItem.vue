@@ -1,6 +1,6 @@
 <template>
-  <div @click="changeMovie" class="movieCard" @mouseover="showDetails = true" @mouseout="showDetails = false">
-    <img :src="getImage" class="card-img-top" alt="NONONO">
+  <div @click="changeMovie" class="movieCard m-0" @mouseover="showDetails = true" @mouseout="showDetails = false">
+    <img :src="getImage" class="card-img-top" alt="NONONO" style="width: 100%; height: 100%;">
     <div class="card-overlay" :class="{ 'show-details': showDetails }">
       <h5 class="card-title"><b>{{ movie.title }}</b></h5>
       <h6>평점 {{ movie.vote_average }}</h6>

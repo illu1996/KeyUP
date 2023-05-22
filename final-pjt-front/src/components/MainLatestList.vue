@@ -2,10 +2,10 @@
   <div>
     <div>
       <div class="title-container d-flex justify-content-start align-items-end">
-  <div class="title-line"></div>
-  <span class="title-text ml-3">이달의 신작</span>
-  <span class="more-link" @click="goLatest">더보기</span>
-</div>
+        <div class="title-line"></div>
+        <span class="title-text ml-3">이달의 신작</span>
+        <span class="more-link" @click="goLatest">더보기</span>
+      </div>
     </div>
     <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
