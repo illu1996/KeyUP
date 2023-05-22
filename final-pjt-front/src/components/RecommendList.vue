@@ -30,7 +30,7 @@
               <p v-if="!keywordcount">관련된 검색어가 없습니다.</p>
               <button class='btn border col-1' v-for="searchkeyword in searchkeywordList" :key="searchkeyword.id"
                 @click="getkeywordMovie(searchkeyword.id)">
-                {{ searchkeyword.translated }}</button>
+                <b>{{ searchkeyword.translated }}</b></button>
             </div>
           </div>
 
@@ -173,7 +173,7 @@ export default {
 }
 
 .background {
-  opacity: 0.1;
+  opacity: 0.2;
   background-attachment: fixed;
 }
 
@@ -209,7 +209,7 @@ svg {
   bottom: 0;
   top: 0;
   z-index: 1;
-  /* background: rgba(34, 34, 34, 0.1); */
+  background: rgba(34, 34, 34, 0.2);
 }
 
 .hero {
@@ -217,7 +217,7 @@ svg {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgba(200, 200, 200, 0.3);
+  background-color: rgba(200, 200, 200, 0.1);
   
 }
 
