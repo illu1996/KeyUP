@@ -1,6 +1,5 @@
 <template>
   <div>
-    RecomendView
     <RecommendList />
 
   </div>
