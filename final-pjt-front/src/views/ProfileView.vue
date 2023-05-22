@@ -1,49 +1,69 @@
 <template>
   <div>
     <main id="">
-    <header id="header" :class="{ 'header-scroll': isHeaderScrolled }">
-      <div class="d-flex flex-column">
+      <header id="header" :class="{ 'header-scroll': isHeaderScrolled }">
+        <div class="d-flex flex-column">
 
-        <div v-if="user" class="profile">
-          <img v-if="imgInfo" :src="imgInfo" alt="" class="img-fluid rounded-circle">
-          <img v-else src="@/assets/user.png" alt="" class="img-fluid rounded-circle">
-          <h1 class="t-white">환영합니다</h1>
-          <h1 class="t-white">{{ user.username }}님</h1>
-          <div class="social-links mt-3 text-center">
+          <div v-if="user" class="profile">
+            <img v-if="imgInfo" :src="imgInfo" alt="" class="img-fluid rounded-circle">
+            <img v-else src="@/assets/user.png" alt="" class="img-fluid rounded-circle">
+            <h1 class="t-white">환영합니다</h1>
+            <h1 class="t-white">{{ user.username }}님</h1>
+            <div class="social-links mt-3 text-center">
+            </div>
+          </div>
+
+          <nav id="navbar" class="nav-menu navbar">
+            <ul>
+              <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>♥</span></a></li>
+              <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>AboutMOVIES</span></a></li>
+              <div v-if="this.$route.params.username === this.$store.state.username">
+                <li><a @click="openModal" class="nav-link scrollto"><i class="bx bx-user"></i>
+                  <span>내 정보 수정</span></a></li>
+
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <router-view />
+    </main>
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profileModalLabel">내 정보 수정</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ProfileUpdate />
           </div>
         </div>
-
-        <nav id="navbar" class="nav-menu navbar">
-          <ul>
-            <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>♥</span></a></li>
-            <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-            <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-                <span>LIKE MOVIES</span></a></li>
-            <div v-if="this.$route.params.username === this.$store.state.username">
-              <li><router-link to="/profile/update" href="#about" class="nav-link scrollto"><i class="bx bx-user"></i>
-                  <span>내 정보 수정</span></router-link></li>
-
-            </div>
-          </ul>
-        </nav>
       </div>
-    </header>
-    <router-view />
-  </main>
+    </div>
   </div>
 </template>
 
 <script>
+import ProfileUpdate from "@/components/ProfileUpdate.vue"
+
 import axios from 'axios';
 const API_URL = 'http://127.0.0.1:8000'
 
 export default {
   name: 'ProfileView',
+  components : {
+    ProfileUpdate,
+  },
   data() {
     return {
       user: null,
       imgInfo: null,
       isHeaderScrolled: false,
+      isModalOpen: false,
     }
   },
   methods: {
@@ -70,6 +90,12 @@ export default {
     handleScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
       this.isHeaderScrolled = scrollTop > 0
+    },
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
     },
   },
   created() {
