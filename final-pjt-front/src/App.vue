@@ -23,7 +23,6 @@
               <span id="logout" @click="logout">로그아웃</span>
             </div>
           </ul>
-
         </nav>
       </div>
     </header>
@@ -85,6 +84,8 @@ export default {
         .then((res) => {
           if (res.data.profileimg) {
             this.imgAdd = `http://127.0.0.1:8000` + res.data.profileimg
+          } else {
+            this.imgAdd = '@/assets/user.png'
           }
         })
     },
