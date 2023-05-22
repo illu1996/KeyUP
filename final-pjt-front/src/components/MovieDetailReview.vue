@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <h3>리뷰입니당 :)</h3>
-    <div>
-      <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review"
-      @review-deleted="getReviews" @review-updated="getReviews"/>
+  <div class="container">
+    <div class="row">
+      <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review" @review-deleted="getReviews"
+        @review-updated="getReviews" />
     </div>
-    <div>
-      <label for="content">리뷰를 작성해주세요</label>
-      <input type="text" id="content" v-model="content">
-      <button @click="addReview">작성하기</button>
+    <div class="row justify-content-center align-items-center">
+      <div class="mb-3 col-8">
+        <label for="exampleFormControlTextarea1" class="form-label"></label>
+        <textarea v-model="content" class=" form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        </div>
+        <div class="col-4">
+        <button @click="addReview" type="button" class="btn btn-dark">완료</button>
+      </div>
+
     </div>
   </div>
 </template>
@@ -20,9 +24,9 @@ import MovieDetailReviewItem from '@/components/MovieDetailReviewItem.vue'
 
 
 export default {
-  name : 'MovieDetailReview',
+  name: 'MovieDetailReview',
   props: {
-    movie_id : Number,
+    movie_id: Number,
   },
   components: {
     MovieDetailReviewItem
@@ -30,45 +34,46 @@ export default {
   data() {
     return {
       reviews: [],
-      content : null,
+      content: null,
     }
   },
   methods: {
     getReviews() {
       axios({
-        method :'get',
-        url : `${MY_URL}/movies/${this.movie_id}/reviews/`,
+        method: 'get',
+        url: `${MY_URL}/movies/${this.movie_id}/reviews/`,
       })
-      .then((res)=>{
-        this.reviews = res.data
-      })
-      .catch((err)=>{
-        if (err.response && err.response.status === 404) {
-          this.reviews = [];
-        } else {
-          console.error('Error:', err)
-        }})
+        .then((res) => {
+          this.reviews = res.data
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 404) {
+            this.reviews = [];
+          } else {
+            console.error('Error:', err)
+          }
+        })
     },
 
     addReview() {
       const content = this.content
       axios({
-        method:'post',
-        url : `${MY_URL}/movies/${this.movie_id}/reviews/`,
-        data : {
+        method: 'post',
+        url: `${MY_URL}/movies/${this.movie_id}/reviews/`,
+        data: {
           content
         },
-        headers : {
-          Authorization : `Token ${this.$store.state.token}`
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`
         }
       })
-      .then(()=>{
-        this.getReviews()
-        this.content = null
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
+        .then(() => {
+          this.getReviews()
+          this.content = null
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
   },
   created() {

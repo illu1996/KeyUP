@@ -1,7 +1,20 @@
 <template>
   <div>
-    {{ peopleName }}
-    <img :src=imgsrc alt="">
+    <div v-if="director" class="card m-1">
+      <img :src=imgsrc alt="" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">감독</h5>
+        <p class="card-text">{{ peopleName }}</p>
+      </div>
+    </div>
+
+    <div div v-else class="card m-1">
+      <img :src=imgsrc alt="" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">배우</h5>
+        <p class="card-text">{{ peopleName }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,14 +26,15 @@ export default {
   name: 'MovieDetailCast',
   data() {
     return {
-      peopleName : null,
-      people : null,
-      imgsrc : null,
+      director: false,
+      peopleName: null,
+      people: null,
+      imgsrc: null,
     }
   },
   props: {
-    cast : Number,
-    original_language : String,
+    cast: Number,
+    original_language: String,
   },
   computed: {
 
@@ -31,27 +45,30 @@ export default {
     },
     getPeopleInfo() {
       axios({
-        method:'get',
+        method: 'get',
         url: `https://api.themoviedb.org/3/person/${this.cast}?language=ko-kr`,
-        headers : {
-            "accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDVjMWRmOTg2NTkyMzcwM2I3ZThmYzk5NmM4YjRhMiIsInN1YiI6IjYzZDMxN2IxNWEwN2Y1MDA5ZTk4MDA3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YcCaSDAbUQtDs3hXhi0xmf0sAnBzQklq7dEIq1oTlNs"
+        headers: {
+          "accept": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDVjMWRmOTg2NTkyMzcwM2I3ZThmYzk5NmM4YjRhMiIsInN1YiI6IjYzZDMxN2IxNWEwN2Y1MDA5ZTk4MDA3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YcCaSDAbUQtDs3hXhi0xmf0sAnBzQklq7dEIq1oTlNs"
         }
       })
-      .then((res)=>{
-        this.people = res.data
-        this.getImage()
-        if (this.original_language ==='ko') {
-          for (let peoplename of res.data.also_known_as) {
-            if (korean.test(peoplename)) {
-              this.peopleName = peoplename
-              break
-            }  
+        .then((res) => {
+          if (res.data.known_for_department === "Directing") {
+            this.director = true
           }
-        } else {
-          this.peopleName = res.data.name
-        }
-      })
+          this.people = res.data
+          this.getImage()
+          if (this.original_language === 'ko') {
+            for (let peoplename of res.data.also_known_as) {
+              if (korean.test(peoplename)) {
+                this.peopleName = peoplename
+                break
+              }
+            }
+          } else {
+            this.peopleName = res.data.name
+          }
+        })
     },
   },
   created() {
@@ -60,8 +77,11 @@ export default {
 }
 </script>
 
-<style>
-  img {
-    width: 100px;
-  }
+<style scoped>
+img {
+  width: 100%;
+}
+.card {
+  width: 70%;
+}
 </style>

@@ -11,9 +11,9 @@
               <li><a href="#background" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Image</span></a>
               </li>
               <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-              <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i><span></span></a></li>
-              <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i><span>LIKE
-                    MOVIES</span></a></li>
+              <li><a href="#cast" class="nav-link scrollto"><i class="bx bx-book-content"></i><span>Cast</span></a></li>
+              <li><a href="#review" class="nav-link scrollto"><i class="bx bx-book-content"></i><span>Reviews</span></a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -43,44 +43,64 @@
                       }}</span></li>
                       <li><i class="bi bi-chevron-right"></i> <strong>평점 :</strong> <span>{{ this.vote_average }}</span>
                       </li>
-                     
                       <li><i class="bi bi-chevron-right"></i> <strong>장르 :</strong>
-
                         <span v-for="(gen, index) in this.genres_name" :key="index">
                           <span> {{ gen }}</span>
                           <span v-if="index !== genres_name.length - 1">,</span>
                         </span>
                       </li>
 
-
                       <li><i class="bi bi-chevron-right"></i> <strong>상영시간 :</strong> <span>{{ this.movie.runtime }}분
                         </span></li>
                       <li v-if="this.movie.production_companies"><i class="bi bi-chevron-right"></i> <strong>제작사
                           :</strong> <span>{{
                             this.movie.production_companies[0]?.name }}</span></li>
-                      <li><i class="bi bi-chevron-right"></i> <strong>줄거리 :</strong> <span>{{ this.movie.overview }}</span>
+                      <li><i class="bi bi-chevron-right"></i> <strong>줄거리 :</strong> <span>{{ this.movie.overview
+                      }}</span>
                       </li>
-
-
                       <br>
                       <br>
-
-                      <div class="d-flex"> <input @click="likewithForm" type="button" :value=likevalue>
+                      <div class="d-flex justify-content-center"> <input @click="likewithForm" type="button" :value=likevalue>
                         <p>좋아요 수 : {{ like_users_cnt }}</p>
                       </div>
-
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </section><!-- End About Section -->
+        <br>
+        <br>
+        <section id="cast" class="cast">
+          <br>
+          <br>
+          <br>
+          <div class="container">
+            <div class="section-title">
+              <h2>캐스트</h2>
+            </div>
+            <div class="row">
+              <MovieDetailCast class="col-4" v-for="cast in this.cast_list_ko" :key="cast" :cast="cast"
+                :original_language="original_language" />
+            </div>
+          </div>
+        </section>
 
-        <MovieDetailCast v-for="cast in this.cast_list_ko" :key="cast" :cast="cast"
-          :original_language="original_language" />
-        <MovieDetailReview :movie_id="movie_id" />
+        <section id="review" class="review">
+          <br>
+          <br>
+          <br>
+          <div class="container">
+            <div class="section-title">
+              <h2>영화 리뷰</h2>
+            </div>
+            <div class="row">
+              <MovieDetailReview :movie_id="movie_id" />
+            </div>
+          </div>
+        </section>
+
       </div>
 
 
@@ -334,14 +354,13 @@ img {
   padding: 0px;
   display: block;
   width: 100%;
-  height: 95vh;
+  height: 93.5vh;
   position: absolute;
   background: top right no-repeat;
   background-size: cover;
   background-attachment: fixed;
-
   z-index: -1;
-  opacity: 0.4;
+  opacity: 0.7;
 }
 
 #hahahaha {
@@ -369,7 +388,7 @@ img {
   top: 56px;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: 200px;
   transition: all ease-in-out 0.5s;
   z-index: 9997;
   transition: all 0.5s;
@@ -377,7 +396,7 @@ img {
   background: #040b14;
   overflow-y: auto;
   transition: all ease-in-out 0.5s;
-  opacity: 0.1;
+  opacity: 1;
 }
 
 
@@ -399,7 +418,7 @@ img {
   margin: 0;
   padding: 0;
   list-style: none;
-  opacity: 0.5;
+
 }
 
 .nav-menu>ul>li {
@@ -479,4 +498,5 @@ img {
   font-weight: 700;
   line-height: 56px;
   color: #fff;
-}</style>
+}
+</style>
