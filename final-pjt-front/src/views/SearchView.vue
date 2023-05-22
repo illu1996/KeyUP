@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <div>
-      관련된 영화
+  <div class="container">
+    <div class="row">
+      {{keyword}}와(과) 관련된 영화 제목은 총 {{ movieList.length }}개 입니다.
     </div>
-    {{keyword}}와(과) 관련된 영화 제목은 총 {{ movieList.length }}개 입니다.
 
-    <div v-if="movieList.length > 0">
-      <SearchMovieList v-for="movie in movieList" :key="movie.id" :movie="movie" />
+    <div class="row" v-if="movieList.length > 0">
+      <SearchMovieList v-for="movie in movieList" :key="movie.id" :movie="movie" class="bg" :style="{ backgroundImage: 'url(' + `https://image.tmdb.org/t/p/original/${movie.poster_path}` + ')' }" />
     </div>
   </div>
 </template>
@@ -26,6 +25,7 @@ export default {
     return {
       keyword: this.$route.query.keyword,
       movieList: [],
+      
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -72,4 +72,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
