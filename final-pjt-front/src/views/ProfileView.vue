@@ -1,7 +1,7 @@
 <template>
   <div>
     <main id="">
-      <header id="header" :class="{ 'header-scroll': isHeaderScrolled }">
+      <header id="header">
         <div class="d-flex flex-column">
 
           <div v-if="user" class="profile">
@@ -18,9 +18,9 @@
               <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>♥</span></a></li>
               <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>AboutMOVIES</span></a></li>
               <div v-if="this.$route.params.username === this.$store.state.username">
-                <li><a @click="openModal" class="nav-link scrollto"><i class="bx bx-user"></i>
+                <li ><a @click="openModal" class="nav-link scrollto"><i class="bx bx-user"></i>
                   <span>내 정보 수정</span></a></li>
-
+                  <ProfileUpdate id="update" v-if="isModalOpen" @disappearComp="closeModal"/>
               </div>
             </ul>
           </nav>
@@ -28,22 +28,6 @@
       </header>
       <router-view />
     </main>
-    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="profileModalLabel">내 정보 수정</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <ProfileUpdate />
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -56,13 +40,12 @@ const API_URL = 'http://127.0.0.1:8000'
 export default {
   name: 'ProfileView',
   components : {
-    ProfileUpdate,
+    ProfileUpdate
   },
   data() {
     return {
       user: null,
       imgInfo: null,
-      isHeaderScrolled: false,
       isModalOpen: false,
     }
   },
@@ -100,16 +83,22 @@ export default {
   },
   created() {
     this.getUserProfile()
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
   },
 
 }
 </script>
 
 <style scoped>
+#update {
+  border: solid 1px white;
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 10px;
+  padding: 10px;
+  width: 270px
+}
+
+
 .t-white {
   color: #e6e6e6;
 }

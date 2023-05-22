@@ -15,13 +15,14 @@
               <router-link class="nav-link" to="/login">Login</router-link>
             </div>
             <div class='d-flex' v-else>
-              <input type="text" v-model="search">
-              <button @click="searchMovie">검색하기</button>
-              <router-link class="nav-link" :to="`/profile/detail/${username}`">Profile</router-link>
+              <div id="searchbox">
+                <input type="text" v-model="search" id="searchInput">
+                <i @click="searchMovie" class="bi bi-search"></i>
+              </div>
+              <router-link class="nav-link" :to="`/profile/detail/${username}`"><img :src=imgAdd></router-link>
               <span id="logout" @click="logout">로그아웃</span>
             </div>
           </ul>
-
         </nav>
       </div>
     </header>
@@ -50,6 +51,7 @@ export default {
   data() {
     return {
       search: null,
+      imgAdd: null,
     }
   },
   methods: {
@@ -73,12 +75,52 @@ export default {
     searchMovie() {
       this.$router.push({ path: '/search', query: { keyword: this.search } })
       this.search = null
-    }
+    },
+    infoOfuser() {
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/accounts/about/${this.$store.state.username}/profile/`
+      })
+        .then((res) => {
+          if (res.data.profileimg) {
+            this.imgAdd = `http://127.0.0.1:8000` + res.data.profileimg
+          } else {
+            this.imgAdd = '@/assets/user.png'
+          }
+        })
+    },
   },
+  created() {
+    this.infoOfuser()
+  }
 }
 </script>
 
 <style scoped>
+img {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin-right: 10px;
+}
+
+
+#searchInput {
+  border: none;
+  border-bottom: solid 3px rgb(158, 158, 158);
+}
+
+#searchbox {
+  position: relative;
+  margin-right: 15px;
+}
+
+i {
+  position: absolute;
+  right: 6px
+}
+
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/

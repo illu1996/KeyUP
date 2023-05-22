@@ -64,7 +64,6 @@
           </div>
         </div>
       </section>
-
     </main>
 
   </div>
@@ -86,6 +85,9 @@ export default {
       userName: this.$route.params.username,
       followers: [],
     }
+  },
+  components: {
+
   },
   computed: {
     heroBackground() {
