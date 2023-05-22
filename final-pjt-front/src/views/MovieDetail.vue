@@ -2,16 +2,31 @@
   <div>
     <div class="background" :style="{ 'background-image': `url(https://image.tmdb.org/t/p/original/${this.backdrops})` }">
     </div>
+    <main id="">
+      <header id="header" :class="{ 'header-scroll': isHeaderScrolled }">
+        <div class="d-flex flex-column">
+          <nav id="navbar" class="nav-menu navbar">
+            <ul>
+              <li><a href="#Imagebg" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Image</span></a>
+              </li>
+              <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+              <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+                  <span>LIKE MOVIES</span></a></li>
 
-      <nav>
-        네비게이션셔녓녀
-      </nav>
-      <div id="hahahaha" v-if="this.movie" style="opacity: 1;">
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div class="information" v-if="this.movie">
+
+        <a href="Imagebg">
+          <h1>{{ this.movie.title }}</h1>
+        </a>
+
         <input @click="likewithForm" type="button" :value=likevalue>
         <p>좋아요 수 : {{ like_users_cnt }}</p>
         <p>상세정보</p>
         <img :src=poster_path alt="">
-        <p>{{ this.movie.title }}</p>
         <p>{{ this.movie.overview }}</p>
         <p>{{ this.movie.runtime }}분</p>
         <p>{{ this.vote_average }}</p>
@@ -23,6 +38,9 @@
           :original_language="original_language" />
         <MovieDetailReview :movie_id="movie_id" />
       </div>
+
+
+    </main>
   </div>
 </template>
 
@@ -55,6 +73,7 @@ export default {
       like_users: [],
       movie_imgs: [],
       backdrops: null,
+      isHeaderScrolled: false,
     }
   },
   computed: {
@@ -63,6 +82,10 @@ export default {
     },
   },
   methods: {
+    handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      this.isHeaderScrolled = scrollTop > 0
+    },
     updateBackdrops() {
       if (this.movie_imgs.length > 0) {
         const currentIndex = this.movie_imgs.indexOf(this.backdrops);
@@ -200,10 +223,12 @@ export default {
         }
       })
         .then((res) => {
+          console.log(res.data)
           {
             console.log(res.data.backdrops)
-            for (let backdop_path of res.data.backdrops) {
-              this.movie_imgs.push(backdop_path.file_path)
+            for (let backdrop_path of res.data.backdrops) {
+              if (backdrop_path.iso_639_1 === 'en' || backdrop_path.iso_639_1 === "ko" || backdrop_path.iso_639_1 === null)
+                this.movie_imgs.push(backdrop_path.file_path)
               if (this.movie_imgs.length === 15) {
                 break
               }
@@ -212,24 +237,25 @@ export default {
         })
     }
   },
-  created() {
-    this.getMovieInfo()
-  },
-  mounted() {
-    // 컴포넌트가 마운트될 때 이미지 경로를 가져오는 메소드를 호출합니다.
-
-
-    // 5초마다 updateBackdrops 메소드를 호출하여 backdrops 값을 업데이트합니다.
-    setInterval(() => {
-      this.updateBackdrops();
-    }, 5000);
-  },
   watch: {
     movie_imgs() {
       // movie_imgs 배열이 변경될 때마다 updateBackdrops 메소드를 호출하여 backdrops 값을 업데이트합니다.
       this.updateBackdrops();
     }
-  }
+  },
+  created() {
+    this.getMovieInfo()
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  mounted() {
+    // 5초마다 updateBackdrops 메소드를 호출하여 backdrops 값을 업데이트합니다.
+    setInterval(() => {
+      this.updateBackdrops();
+    }, 5000);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },  
 }
 </script>
 
@@ -237,19 +263,119 @@ export default {
 img {
   width: 200px;
 }
+
 .background {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
   display: block;
   width: 100%;
   height: 100%;
   position: absolute;
-  background: top right no-repeat ;
+  background: top right no-repeat;
   background-size: contain;
   background-attachment: fixed;
+
   z-index: -1;
   opacity: 0.4;
 }
+
 #hahahaha {
   z-index: 2;
   opacity: 1;
+}
+
+#main {
+  margin-left: 300px;
+  background-attachment: scroll;
+}
+
+@media (max-width: 1199px) {
+  #header {
+    left: -300px;
+  }
+
+  #main {
+    margin-left: 0;
+  }
+}
+
+#header {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  transition: all ease-in-out 0.5s;
+  z-index: 9997;
+  transition: all 0.5s;
+  padding: 0 15px;
+  background: #040b14;
+  overflow-y: auto;
+  transition: all ease-in-out 0.5s;
+  opacity: 1;
+}
+/* .header-scroll {
+  top: 0px;
+} */
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+.nav-menu {
+  padding: 30px 0 0 0;
+}
+
+.nav-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu>ul>li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-menu a,
+.nav-menu a:focus {
+  display: flex;
+  align-items: center;
+  color: #a8a9b4;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.nav-menu a i,
+.nav-menu a:focus i {
+  font-size: 24px;
+  padding-right: 8px;
+  color: #6f7180;
+}
+
+.nav-menu a:hover,
+.nav-menu .active,
+.nav-menu .active:focus,
+.nav-menu li:hover>a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-menu a:hover i,
+.nav-menu .active i,
+.nav-menu .active:focus i,
+.nav-menu li:hover>a i {
+  color: #149ddd;
+}
+.information{
+  margin-left: 320px;
+}
+
+/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
+.scroll::-webkit-scrollbar {
+  display: none;
 }
 </style>
