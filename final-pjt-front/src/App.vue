@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header id="header">
+    <header id="header" class="fixed-header">
       <div v-if="displayLogin">
         <nav id="navbar" class="navbar">
           <ul>
@@ -85,10 +85,22 @@ export default {
 #header {
   /* display: flex;
   flex-direction: row; */
-
   z-index: 997;
   overflow-y: auto;
+  background-color: white;
 }
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 997;
+}
+
+section {
+  padding-top: 58px;
+}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -105,6 +117,7 @@ nav {
   display: flex;
   direction: row;
   justify-content: space-between;
+  padding: 58px;
 }
 nav div a,
 nav a {

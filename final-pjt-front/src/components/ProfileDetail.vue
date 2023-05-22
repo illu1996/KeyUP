@@ -1,95 +1,62 @@
 <template>
   <div>
-    <div v-if="userInfo && this.$store.state.username != userInfo.username">
-
-      <button v-if="!followers.includes(this.$store.state.username)" @click="follow">팔로우</button>
-      <button v-else @click="follow">팔로우 취소</button>
-
-    </div>
-    <p>팔로워 : {{ follower }} | 팔로잉 : {{ following }}</p>
-    <p>닉네임 : {{ userInfo?.nickname }}</p>
-    <p>소개말 : {{ userInfo?.introduce }}</p>
-    <p>좋아요 한 영화</p>
-
-
-
-    <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center" :style="heroBackground">
       <div class="hero-container" data-aos="fade-in">
-        <h1>{{ userInfo?.nickname }}</h1>
-        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
+        <h1>{{ this.$route.params.username }}</h1>
+        <p><span class="typed" data-typed-items="">{{ userInfo?.introduce}}</span></p>
       </div>
-    </section><!-- End Hero -->
+    </section>
 
     <main id="main">
 
-      <!-- ======= About Section ======= -->
       <section id="about" class="about">
         <div class="container">
 
-          <div class="section-title">
-            <h2>About</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-              consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-              in iste officiis commodi quidem hic quas.</p>
-          </div>
-
           <div class="row">
             <div class="col-lg-4" data-aos="fade-right">
-              <img :src=imgInfo class="img-fluid" alt="">
+              <img v-if="imgInfo" :src=imgInfo class="img-fluid" alt="">
             </div>
             <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-              <h3>UI/UX Designer &amp; Web Developer.</h3>
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua.
-              </p>
+              <h3>{{ this.$route.params.username }}님</h3>
+
+              <div v-if="userInfo && this.$store.state.username != userInfo.username">
+                <button v-if="!followers.includes(this.$store.state.username)" @click="follow">팔로우</button>
+                <button v-else @click="follow">팔로우 취소</button>
+              </div>
+              <p>팔로워 : {{ follower }} | 팔로잉 : {{ following }}</p>
               <div class="row">
                 <div class="col-lg-6">
                   <ul>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May 1995</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span></li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>email@example.com</span>
+                    <li><i class="bi bi-chevron-right"></i> <strong>닉네임 : </strong> <span>{{ userInfo?.nickname }}</span>
                     </li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>나의 한마디 : </strong> <span>{{ userInfo?.introduce}}</span></li>
                   </ul>
                 </div>
               </div>
             </div>
+            <ul class="no_dot">
+              <li><i class="bi bi-chevron-right"></i> <strong>관심있어요</strong> <span></span>
+              </li>        
+            </ul>
           </div>
-
         </div>
-      </section><!-- End About Section -->
+      </section>
 
-      <!-- ======= Portfolio Section ======= -->
+
       <section id="portfolio" class="portfolio section-bg">
         <div class="container">
-
-
           <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
             <div v-for="(movie, index) in movielist" :key="index" @click="changeMovie(movie)"
-              class="col-lg-4 col-md-6 portfolio-item filter-card">
+              class="col-lg-3 col-md-6 portfolio-item filter-card">
               <div class="portfolio-wrap">
-                <p>{{ movie.title }}</p>
                 <img :src="getImageUrl(movie.poster_path)" class="img-fluid">
               </div>
             </div>
-
           </div>
-
         </div>
-      </section><!-- End Portfolio Section -->
+      </section>
 
-    </main><!-- End #main -->
+    </main>
 
   </div>
 </template>
@@ -116,6 +83,7 @@ export default {
       return {
         'background': `url(${this.imgInfo}) top center`,
         'background-size': 'cover',
+        'background-repeat' : 'no-repeat'
       };
     },
   },
@@ -128,7 +96,7 @@ export default {
       immediate: true,
       handler(newValue) {
         if (newValue && newValue.like_movies) {
-          this.movielist = []; // 기존 영화 목록 초기화
+          this.movielist = [];
           this.getMovies();
         }
       }
@@ -161,7 +129,7 @@ export default {
             }
             this.movielist.push(res.data)
             if (this.userInfo.profileimg) {
-              this.imgInfo = `http://127.0.0.1:8000/` + this.userInfo.profileimg
+              this.imgInfo = `http://127.0.0.1:8000` + this.userInfo.profileimg
             }
           })
       }
@@ -218,6 +186,19 @@ export default {
 </script>
 
 <style scoped>
+.img-fluid {
+  width: auto;
+  height: auto;
+}
+
+.button {
+	overflow: hidden;
+	padding: 0;
+	-webkit-transition: border-color 0.3s, background-color 0.3s;
+	transition: border-color 0.3s, background-color 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
 
 
 
@@ -235,10 +216,7 @@ export default {
   }
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/* Desktop Navigation */
+
 .nav-menu {
   padding: 30px 0 0 0;
 }
@@ -288,14 +266,12 @@ export default {
 }
 
 
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
 #hero {
   position: relative;
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 500px;
   background-size: cover;
+  margin-bottom: 20px;
 }
 
 #hero:before {
@@ -452,33 +428,8 @@ export default {
   opacity: 0;
 }
 
-.portfolio .portfolio-wrap .portfolio-links {
-  opacity: 1;
-  left: 0;
-  right: 0;
-  bottom: -60px;
-  z-index: 3;
-  position: absolute;
-  transition: all ease-in-out 0.3s;
-  display: flex;
-  justify-content: center;
-}
-
-.portfolio .portfolio-wrap .portfolio-links a {
-  color: #fff;
-  font-size: 28px;
-  text-align: center;
-  background: rgba(20, 157, 221, 0.75);
-  transition: 0.3s;
-  width: 50%;
-}
-
-.portfolio .portfolio-wrap .portfolio-links a:hover {
-  background: rgba(20, 157, 221, 0.95);
-}
-
-.portfolio .portfolio-wrap .portfolio-links a+a {
-  border-left: 1px solid #37b3ed;
+.no_dot {
+  list-style-type: none;
 }
 
 .portfolio .portfolio-wrap:hover::before {
@@ -489,73 +440,8 @@ export default {
   opacity: 1;
 }
 
-.portfolio .portfolio-wrap:hover .portfolio-links {
-  opacity: 1;
-  bottom: 0;
-}
-
-/*--------------------------------------------------------------
-# Portfolio Details
---------------------------------------------------------------*/
-.portfolio-details {
-  padding-top: 40px;
-}
-
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
-  opacity: 1;
-  border: 1px solid #149ddd;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #149ddd;
-}
-
-.portfolio-details .portfolio-info {
-  padding: 30px;
-  box-shadow: 0px 0 30px rgba(5, 13, 24, 0.08);
-}
-
-.portfolio-details .portfolio-info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-}
-
-.portfolio-details .portfolio-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.portfolio-details .portfolio-info ul li+li {
-  margin-top: 10px;
-}
-
-.portfolio-details .portfolio-description {
-  padding-top: 30px;
-}
-
-.portfolio-details .portfolio-description h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.portfolio-details .portfolio-description p {
-  padding: 0;
-}
+.portfolio-item .img-fluid {
+    height: 100%; /* 이미지의 세로 높이를 100%로 설정 */
+    object-fit: cover; /* 이미지가 부모 요소에 맞게 조절되도록 설정 */
+  }
 </style>

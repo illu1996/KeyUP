@@ -1,11 +1,14 @@
 <template>
   <div>
-    <header id="header">
+    <main id="">
+    <header id="header" :class="{ 'header-scroll': isHeaderScrolled }">
       <div class="d-flex flex-column">
 
-        <div v-if="this.user" class="profile">
-          <img :src="imgInfo" alt="" class="img-fluid rounded-circle">
-          <h1 class="text-light"><a href="index.html">{{ user.nickname }}</a></h1>
+        <div v-if="user" class="profile">
+          <img v-if="imgInfo" :src="imgInfo" alt="" class="img-fluid rounded-circle">
+          <img v-else src="@/assets/user.png" alt="" class="img-fluid rounded-circle">
+          <h1 class="t-white">환영합니다</h1>
+          <h1 class="t-white">{{ user.username }}님</h1>
           <div class="social-links mt-3 text-center">
           </div>
         </div>
@@ -26,6 +29,7 @@
       </div>
     </header>
     <router-view />
+  </main>
   </div>
 </template>
 
@@ -39,6 +43,7 @@ export default {
     return {
       user: null,
       imgInfo: null,
+      isHeaderScrolled: false,
     }
   },
   methods: {
@@ -52,25 +57,55 @@ export default {
       })
         .then((res) => {
           this.user = res.data
-          this.imgInfo = `http://127.0.0.1:8000/` + this.user.profileimg
+          if (this.user.profileimg) {
+            this.imgInfo = `http://127.0.0.1:8000` + this.user.profileimg
+          }
           this.changeProfile()
         })
     },
     changeProfile() {
       const userInfo = this.user
       this.$store.dispatch('changeProfile', userInfo)
-    }
+    },
+    handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      this.isHeaderScrolled = scrollTop > 0
+    },
   },
   created() {
     this.getUserProfile()
-  }
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+
 }
 </script>
 
 <style scoped>
+.t-white {
+  color: #e6e6e6;
+}
+
+
+#main {
+  margin-left: 300px;
+}
+
+@media (max-width: 1199px) {
+  #header {
+    left: -300px;
+  }
+
+  #main {
+    margin-left: 0;
+  }
+}
+
 #header {
   position: fixed;
-  top: 0;
+  top: 57.5px;
   left: 0;
   bottom: 0;
   width: 300px;
@@ -80,6 +115,11 @@ export default {
   padding: 0 15px;
   background: #040b14;
   overflow-y: auto;
+  transition: all ease-in-out 0.5s;
+}
+
+.header-scroll {
+  top: 0px;
 }
 
 #header .profile img {
@@ -89,6 +129,7 @@ export default {
   height: 120px;
   border: 8px solid #2c2f3f;
 }
+
 
 #header .profile h1 {
   font-size: 24px;
@@ -104,5 +145,63 @@ export default {
 #header .profile h1 a:hover {
   color: #fff;
   text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+  #header {
+    display: none;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+.nav-menu {
+  padding: 30px 0 0 0;
+}
+
+.nav-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu>ul>li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-menu a,
+.nav-menu a:focus {
+  display: flex;
+  align-items: center;
+  color: #a8a9b4;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.nav-menu a i,
+.nav-menu a:focus i {
+  font-size: 24px;
+  padding-right: 8px;
+  color: #6f7180;
+}
+
+.nav-menu a:hover,
+.nav-menu .active,
+.nav-menu .active:focus,
+.nav-menu li:hover>a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-menu a:hover i,
+.nav-menu .active i,
+.nav-menu .active:focus i,
+.nav-menu li:hover>a i {
+  color: #149ddd;
 }
 </style>
