@@ -18,7 +18,7 @@ import ArticleCreate from '@/components/ArticleCreate.vue'
 import ArticleList from '@/components/ArticleList.vue'
 import ArticleDetail from '@/components/ArticleDetail.vue'
 import ProfileDetail from '@/components/ProfileDetail.vue'
-// import ProfileUpdate from '@/components/ProfileUpdate.vue'
+import ProfileUpdate from '@/components/ProfileUpdate.vue'
 
 Vue.use(VueRouter)
 
@@ -51,7 +51,7 @@ const routes = [
     component: ProfileView,
     children : [
       {path:'detail/:username',component:ProfileDetail},
-      // {path:'update',component:ProfileUpdate},
+      {path:'update',component:ProfileUpdate},
     ]
   },
   {
