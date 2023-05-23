@@ -244,7 +244,4 @@ nav a:hover {
   width: 100%;
   
 }
-.navbar .active:focus {
-
-}
 </style>
