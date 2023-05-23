@@ -1,7 +1,8 @@
 <template>
   <div class="container">
+    <h1> | 현재 상영작</h1>
     <div class="row">
-    <LatestListItem class="col-4" v-for="movie in movieList" :key="movie.id" :movie="movie" />
+      <LatestListItem class="col-3" v-for="movie in movieList" :key="movie.id" :movie="movie" />
     </div>
   </div>
 </template>
@@ -11,8 +12,8 @@ import axios from 'axios';
 
 import LatestListItem from './LatestListItem.vue'
 export default {
-  name:'LatestList',
-  components : {
+  name: 'LatestList',
+  components: {
     LatestListItem,
   },
   data() {
@@ -43,6 +44,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container h1 {
+  text-align: left;
+  margin-bottom: 30px;
+}
 </style>

@@ -90,6 +90,4 @@ export default {
   opacity: 0.8;
 }
 
-.card1 {
-}
 </style>

@@ -3,22 +3,22 @@
     <div class="row">
       <div class="col-5">
         <div class="row">
-        <MovieListItem v-for="movie in randomMovieList.slice(4,5)" :key="movie.id" :movie="movie"/>
-      </div>
+          <MovieListItem v-for="movie in randomMovieList.slice(4, 5)" :key="movie.id" :movie="movie" />
+        </div>
         <div class="row">
-          <MovieListItem class="col-6" v-for="movie in randomMovieList.slice(0,4)" :key="movie.id" :movie="movie" />
-          </div>
+          <MovieListItem class="col-6" v-for="movie in randomMovieList.slice(0, 4)" :key="movie.id" :movie="movie" />
+        </div>
 
-          <div class="row">
-        <MovieListItem v-for="movie in randomMovieList.slice(5,6)" :key="movie.id" :movie="movie"/>
+        <div class="row">
+          <MovieListItem v-for="movie in randomMovieList.slice(5, 6)" :key="movie.id" :movie="movie" />
+        </div>
       </div>
-    </div>
       <div class="col-3">
-        <MovieListItem class="col" v-for="movie in randomMovieList.slice(6,11)" :key="movie.id" :movie="movie" />
+        <MovieListItem class="col" v-for="movie in randomMovieList.slice(6, 11)" :key="movie.id" :movie="movie" />
       </div>
-      
+
       <div class="col-4">
-        <MovieListItem class="col" v-for="movie in randomMovieList.slice(11,15)" :key="movie.id" :movie="movie" />
+        <MovieListItem class="col" v-for="movie in randomMovieList.slice(11, 15)" :key="movie.id" :movie="movie" />
       </div>
 
     </div>

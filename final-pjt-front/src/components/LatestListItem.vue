@@ -1,6 +1,7 @@
 <template>
+    <div class="card1">
   <div @click="changeMovie">
-    <div class="card" style="width: 18rem;" @mouseover="showDetails = true" @mouseout="showDetails = false">
+    <div class="card" @mouseover="showDetails = true" @mouseout="showDetails = false">
       <img :src="getImage" class="card-img-top" alt="NONONO">
       <div class="card-overlay" :class="{ 'show-details': showDetails }">
         <h5 class="card-title">{{ movie.title }}</h5>
@@ -9,6 +10,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -44,8 +46,51 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 
+.movieCard {
+  position: relative;
+  display: inline-block;
+}
+.card1 {
+  margin-bottom : 20px;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.show-details {
+  opacity: 1;
+}
+
+.card-overlay h5,
+.card-overlay h6,
+.card-overlay p {
+  margin: 0;
+  padding: 0;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.card-overlay h6{
+  opacity: 0.8;
+}
 </style>
 
 
