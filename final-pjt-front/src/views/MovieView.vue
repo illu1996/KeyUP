@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="text-center">
     <nav>
       <router-link to="/movies/all">전체 영화</router-link> <span>|</span> 
       <router-link to="/movies/genre">장르별</router-link> <span>|</span> 
@@ -25,6 +25,7 @@ export default {
     margin-left: 10%;
     display: inline-block;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   a {

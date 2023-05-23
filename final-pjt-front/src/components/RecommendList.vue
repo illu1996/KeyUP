@@ -140,7 +140,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .text-center h1{
   /* -webkit-text-stroke: 2px black; */
 }

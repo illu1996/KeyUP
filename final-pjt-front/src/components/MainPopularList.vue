@@ -98,7 +98,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-color: black;

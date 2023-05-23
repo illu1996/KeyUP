@@ -1,7 +1,55 @@
 <template>
-  <div class="movie">
+  <div class="container">
+    <div class="row">
+      <div class="col-5">
+        <div v-for="(movie, index) in randomMovieList" :key="index">
+          <MovieListItem :class="`lst${index}`" v-if="index === 10" :movie="movie" />
+        </div>
 
-    <MovieListItem :class="`lst${index}`" v-for="(movie,index) in randomMovieList" :key="index" :movie="movie" />
+        <div class="row">
+          <div class="col-6" v-for="(movie, index) in randomMovieList" :key="index">
+            <MovieListItem v-if="index === 0" :movie="movie" />
+            <MovieListItem v-if="index === 1" :movie="movie" />
+            <MovieListItem v-if="index === 2" :movie="movie" />
+            <MovieListItem v-if="index === 3" :movie="movie" />
+          </div>
+          <!-- <div class="col-4" v-for="(movie, index) in randomMovieList" :key="index"> -->
+
+          <!-- </div> -->
+          <!-- <div class="col box2"></div> -->
+          <!-- <div class="row">
+            <div class="col box3"></div>
+            <div class="col box4"></div>
+          </div> -->
+        </div>
+      </div>
+      <div class="col">
+        <div class="col-6">
+          <div v-for="(movie, index) in randomMovieList" :key="index">
+            <MovieListItem :class="`lst${index}`" v-if="index === 3" :movie="movie" />
+          </div>
+          <div v-for="(movie, index) in randomMovieList" :key="index">
+            <MovieListItem :class="`lst${index}`" v-if="index === 4" :movie="movie" />
+          </div>
+
+          <!-- <div class="col box2"></div> -->
+          <!-- <div class="row">
+            <div class="col box3"></div>
+            <div class="col box4"></div>
+          </div> -->
+        </div>
+        <div class="col">
+          <div v-for="(movie, index) in randomMovieList" :key="index">
+            <MovieListItem :class="`lst${index}`" v-if="index === 5" :movie="movie" />
+          </div>
+        </div>
+
+      </div>
+      <div class="col-4 box4"></div>
+      <div class="row box1"></div>
+      <div class="row box1"></div>
+
+    </div>
   </div>
 </template>
 
@@ -51,96 +99,4 @@ export default {
 </script>
 
 <style scoped>
-.movie {
-  box-sizing: border-box;
-
-  padding :0px;
-
-}
-.lst0{
-  margin :10px 10px 0px 20px;
-  padding :0px;
-  width: 460px;
-  position: absolute;
-  top : 130px;
-  left: 780px;
-
-}
-.lst1{
-  margin :10px 10px 0px 20px;
-  padding :0px;
-  width: 750px;
-  top : 130px;
-  left : 0px;
-  position: absolute;
-}
-.lst2{
-  margin :10px 10px 0px 20px;
-  position: absolute;
-  width: 460px;
-  top : 130px;
-  left : 1310px;
-}
-.lst3{
-  margin :10px 10px 0px 20px;
-
-  position: absolute;
-  width: 460px;
-  top : 130px;
-  left : 1810px;
-}
-.lst4{
-  margin :10px 10px 0px 20px;
-
-  position: absolute;
-  width: 960px;
-  top :850px;
-  left : 1310px;
-}
-.lst5{
-  margin :10px 10px 0px 20px;
-  position: absolute;
-  width: 460px;
-  top :900px;
-  left : 780px;
-}
-.lst6{
-  margin :10px 10px 0px 20px;
-  position: absolute;
-  width: 355px;
-  top : 1300px;
-  left : 390px;
-
-}
-.lst7{
-  margin :10px 10px 0px 20px;
-  position: absolute;
-  width: 355px;
-  top : 1300px;
-  left : 0px;
-
-}
-.lst8{
-  margin :10px 10px 0px 20px;
-  position: absolute;
-  width: 355px;
-  top : 1850px;
-  left : 390px;
-}
-.lst9{
-  margin :10px 10px 0px 20px;
-  position: absolute;
-  width: 355px;
-  top : 1850px;
-  left : 0px;
-
-}
-.lst10{
-  margin :10px 10px 0px 20px;
-  position: absolute;
-  width: 460px;
-  top : 1680px;
-  left : 780px;
-}
-
-</style>
+</style> 
