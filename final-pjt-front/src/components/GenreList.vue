@@ -7,9 +7,50 @@
     <br>
     <div class="container">
       <div class="row">
-    <GenreListItem class="col-3" v-for="genreMovie in this.genreMovieList" :key="genreMovie.id" :genreMovie="genreMovie" />
-  </div>
-  </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(0, 1)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(1, 2)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(2, 3)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(3, 4)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(4, 5)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(5, 6)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(6, 8)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-4">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(8, 9)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-4">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(9, 10)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-2">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(10, 12)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-3">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(12, 14)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-3">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(14, 16)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-3">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(16, 18)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+        <div class="col-3">
+          <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(18, 20)" :key="genreMovie.id" :genreMovie="genreMovie" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,8 +68,8 @@ export default {
   data() {
     return {
       genreList: [],
-      genre_id:'',
-      genreMovieList:[]
+      genre_id: '',
+      genreMovieList: []
     }
   },
   methods: {
@@ -47,22 +88,22 @@ export default {
         })
     },
     getGenreMovie() {
-      if (Number.isInteger(this.genre_id)){
+      if (Number.isInteger(this.genre_id)) {
         axios({
-        method: 'get',
-        url: `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-kr&page=1&sort_by=popularity.desc&with_genres=${this.genre_id}`,
-        headers: {
-          "accept": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDVjMWRmOTg2NTkyMzcwM2I3ZThmYzk5NmM4YjRhMiIsInN1YiI6IjYzZDMxN2IxNWEwN2Y1MDA5ZTk4MDA3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YcCaSDAbUQtDs3hXhi0xmf0sAnBzQklq7dEIq1oTlNs"
-        }
-      })
-        .then((res) => {
-          console.log(res.data)
-          this.genreMovieList = res.data.results
+          method: 'get',
+          url: `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-kr&page=1&sort_by=popularity.desc&with_genres=${this.genre_id}`,
+          headers: {
+            "accept": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDVjMWRmOTg2NTkyMzcwM2I3ZThmYzk5NmM4YjRhMiIsInN1YiI6IjYzZDMxN2IxNWEwN2Y1MDA5ZTk4MDA3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YcCaSDAbUQtDs3hXhi0xmf0sAnBzQklq7dEIq1oTlNs"
+          }
         })
-        .catch((err)=>{
-          console.log(err)
-        })
+          .then((res) => {
+            console.log(res.data)
+            this.genreMovieList = res.data.results
+          })
+          .catch((err) => {
+            console.log(err)
+          })
       }
     }
   },
@@ -86,5 +127,9 @@ export default {
   border-radius: 0;
   border: 1px solid #ccc;
   height: 37px;
+}
+
+.item {
+  object-fit: cover;
 }
 </style>
