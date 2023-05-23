@@ -1,19 +1,32 @@
 <template>
-  <div class="row ms-3">
-    <div class="col-7 d-flex mt-1">
-    <a href="#"><h5 @click="goUser">{{ review.username }}</h5></a> : <p v-if="!editing">{{ review.content }}</p>
+  <div>
+    <div class="container">
+      <div class="row ">
+        <div class="col">
+          <div class="row row-cols-auto">
+            <img class="col" v-if="imgInfo" :src="imgInfo" alt="">
+            <img class="col" v-else src="@/assets/user.png" alt="">
+            <p @click="goUser" class="col name align-middle">{{ review.username }}</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row row-cols-auto d-flex justify-content-end align-items-center">
+          <p class='col btnon' v-if="compareUser" @click="editing = true, compared = true" v-show="!compared">수정</p>
+          <p class='col btnon' v-if="compareUser" @click="deleteReview" v-show="!compared">삭제</p>
+        </div>
+        </div>
+      </div>
+      <p id="review">{{ review.content }}</p>
     </div>
-    <div class="col-2">
-      <button class='btn btn-primary' v-if="compareUser" @click="editing = true, compared = true" v-show="!compared">수정</button>
-      <button class='btn btn-danger ms-1' v-if="compareUser" @click="deleteReview" v-show="!compared">삭제</button>
+
+    <div>
+      <input class="updateinput col" type="text" v-model="editContent" v-if="editing">
+      <div class="d-flex justify-content-end align-items-center">
+      <button class='submit' v-if="editing" @click="changeEditing">취소</button>
+      <button class='submit' v-if="editing" @click="updateReview">완료</button>
+      </div>
     </div>
-    <div class="d-flex my-1">
-
-    <input class="col-6" type="text" v-model="editContent" v-if="editing">
-  <button class='offset-1 btn btn-danger' v-if="editing" @click="changeEditing">취소</button>
-  <button class='btn btn-primary ms-1' v-if="editing" @click="updateReview">완료</button>
-
-</div>
+    <hr>
   </div>
 </template>
 
@@ -31,6 +44,7 @@ export default {
       compared: false,
       editing: false,
       editContent: '',
+      imgInfo: null,
     };
   },
   computed: {
@@ -83,22 +97,106 @@ export default {
     changeEditing() {
       this.editing = !this.editing
       this.compared = !this.compared
-
-    }
+    },
+    getUserProfile() {
+      axios({
+        method: 'get',
+        url: `${MY_URL}/accounts/about/${this.review.username}/profile/`,
+        headers: {
+          "Authorization": `Token ${this.$store.state.token}`
+        }
+      })
+        .then((res) => {
+          this.imgInfo = `http://127.0.0.1:8000` + res.data.profileimg
+        })
+    },
   },
   created() {
     this.editContent = this.review.content;
+    this.getUserProfile()
   },
 }
 </script>
 
 <style scoped>
+.btnon:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.updateinput {
+  width: 100%;
+  height: 89px;
+  border: solid 1px rgb(187, 187, 187);
+  margin-right: auto;
+}
+
+.submit {
+  font-size: 12px !important;
+  margin-top: 20px;
+  margin-right: 0%;
+  margin-bottom: 2%;
+  background-color: rgb(138, 138, 138);
+  color: white;
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  width: 100px;
+  border-radius: 0;
+  color: rgb(24, 24, 53);
+  font-weight: bold;
+  font-size: 0.678rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: linear-gradient(to right, rgba(178, 135, 111, 0) 25%, rgba(65, 73, 129, 0.8) 75%);
+  background-position: 1% 50%;
+  background-size: 400% 300%;
+  border: 1px solid rgb(138, 138, 138);
+  transition: all 0.3s;
+  opacity: 0.7;
+  margin-left: 5px;
+}
+
+.updateinput {
+  width: 100%;
+  height: 89px;
+  border: solid 1px rgb(187, 187, 187);
+  margin-right: auto;
+}
+
+
+#review {
+  margin-left: 4%;
+}
+
+img {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.name {
+  margin-top: 10px;
+}
+
+hr {
+  margin-top: 5px;
+}
+
 a {
   text-decoration: none;
   cursor: grab;
 }
-a:link{
+
+a:link {
   color: royalblue;
 }
-a:hover {color:black;}
+
+a:hover {
+  color: black;
+}
 </style>

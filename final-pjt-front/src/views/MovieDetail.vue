@@ -28,7 +28,7 @@
         <section id="about" class="about">
           <div class="container">
             <div class="section-title">
-              <h2>상세페이지</h2>
+              <h2>영화 정보</h2>
             </div>
             <div class="row">
               <div class="col-lg-4" data-aos="fade-right">
@@ -88,14 +88,11 @@
         </section>
 
         <section id="review" class="review">
-          <br>
-          <br>
-          <br>
           <div class="container">
             <div class="section-title">
-              <h2>영화 리뷰</h2>
+              <h4>코멘트</h4>
             </div>
-            <div class="row">
+            <div class="row commentbox">
               <MovieDetailReview :movie_id="movie_id" />
             </div>
           </div>
@@ -324,6 +321,16 @@ export default {
 </script>
 
 <style scoped>
+.commentbox {
+  border: solid 1px rgb(187, 187, 187);
+}
+
+
+.review {
+  margin-top: 50px;
+}
+
+
 .no_dot {
   list-style-type: none;
 }
