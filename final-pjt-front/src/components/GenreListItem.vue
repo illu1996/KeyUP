@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card1">
     <div @click="changeMovie" class="mb-3 movieCard" @mouseover="showDetails = true" @mouseout="showDetails = false">
     <img :src="getImage" class="card-img-top" alt="NONONO" style="width: 100%; height: 100%;">
     <div class="card-overlay" :class="{ 'show-details': showDetails }">
@@ -44,10 +44,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .movieCard {
   position: relative;
-  display: inline-block;
+  display: block;
+}
+
+.card1 {
+  display: block;
 }
 
 .card-overlay {
@@ -84,5 +88,8 @@ export default {
 
 .card-overlay h6{
   opacity: 0.8;
+}
+
+.card1 {
 }
 </style>
