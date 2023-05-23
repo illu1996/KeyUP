@@ -2,7 +2,8 @@
   <div>
     <div class="container idbox">
       <div class="row row-cols-auto">
-        <img class="col" :src=imgInfo>
+        <img v-if="imgInfo" class="col" :src=imgInfo>
+        <img v-else src="@/assets/user.png" alt="">
         <p class="col align-middle">{{ comment.username }}</p>
         <p class="col align-middle">{{ createtime }}</p>
       </div>
