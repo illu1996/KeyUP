@@ -15,6 +15,7 @@
 import SearchMovieList from '@/components/SearchMovieList.vue';
 import axios from 'axios';
 
+
 const MY_URL = 'http://127.0.0.1:8000';
 
 export default {

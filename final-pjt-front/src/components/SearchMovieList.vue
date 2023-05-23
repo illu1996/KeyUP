@@ -58,5 +58,44 @@ created() {
   width: 100%;
   height: 200vh;
 }
+.movieCard {
+  position: relative;
+  display: inline-block;
+}
 
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.show-details {
+  opacity: 1;
+}
+
+.card-overlay h5,
+.card-overlay h6,
+.card-overlay p {
+  margin: 0;
+  padding: 0;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.card-overlay h6 {
+  opacity: 0.8;
+}
 </style>

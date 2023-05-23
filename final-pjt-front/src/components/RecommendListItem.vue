@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .movieCard {
   position: relative;
   display: inline-block;
