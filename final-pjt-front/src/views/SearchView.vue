@@ -1,11 +1,12 @@
 <template>
   <div class="container">
-    <div class="row">
-      {{keyword}}와(과) 관련된 영화 제목은 총 {{ movieList.length }}개 입니다.
+    <div class="keyword-title d-flex column me-2 align-items-center">
+      <h2 class="">{{keyword}}</h2> 
+      <b class="ms-2">와(과) 관련된 영화 제목은 총 {{ movieList.length }}개 입니다.</b>
     </div>
 
-    <div class="row" v-if="movieList.length > 0">
-      <SearchMovieList v-for="movie in movieList" :key="movie.id" :movie="movie" class="bg" :style="{ backgroundImage: 'url(' + `https://image.tmdb.org/t/p/original/${movie.poster_path}` + ')' }" />
+    <div class="row mt-3" v-if="movieList.length > 0">
+      <SearchMovieList class="col-3 mt-2" v-for="movie in movieList" :key="movie.id" :movie="movie"  />
     </div>
   </div>
 </template>
@@ -72,6 +73,23 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.keyword-title h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  color: #173b6c;
+}
+.keyword-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #068096;
+  bottom: 0;
+  left: 0;
+}
 
 </style>
