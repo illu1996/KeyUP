@@ -11,7 +11,7 @@
         <textarea id="content" cols="30" rows="10" v-model="content" placeholder="내용을 입력하세요"></textarea><br>
       </div>
       <div class="d-flex justify-content-end">
-        <input type="submit" id="submit">
+        <input type="submit" id="submit" value="작성하기">
       </div>
     </form>
   </div>
@@ -59,7 +59,7 @@ export default {
       })
       .then(() => {
         // console.log(res)
-        this.$router.push({name: 'CommunityView'})
+        this.$router.push({name: 'ArticleList'})
       })
       .catch((err) => {
         console.log(err)
@@ -86,7 +86,7 @@ export default {
       })
       .then(() => {
         // console.log(res)
-        this.$router.push({name: 'CommunityView'})
+        this.$router.push({name: 'ArticleList'})
       })
       .catch((err) => {
         console.log(err)
@@ -133,20 +133,19 @@ export default {
   height: 400px;
 }
 
+
 #submit {
+  font-size: 13px !important;
   margin-top: 20px;
   margin-right: 5%;
   margin-bottom: 2%;
-  background-color: rgb(24, 24, 53);
+  background-color: rgb(138, 138, 138);
   color: white;
-}
-
-#submit {
   display: inline-block;
   padding: 0.8em 1.6em;
   width: 100px;
   border-radius: 0;
-  color: #040b14;
+  color: rgb(24, 24, 53);
   font-weight: bold;
   font-size: 0.678rem;
   letter-spacing: 2px;
@@ -155,8 +154,9 @@ export default {
   background: linear-gradient(to right, rgba(178, 135, 111, 0) 25%, rgba(65, 73, 129, 0.8) 75%);
   background-position: 1% 50%;
   background-size: 400% 300%;
-  border: 1px solid #040b14;
+  border: 1px solid rgb(138, 138, 138);
   transition: all 0.3s;
+  opacity: 0.7;
 }
 
 #submit:hover {

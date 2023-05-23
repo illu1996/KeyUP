@@ -75,8 +75,7 @@ const routes = [
     component: CommunityView,
     children : [
       {path:'create',component:ArticleCreate, name: 'ArticleCreate'},
-      {path:'list',component:ArticleList},
-
+      {path:'list',component:ArticleList, name:'ArticleList'},
     ]
   },
   {
