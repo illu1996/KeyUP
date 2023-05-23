@@ -92,8 +92,9 @@ export default {
 
 h6 {
   margin-top: 5%;
-  margin-left: 11%;
+  margin-left: 16.5%;
   padding-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 button {

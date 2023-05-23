@@ -15,7 +15,7 @@
           <p class="col content">{{ comment.content }}</p>
           <div class="d-flex col-2 justify-content-end align-items-center">
             <p class="btnon" v-if="compareUser" @click="updateComment" v-show="!compared">수정</p>
-            <p v-if="compareUser"> | </p>
+            <p v-if="compareUser">&nbsp;|&nbsp;</p>
             <p class="btnon" v-if="compareUser" @click="deleteComment" v-show="!compared">삭제</p>
           </div>
         </div>
@@ -146,7 +146,7 @@ img {
 }
 
 .content {
-  margin-left: 5%;
+  margin-left: 2.5%;
 }
 
 .updateinput {

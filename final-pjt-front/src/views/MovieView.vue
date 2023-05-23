@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <nav class="text-center">
+    <nav>
       <router-link to="/movies/all">전체 영화</router-link> <span>|</span> 
       <router-link to="/movies/genre">장르별</router-link> <span>|</span> 
       <router-link to="/movies/latest">신작</router-link> <span>|</span> 
@@ -20,11 +20,18 @@ export default {
 </script>
 
 <style scoped>
+  nav {
+    margin-top: 20px;
+    margin-left: 10%;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
   a {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.25em;
 
     align-items: center;
   }
@@ -39,6 +46,7 @@ export default {
     color: rgb(68, 92, 226);
   }
   a+span{
-    margin: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 </style>

@@ -26,7 +26,7 @@
               </div>
               <div class="buttons d-flex col-2 justify-content-end align-items-center">
                 <p class="btn1" v-if="compareUser" @click="updateArticle">수정</p>
-                <p>|</p>
+                <p v-if="compareUser">|</p>
                 <p class="btn2" v-if="compareUser" @click="deleteArticle">삭제</p>
               </div>
             </div>
@@ -46,10 +46,11 @@
             </div>
             <form @submit.prevent="createComment">
               <input id="commentbox" type="text" v-model="content">
-              <div class="d-flex justify-content-end">
-              <button id="submit">댓글쓰기</button>
+              <div class="d-flex justify-content-between">
+                <button id="submit1" @click="goList" @click.prevent="preventCreateComment">목록보기</button>
+                <button id="submit">댓글쓰기</button>
               </div>
-            </form>
+              </form>
           </div>
         </div>
       </div>
@@ -92,6 +93,9 @@ export default {
   methods: {
     goUser() {
       this.$router.push(`/profile/detail/${this.article.username}`)
+    },
+    goList() {
+      this.$router.push(`/community/list`)
     },
     getUserProfile() {
       axios({
@@ -242,6 +246,7 @@ export default {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .contentbox {
   margin-bottom: 30px;
 }
@@ -280,6 +285,36 @@ export default {
 }
 
 #submit:hover {
+  color: white;
+  background-position: 99% 50%;
+}
+
+#submit1 {
+  font-size: 12px !important;
+  margin-top: 20px;
+  margin-right: 0%;
+  margin-bottom: 2%;
+  background-color: rgb(138, 138, 138);
+  color: white;
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  width: 100px;
+  border-radius: 0;
+  color: rgb(24, 24, 53);
+  font-weight: bold;
+  font-size: 0.678rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: linear-gradient(to right, rgba(178, 135, 111, 0) 25%, rgba(65, 73, 129, 0.8) 75%);
+  background-position: 1% 50%;
+  background-size: 400% 300%;
+  border: 1px solid rgb(138, 138, 138);
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+
+#submit1:hover {
   color: white;
   background-position: 99% 50%;
 }
