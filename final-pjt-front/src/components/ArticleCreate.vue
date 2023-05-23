@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <h1>게시글 작성</h1>
+  <div class="createForm">
     <form @submit.prevent="handleSubmit">
-      <label for="title">제목 : </label>
-      <input type="text" id="title" v-model.trim="title"><br>
-      <label for="content">내용 : </label>
-      <textarea id="content" cols="30" rows="10" v-model="content"></textarea><br>
-      <input type="submit" id="submit">
+      <div>
+        <label for="title"></label>
+        <input type="text" id="title" v-model.trim="title" placeholder="제목을 입력하세요"><br>
+      </div>
+      <hr>
+      <div>
+        <label for="content"></label>
+        <textarea id="content" cols="30" rows="10" v-model="content" placeholder="내용을 입력하세요"></textarea><br>
+      </div>
+      <div class="d-flex justify-content-end">
+        <input type="submit" id="submit">
+      </div>
     </form>
   </div>
 </template>
@@ -97,6 +103,64 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.createForm {
+  border: solid 1px rgb(221, 221, 221);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 70px;
+  margin-top: 3%;
+}
 
+#title { 
+  width: 90%;
+  border: none;
+  outline: none;
+  border-bottom: solid 1px rgb(201, 201, 201);
+  margin-left: 5%;
+  margin-right: 5%;
+  /* margin-bottom: 2%; */
+  padding-top: 20px;
+  /* padding-bottom: 2px; */
+}
+
+#content {
+  width: 91%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: none;
+  outline: none;
+  height: 400px;
+}
+
+#submit {
+  margin-top: 20px;
+  margin-right: 5%;
+  margin-bottom: 2%;
+  background-color: rgb(24, 24, 53);
+  color: white;
+}
+
+#submit {
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  width: 100px;
+  border-radius: 0;
+  color: #040b14;
+  font-weight: bold;
+  font-size: 0.678rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: linear-gradient(to right, rgba(178, 135, 111, 0) 25%, rgba(65, 73, 129, 0.8) 75%);
+  background-position: 1% 50%;
+  background-size: 400% 300%;
+  border: 1px solid #040b14;
+  transition: all 0.3s;
+}
+
+#submit:hover {
+  color: white;
+  background-position: 99% 50%;
+}
 </style>
