@@ -4,6 +4,7 @@
       <div v-if="displayLogin">
         <nav id="navbar" class="navbar">
           <ul>
+            <img id="logo" src="@/assets/logo.png" alt="">
             <router-link class="nav-link active" to="/">홈</router-link>
             <router-link class="nav-link" to="/movies/all">영화</router-link>
             <router-link class="nav-link" to="/recommend">나만을 위한 추천</router-link>
@@ -20,8 +21,8 @@
                 <i @click="searchMovie" class="bi bi-search"></i>
               </div>
               <router-link :to="`/profile/detail/${username}`">
-                <img v-if="!imgAdd" src="@/assets/user.png" alt="">
-                <img v-else :src=imgAdd>
+                <img class="profileimg" v-if="!imgAdd" src="@/assets/user.png" alt="">
+                <img class="profileimg" v-else :src=imgAdd>
               </router-link >
               <span id="logout" @click="logout">로그아웃</span>
             </div>
@@ -98,7 +99,18 @@ export default {
 </script>
 
 <style scoped>
-img {
+.nav-link {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#logo {
+  width: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.profileimg {
   border-radius: 50%;
   height: 32px;
   width: 32px;
