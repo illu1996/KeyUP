@@ -7,7 +7,7 @@
             <router-link class="nav-link active" to="/">홈</router-link>
             <router-link class="nav-link" to="/movies/all">영화</router-link>
             <router-link class="nav-link" to="/recommend">나만을 위한 추천</router-link>
-            <router-link class="nav-link" to="/community">커뮤니티</router-link>
+            <router-link class="nav-link" to="/community/list">커뮤니티</router-link>
           </ul>
           <ul>
             <div class='d-flex' v-if="!displayLogin">
@@ -19,10 +19,10 @@
                 <input type="text" v-model="search" id="searchInput">
                 <i @click="searchMovie" class="bi bi-search"></i>
               </div>
-              <router-link class="nav-link" :to="`/profile/detail/${username}`">
+              <router-link :to="`/profile/detail/${username}`">
                 <img v-if="!imgAdd" src="@/assets/user.png" alt="">
                 <img v-else :src=imgAdd>
-              </router-link>
+              </router-link >
               <span id="logout" @click="logout">로그아웃</span>
             </div>
           </ul>
@@ -222,9 +222,9 @@ nav a:hover {
   white-space: nowrap;
   transition: 0.3s;
 }
-.navbar div a:before,
+
 .navbar #logout:before,
-.navbar a:before {
+.navbar .nav-link:before {
   content: "";
   position: absolute;
   width: 0;
