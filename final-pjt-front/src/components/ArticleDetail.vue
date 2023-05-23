@@ -15,6 +15,7 @@
                   <div class="row row-cols-auto">
                     <div class="col imgnick">
                       <img v-if="imgInfo" class="img-info" :src=imgInfo>
+                      <img v-else src="@/assets/user.png" alt="">
                       <span @click="goUser">{{ article?.username }}</span>
                     </div>
                     <p class="col align-middle">{{ article?.created_at.replace('T', ' ').slice(0, 16) }}</p>

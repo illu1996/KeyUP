@@ -10,9 +10,9 @@
           <p class="col-2">작성일</p>
         </div>
       </div>
-      <hr class="hihi">
       <div>
         <div class="container">
+          <hr class="hihi">
           <ArticleListItem v-for="article in articleList" :key="article.id" :article="article" />
         </div>
       </div>
@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .articlelist {
-  border: solid 1px rgb(221, 221, 221);
+  /* border: solid 1px rgb(221, 221, 221); */
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 70px;
@@ -82,7 +82,7 @@ export default {
 }
 
 .hihi {
-  margin-top: 0px;
+  margin-top: 2px;
 }
 
 .container div p {
