@@ -4,16 +4,14 @@
       <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review" @review-deleted="getReviews"
         @review-updated="getReviews" />
     </div>
-    <div class="row justify-content-center align-items-center">
-      <div class="mb-3 col-8">
+      <div class="">
         <label for="exampleFormControlTextarea1" class="form-label"></label>
-        <textarea v-model="content" class=" form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        <input v-model="content" class="updateinput" id="exampleFormControlTextarea1" rows="2">
         </div>
-        <div class="col-4">
-        <button @click="addReview" type="button" class="btn btn-dark">완료</button>
+        <div class="d-flex justify-content-end align-items-center">
+        <button @click="addReview" type="button" class="submit">작성하기</button>
       </div>
 
-    </div>
   </div>
 </template>
 
@@ -83,5 +81,42 @@ export default {
 </script>
 
 <style>
+.updateinput {
+  padding-top: 10px;
+  width: 100%;
+  height: 89px;
+  border: solid 1px rgb(187, 187, 187);
+  margin-right: auto;
+}
 
+.submit {
+  font-size: 12px !important;
+  margin-top: 20px;
+  margin-right: 0%;
+  margin-bottom: 2%;
+  background-color: rgb(138, 138, 138);
+  color: white;
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  width: 100px;
+  border-radius: 0;
+  color: rgb(24, 24, 53);
+  font-weight: bold;
+  font-size: 0.678rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: linear-gradient(to right, rgba(178, 135, 111, 0) 25%, rgba(65, 73, 129, 0.8) 75%);
+  background-position: 1% 50%;
+  background-size: 400% 300%;
+  border: 1px solid rgb(138, 138, 138);
+  transition: all 0.3s;
+  opacity: 0.7;
+  margin-left: 5px;
+}
+
+.submit:hover {
+  color: white;
+  background-position: 99% 50%;
+}
 </style>
