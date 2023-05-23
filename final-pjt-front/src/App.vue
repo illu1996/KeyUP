@@ -99,9 +99,9 @@ export default {
 </script>
 
 <style scoped>
-.nav-link {
+/* .nav-link {
   font-family: 'Noto Sans KR', sans-serif;
-}
+} */
 
 #logo {
   width: 60px;
@@ -227,7 +227,8 @@ nav a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif;*/
+  font-family: 'TheJamsil';
   font-size: 16px;
   font-weight: 400;
   /* color: rgba(255, 255, 255, 0.7); */
@@ -254,6 +255,11 @@ nav a:hover {
 .navbar a:hover:before{
   visibility: visible;
   width: 100%;
-  
+}
+
+ul a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
