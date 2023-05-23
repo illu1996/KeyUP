@@ -173,4 +173,8 @@ export default {
   font-size: 18px;
   color: rgb(75, 75, 75);
 }
+
+#carouselExample1 {
+  margin-bottom: 80px;
+}
 </style>

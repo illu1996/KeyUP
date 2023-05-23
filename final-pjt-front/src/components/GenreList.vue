@@ -1,9 +1,11 @@
 <template>
   <div id="genrelist">
+    <div id="selectbar">
     <select v-model="genre_id" class="form-select sharp-edge" aria-label="Default select example" @change="getGenreMovie">
       <option disabled value="">카테고리 선택</option>
       <option v-for="genre in genreList" :key="genre.id" :value="genre.id">{{ genre.name }}</option>
     </select>
+    </div>
     <br>
     <div class="container">
       <div class="row">
@@ -127,6 +129,9 @@ export default {
   border-radius: 0;
   border: 1px solid #ccc;
   height: 37px;
+  margin-left: auto; 
+  display: block;
+  margin-right: 15%;
 }
 
 .item {
