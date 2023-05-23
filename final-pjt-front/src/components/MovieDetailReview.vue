@@ -82,7 +82,6 @@ export default {
 
 <style>
 .updateinput {
-  padding-top: 10px;
   width: 100%;
   height: 89px;
   border: solid 1px rgb(187, 187, 187);
