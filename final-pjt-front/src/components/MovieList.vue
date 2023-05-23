@@ -2,52 +2,24 @@
   <div class="container">
     <div class="row">
       <div class="col-5">
-        <div v-for="(movie, index) in randomMovieList" :key="index">
-          <MovieListItem :class="`lst${index}`" v-if="index === 10" :movie="movie" />
-        </div>
-
         <div class="row">
-          <div class="col-6" v-for="(movie, index) in randomMovieList" :key="index">
-            <MovieListItem v-if="index === 0" :movie="movie" />
-            <MovieListItem v-if="index === 1" :movie="movie" />
-            <MovieListItem v-if="index === 2" :movie="movie" />
-            <MovieListItem v-if="index === 3" :movie="movie" />
-          </div>
-          <!-- <div class="col-4" v-for="(movie, index) in randomMovieList" :key="index"> -->
-
-          <!-- </div> -->
-          <!-- <div class="col box2"></div> -->
-          <!-- <div class="row">
-            <div class="col box3"></div>
-            <div class="col box4"></div>
-          </div> -->
-        </div>
+        <MovieListItem v-for="movie in randomMovieList.slice(4,5)" :key="movie.id" :movie="movie"/>
       </div>
-      <div class="col">
-        <div class="col-6">
-          <div v-for="(movie, index) in randomMovieList" :key="index">
-            <MovieListItem :class="`lst${index}`" v-if="index === 3" :movie="movie" />
-          </div>
-          <div v-for="(movie, index) in randomMovieList" :key="index">
-            <MovieListItem :class="`lst${index}`" v-if="index === 4" :movie="movie" />
+        <div class="row">
+          <MovieListItem class="col-6" v-for="movie in randomMovieList.slice(0,4)" :key="movie.id" :movie="movie" />
           </div>
 
-          <!-- <div class="col box2"></div> -->
-          <!-- <div class="row">
-            <div class="col box3"></div>
-            <div class="col box4"></div>
-          </div> -->
-        </div>
-        <div class="col">
-          <div v-for="(movie, index) in randomMovieList" :key="index">
-            <MovieListItem :class="`lst${index}`" v-if="index === 5" :movie="movie" />
-          </div>
-        </div>
-
+          <div class="row">
+        <MovieListItem v-for="movie in randomMovieList.slice(5,6)" :key="movie.id" :movie="movie"/>
       </div>
-      <div class="col-4 box4"></div>
-      <div class="row box1"></div>
-      <div class="row box1"></div>
+    </div>
+      <div class="col-3">
+        <MovieListItem class="col" v-for="movie in randomMovieList.slice(6,11)" :key="movie.id" :movie="movie" />
+      </div>
+      
+      <div class="col-4">
+        <MovieListItem class="col" v-for="movie in randomMovieList.slice(11,15)" :key="movie.id" :movie="movie" />
+      </div>
 
     </div>
   </div>
@@ -69,12 +41,13 @@ export default {
   data() {
     return {
       movieList: [],
-      randomMovieList: []
+      randomMovieList: [],
     }
   },
   methods: {
     randomList() {
-      this.randomMovieList = _.sampleSize(this.movieList, 11)
+      this.randomMovieList = _.sampleSize(this.movieList, 15)
+
     },
     getMovieList() {
       axios({
@@ -98,5 +71,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style> 
+<style scoped></style> 

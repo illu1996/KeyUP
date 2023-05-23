@@ -22,7 +22,7 @@ export default {
 <style scoped>
   nav {
     margin-top: 20px;
-    margin-left: 10%;
+
     display: inline-block;
     margin-bottom: 10px;
     text-align: center;
