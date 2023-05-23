@@ -25,7 +25,7 @@
                 <b>{{ randomkeyword.translated }}</b> </button>
             </div>
 
-            <div class="text-center row">
+            <div class="text-center row mt-2">
               <b><h2> 검색된 키워드</h2></b>
               <p v-if="!keywordcount">관련된 검색어가 없습니다.</p>
               <button class='btn border col-1' v-for="searchkeyword in searchkeywordList" :key="searchkeyword.id"
@@ -39,10 +39,11 @@
       <div class="section">
       <div class="container">
         <div class="row mb-5 align-items-center">
-          <div class="col-lg-6">
-            <h2 class="font-weight-bold heading">
+          <div class="col-lg-6 d-flex column align-items-center">
+            <h3 class="font-weight-bold heading">
               검색된 영화
-            </h2>
+            </h3>
+            <h5 class="ms-3">총 {{ keywordMovieList.length }} 건</h5>
           </div>
     
         </div>
@@ -190,8 +191,8 @@ svg {
 }
 
 .hero-slide .img {
-  height: 100%;
-  min-height: 600px;
+  height:100%;
+  min-height: 500px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -209,7 +210,7 @@ svg {
   bottom: 0;
   top: 0;
   z-index: 1;
-  background: rgba(34, 34, 34, 0.2);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .hero {
@@ -217,7 +218,7 @@ svg {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgba(200, 200, 200, 0.1);
+  background-color: rgba(77, 77, 77, 0.2);
   
 }
 
@@ -238,8 +239,8 @@ svg {
 
 .hero,
 .hero>.container>.row {
-  height: 50vh;
-  min-height: 600px;
+  height:30vh;
+  min-height: 500px;
 }
 
 .hero.page-inner,
@@ -267,7 +268,7 @@ svg {
 }
 
 .hero .narrow-w {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
 }
 

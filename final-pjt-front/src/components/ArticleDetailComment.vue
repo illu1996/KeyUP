@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container idbox">
-      <div class="row row-cols-auto">
+      <div class="row row-cols-auto" id="comment">
         <img v-if="imgInfo" class="col" :src=imgInfo>
         <img v-else src="@/assets/user.png" alt="">
         <p class="col align-middle">{{ comment.username }}</p>
@@ -11,7 +11,7 @@
 
     <div>
       <div class="container">
-        <div class="row">
+        <div class="row" id="comment">
           <p class="col content">{{ comment.content }}</p>
           <div class="d-flex col-2 justify-content-end align-items-center">
             <p class="btnon" v-if="compareUser" @click="updateComment" v-show="!compared">수정</p>
@@ -128,10 +128,13 @@ export default {
 </script>
 
 <style scoped>
+#comment p{
+  font-size: 0.85em;
+}
 img {
   border-radius: 50%;
-  height: 32px;
-  width: 32px;
+  height: 25px;
+  width: 25px;
   /* margin-right: 10px; */
   padding-right: 0px;
   padding-left: 0px;

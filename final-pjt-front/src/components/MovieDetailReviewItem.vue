@@ -1,29 +1,26 @@
 <template>
-  <div>
-    <div class="container">
-      <div class="row ">
-        <div class="col">
-          <div class="row row-cols-auto">
-            <img class="col" v-if="imgInfo" :src="imgInfo" alt="">
-            <img class="col" v-else src="@/assets/user.png" alt="">
-            <p @click="goUser" class="col name align-middle">{{ review.username }}</p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row row-cols-auto d-flex justify-content-end align-items-center">
-          <p class='col btnon' v-if="compareUser" @click="editing = true, compared = true" v-show="!compared">수정</p>
-          <p class='col btnon' v-if="compareUser" @click="deleteReview" v-show="!compared">삭제</p>
-        </div>
-        </div>
+  <div class="">
+    <div class="row">
+      <div class="col d-flex row-cols-auto">
+        <img class="col me-2" v-if="imgInfo" :src="imgInfo" alt="">
+        <img class="col" v-else src="@/assets/user.png" alt="">
+        <p @click="goUser" class="col name align-middle">{{ review.username }}</p>
       </div>
+
+      <div class="col d-flex justify-content-end" id="updatedelete">
+        <span class='btnon' v-if="compareUser" @click="editing = true, compared = true" v-show="!compared">수정</span>
+        <span>|</span>
+        <span class='btnon' v-if="compareUser" @click="deleteReview" v-show="!compared">삭제</span>
+      </div>
+
       <p id="review">{{ review.content }}</p>
     </div>
 
     <div>
       <input class="updateinput col" type="text" v-model="editContent" v-if="editing">
       <div class="d-flex justify-content-end align-items-center">
-      <button class='submit' v-if="editing" @click="changeEditing">취소</button>
-      <button class='submit' v-if="editing" @click="updateReview">완료</button>
+        <button class='submit' v-if="editing" @click="changeEditing">취소</button>
+        <button class='submit' v-if="editing" @click="updateReview">완료</button>
       </div>
     </div>
     <hr>
@@ -119,6 +116,14 @@ export default {
 </script>
 
 <style scoped>
+#updatedelete span {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+span {
+  margin-right: 10px;
+}
+
 .btnon:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -128,12 +133,12 @@ export default {
   width: 100%;
   height: 89px;
   border: solid 1px rgb(187, 187, 187);
-  margin-right: auto;
+  /* margin-right: auto; */
 }
 
 .submit {
   font-size: 12px !important;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-right: 0%;
   margin-bottom: 2%;
   background-color: rgb(138, 138, 138);
@@ -184,7 +189,8 @@ img {
 }
 
 hr {
-  margin-top: 5px;
+  /* margin-top: 5px; */
+  margin: 0;
 }
 
 a {

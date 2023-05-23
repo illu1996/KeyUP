@@ -1,13 +1,14 @@
 <template>
   <div id="genrelist">
-    <div id="selectbar">
-    <select v-model="genre_id" class="form-select sharp-edge" aria-label="Default select example" @change="getGenreMovie">
-      <option disabled value="">카테고리 선택</option>
-      <option v-for="genre in genreList" :key="genre.id" :value="genre.id">{{ genre.name }}</option>
-    </select>
-    </div>
-    <br>
+
     <div class="container">
+      <div id="selectbar">
+      <select v-model="genre_id" class="form-select sharp-edge" aria-label="Default select example" @change="getGenreMovie">
+        <option disabled value="">카테고리 선택</option>
+        <option v-for="genre in genreList" :key="genre.id" :value="genre.id">{{ genre.name }}</option>
+      </select>
+      </div>
+      <br>
       <div class="row">
         <div class="col-2">
           <GenreListItem id="item" v-for="genreMovie in genreMovieList.slice(0, 1)" :key="genreMovie.id" :genreMovie="genreMovie" />
@@ -118,9 +119,7 @@ export default {
 <style scoped>
 #genrelist {
   margin-top: 10px;
-  margin-left: 10%;
 }
-
 .sharp-edge {
   width: 160px;
   appearance: none;
@@ -131,7 +130,7 @@ export default {
   height: 37px;
   margin-left: auto; 
   display: block;
-  margin-right: 15%;
+
 }
 
 .item {

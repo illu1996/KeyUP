@@ -17,7 +17,7 @@
             </div>
             <div class='d-flex' v-else>
               <div @keyup.enter="searchMovie" id="searchbox">
-                <input type="text" v-model="search" id="searchInput">
+                <input type="text" v-model="search" id="searchInput" placeholder='영화 제목을 입력하세요' onfocus="this.placeholder=''" onblur="this.placeholder='영화 제목을 입력하세요'">
                 <i @click="searchMovie" class="bi bi-search"></i>
               </div>
               <router-link :to="`/profile/detail/${username}`">

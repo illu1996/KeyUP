@@ -2,10 +2,10 @@
   <div id="all">
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="5000">
+        <div class="carousel-item active" data-bs-interval="3000">
           <img src="@/assets/메인1.png" class="d-block w-100" alt="..." @click="golatest">
         </div>
-        <div class="carousel-item" data-bs-interval="5000">
+        <div class="carousel-item" data-bs-interval="3000">
           <img src="@/assets/메인2.png" class="d-block w-100" alt="..." @click="goRecommend">
         </div>
       </div>
@@ -13,17 +13,17 @@
         <span aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-    <div class="mainlatest">
-    <MainLatestList/>
+    <div class=" mt-3 mainlatest">
+      <MainLatestList />
     </div>
     <div class="mainpopular">
-    <MainPopularList/>
+      <MainPopularList />
     </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
 
   </div>
 </template>
@@ -64,5 +64,4 @@ export default {
 .carousel-control-next {
   width: 80px;
 }
-
 </style>

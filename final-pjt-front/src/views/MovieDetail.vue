@@ -1,9 +1,6 @@
 <template>
   <div>
-    <main id="">
-      <div class="background" id="background"
-        :style="{ 'background-image': `url(https://image.tmdb.org/t/p/original/${this.backdrops})` }">
-      </div>
+    <main id="main">
       <header id="header" :class="{ 'header-scroll': isHeaderScrolled }">
         <div class="d-flex flex-column">
           <nav id="navbar" class="nav-menu navbar">
@@ -19,7 +16,10 @@
         </div>
       </header>
       <div class="information" v-if="this.movie">
-        <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="background" id="background"
+        :style="{ 'background-image': `url(https://image.tmdb.org/t/p/original/${this.backdrops})` }" >
+        </div>
+        <section id="hero" class="d-flex flex-column justify-content-center align-items-center" >
           <div class="hero-container" data-aos="fade-in">
             <h1>{{ this.movie.title }}</h1>
           </div>
@@ -92,8 +92,8 @@
             <div class="section-title">
               <h4>코멘트</h4>
             </div>
-            <div class="row commentbox">
-              <MovieDetailReview :movie_id="movie_id" />
+            <div class="commentbox">
+              <MovieDetailReview class="container" :movie_id="movie_id" />
             </div>
           </div>
         </section>
@@ -321,15 +321,15 @@ export default {
 </script>
 
 <style scoped>
+
 .commentbox {
+  /* box-sizing: content-box; */
   border: solid 1px rgb(187, 187, 187);
 }
-
 
 .review {
   margin-top: 50px;
 }
-
 
 .no_dot {
   list-style-type: none;
@@ -355,34 +355,17 @@ img {
   width: 200px;
 }
 
-.background {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  display: block;
-  width: 100%;
-  height: 93.5vh;
-  position: absolute;
-  background: top right no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: -1;
-  opacity: 0.7;
-}
 
-#hahahaha {
-  z-index: 2;
-  opacity: 1;
-}
 
 #main {
-  margin-left: 300px;
+  position: relative;
+  /* margin-left: 200px; */
   background-attachment: scroll;
 }
 
 @media (max-width: 1199px) {
   #header {
-    left: -300px;
+    left: -200px;
   }
 
   #main {
@@ -392,7 +375,7 @@ img {
 
 #header {
   position: fixed;
-  top: 56px;
+  top: 59px;
   left: 0;
   bottom: 0;
   width: 200px;
@@ -406,11 +389,6 @@ img {
   opacity: 1;
 }
 
-
-
-/* .header-scroll {
-  top: 0px;
-} */
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -466,25 +444,36 @@ img {
   color: #149ddd;
 }
 
+.section-title h2{
+  margin-top: 30px;
+  margin-bottom : 20px;
+}
 .information {
-  margin-left: 320px;
-  background-color: rgba(0, 0, 0, 0, 1);
+  position: relative;
+  margin-left: 200px;
 }
-
-/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
 #hero {
   width: 100%;
   height: 100vh;
 
 }
 
-#hero:before {
+.background{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: top right no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 1;
+  opacity: 0.8;
+}
+.background:before {
   content: "";
-  background: rgba(5, 13, 24, 0.3);
+  background: rgba(5, 13, 24, 0.6);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -497,13 +486,14 @@ img {
   position: relative;
   z-index: 2;
   min-width: 300px;
+
 }
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 64px;
+  font-size: 80px;
   font-weight: 700;
   line-height: 56px;
-  color: #fff;
+  color: #ffffff;
 }
 </style>

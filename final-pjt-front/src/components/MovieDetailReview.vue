@@ -4,7 +4,7 @@
       <MovieDetailReviewItem v-for="review in reviews" :key="review.id" :review="review" @review-deleted="getReviews"
         @review-updated="getReviews" />
     </div>
-      <div class="">
+      <div class="row">
         <label for="exampleFormControlTextarea1" class="form-label"></label>
         <input v-model="content" class="updateinput" id="exampleFormControlTextarea1" rows="2">
         </div>
@@ -80,12 +80,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .updateinput {
-  width: 100%;
+  width: 97%;
   height: 89px;
   border: solid 1px rgb(187, 187, 187);
-  margin-right: auto;
+  margin-top:10px; 
+  margin-left:20px;
+  margin-right: 20px;
 }
 
 .submit {

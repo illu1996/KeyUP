@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h6>글 수 <span><b>{{ articlelen }}</b></span></h6>
+    <h6>게시글 수 <span><b>{{ articlelen }}</b></span></h6>
     <div class="articlelist">
       <div class="container text-center ">
         <div class="row align-items-center">
@@ -91,10 +91,10 @@ export default {
 }
 
 h6 {
-  margin-top: 5%;
-  margin-left: 16.5%;
-  padding-bottom: 0px;
-  margin-bottom: 10px;
+  margin-top: 4%;
+  margin-left: 9.5%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 button {
