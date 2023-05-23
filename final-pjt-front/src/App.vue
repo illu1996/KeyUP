@@ -4,10 +4,10 @@
       <div v-if="displayLogin">
         <nav id="navbar" class="navbar">
           <ul>
-            <router-link class="nav-link active" to="/">Main</router-link>
-            <router-link class="nav-link" to="/movies/all">Movie</router-link>
-            <router-link class="nav-link" to="/recommend">Recommend</router-link>
-            <router-link class="nav-link" to="/community">community</router-link>
+            <router-link class="nav-link active" to="/">홈</router-link>
+            <router-link class="nav-link" to="/movies/all">영화</router-link>
+            <router-link class="nav-link" to="/recommend">나만을 위한 추천</router-link>
+            <router-link class="nav-link" to="/community">커뮤니티</router-link>
           </ul>
           <ul>
             <div class='d-flex' v-if="!displayLogin">
@@ -15,11 +15,14 @@
               <router-link class="nav-link" to="/login">Login</router-link>
             </div>
             <div class='d-flex' v-else>
-              <div id="searchbox">
+              <div @keyup.enter="searchMovie" id="searchbox">
                 <input type="text" v-model="search" id="searchInput">
                 <i @click="searchMovie" class="bi bi-search"></i>
               </div>
-              <router-link class="nav-link" :to="`/profile/detail/${username}`"><img :src=imgAdd></router-link>
+              <router-link class="nav-link" :to="`/profile/detail/${username}`">
+                <img v-if="!imgAdd" src="@/assets/user.png" alt="">
+                <img v-else :src=imgAdd>
+              </router-link>
               <span id="logout" @click="logout">로그아웃</span>
             </div>
           </ul>
@@ -84,8 +87,6 @@ export default {
         .then((res) => {
           if (res.data.profileimg) {
             this.imgAdd = `http://127.0.0.1:8000` + res.data.profileimg
-          } else {
-            this.imgAdd = '@/assets/user.png'
           }
         })
     },
