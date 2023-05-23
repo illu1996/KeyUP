@@ -3,17 +3,10 @@
     <div id="banner">
       <img src="@/assets/banner.png" alt="">
     </div>
+
     <div>
-      <p>자유롭게 의견을 나누어 보세요</p>
-    </div>
-    <div>
-      <router-link to="/community/list">전체글 보기</router-link>
-      <br>
-      <router-link to="/community/create">작성하기</router-link>
-      <hr>
       <router-view></router-view>
     </div>
-
   </div>
 </template>
 
@@ -51,5 +44,10 @@ export default {
 #banner img {
   width: 100%;
   height: auto;
+}
+
+p {
+  margin-left: 10%;
+
 }
 </style>
