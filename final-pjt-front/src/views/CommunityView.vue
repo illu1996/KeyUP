@@ -1,10 +1,18 @@
 <template>
   <div>
-    <router-link to="/community/list">글목록</router-link>
-    <br>
-    <router-link to="/community/create">[CREATE]</router-link>
-    <hr>
-    <router-view></router-view>
+    <div id="banner">
+      <img src="@/assets/banner.png" alt="">
+    </div>
+    <div>
+      <p>자유롭게 의견을 나누어 보세요</p>
+    </div>
+    <div>
+      <router-link to="/community/list">글목록</router-link>
+      <br>
+      <router-link to="/community/create">[CREATE]</router-link>
+      <hr>
+      <router-view></router-view>
+    </div>
 
   </div>
 </template>
@@ -35,4 +43,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+#banner {
+  width: 100%;
+}
+
+#banner img {
+  width: 100%;
+  height: auto;
+}
+</style>
