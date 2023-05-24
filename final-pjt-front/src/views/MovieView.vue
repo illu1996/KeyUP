@@ -1,11 +1,11 @@
 <template>
   <div class="text-center">
     <nav>
-      <router-link :class="{item:isActive}" to="/movies/all">전체 영화 </router-link> <span>|</span>
+      <router-link to="/movies/all">전체 영화 </router-link> <span>|</span>
 
-      <router-link @click="removeclass" to="/movies/genre">장르별</router-link> <span>|</span>
-      <router-link @click="removeclass" to="/movies/latest">신작</router-link> <span>|</span>
-      <router-link @click="removeclass" to="/movies/popular">인기</router-link>
+      <router-link to="/movies/genre">장르별</router-link> <span>|</span>
+      <router-link to="/movies/latest">신작</router-link> <span>|</span>
+      <router-link to="/movies/popular">인기</router-link>
     </nav>
     <router-view></router-view>
   </div>

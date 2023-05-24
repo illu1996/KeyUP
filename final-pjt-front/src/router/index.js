@@ -31,15 +31,22 @@ const routes = [
   {
     path: '/movies',
     name: 'Movie',
+    redirect : {
+      path:'movies/all'
+    },
     component: MovieView,
     children : [
       {path:'all',component:MovieList},
       {path:'genre',component:GenreList},
       {path:'latest',component:LatestList},
       {path:'popular',component:PopularList},
-
     ]
   },
+  // {
+  //   path: '/movies/all',
+  //   name: 'rrrrr',
+  //   component: MovieList
+  // },
   {
     path: '/recommend',
     name: 'Recommend',

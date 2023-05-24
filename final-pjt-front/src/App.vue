@@ -5,8 +5,8 @@
         <nav id="navbar" class="navbar">
           <ul>
             <img id="logo" src="@/assets/logo.png" alt="">
-            <router-link class="nav-link active" to="/">홈</router-link>
-            <router-link class="nav-link" to="/movies/all">영화</router-link>
+            <router-link class="nav-link" to="/">홈</router-link>
+            <router-link class="nav-link" to="/movies">영화</router-link>
             <router-link class="nav-link" to="/recommend">나만을 위한 추천</router-link>
             <router-link class="nav-link" to="/community/list">커뮤니티</router-link>
           </ul>
