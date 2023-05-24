@@ -98,33 +98,32 @@ def review_create(request, movie_pk):
 @api_view(['POST'])
 def like(request, movie_pk):
     if request.user.is_authenticated:
-        print(request.data)
+
         movies = Movie.objects.all()
         # movieIdList = [movie['movie_id'] for movie in movies ]
         # print(movieIdList)
         for movie in movies:
             if movie.movie_id == movie_pk:
-                print(1)
+
                 break
             else:
                 continue
         else:
             serializer = MovieDetailSerializer(data=request.data)
-            print(2222)
+
             if serializer.is_valid(raise_exception=True):
-                print(44444)
+
                 serializer.save()
-            else:
-                print(3333333)
+
         movie = get_object_or_404(Movie, movie_id=movie_pk)
-        print(333)
+
         user = request.user
         if movie.like_users.filter(pk=user.pk).exists():
             movie.like_users.remove(user)
         else:
             movie.like_users.add(user)
         serializer = MovieLikeSerializer(movie, data=request.data)
-        print(5555)
+
         if serializer.is_valid(raise_exception=True):
             return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_401_UNAUTHORIZED)

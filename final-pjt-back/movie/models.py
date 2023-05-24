@@ -27,7 +27,8 @@ class Movie(models.Model):
     movie_keyword = models.ManyToManyField(Keyword, related_name='movies')
 
     def __str__(self):
-        return self.title
+        
+        return f'{self.title} ,{self.pk}, {self.movie_keyword.values()}'
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
