@@ -97,9 +97,11 @@ export default {
       .then((res) => {
         this.pimg = res.data.profileimg    
         const pimg = this.pimg
-        console.log(this.pimg)
+        const nickname = res.data.nickname
+        const introduce = res.data.introduce
+
         const payload = {
-          username, password, pimg
+          username, password, pimg, nickname, introduce
         }
         this.$store.dispatch('login', payload)
       })

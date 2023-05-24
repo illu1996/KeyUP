@@ -75,7 +75,7 @@ export default {
       this.isHeaderScrolled = scrollTop > 0
     },
     openModal() {
-      this.isModalOpen = true;
+      this.isModalOpen = !this.isModalOpen;
     },
     closeModal() {
       this.isModalOpen = false;

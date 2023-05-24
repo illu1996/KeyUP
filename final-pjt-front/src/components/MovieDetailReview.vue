@@ -55,6 +55,10 @@ export default {
 
     addReview() {
       const content = this.content
+      if (!content) {
+        alert('내용을 입력해주세요')
+        return
+      }
       axios({
         method: 'post',
         url: `${MY_URL}/movies/${this.movie_id}/reviews/`,
