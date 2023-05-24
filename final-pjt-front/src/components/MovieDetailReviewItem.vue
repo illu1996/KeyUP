@@ -1,8 +1,8 @@
 <template>
   <div class="">
     <div class="row">
-      <div class="col d-flex row-cols-auto">
-        <img class="col me-2 imginfo" v-if="imgInfo" :src="imgInfo" alt="">
+      <div class="col d-flex row-cols-auto m-0">
+        <img class="col me-2 imginfo " v-if="imgInfo" :src="imgInfo" alt="">
         <img class="col imginfo" v-else src="@/assets/user.png" alt="">
         <p @click="goUser" class="col name align-middle comuser">{{ review.username }}</p>
       </div>
@@ -166,7 +166,7 @@ export default {
   font-size: 12px !important;
   /* margin-top: 20px; */
   margin-right: 0%;
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
   background-color: rgb(138, 138, 138);
   color: white;
   display: inline-block;
@@ -213,7 +213,7 @@ img {
 }
 
 .name {
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 hr {

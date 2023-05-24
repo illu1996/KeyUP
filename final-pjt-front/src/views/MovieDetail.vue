@@ -260,6 +260,7 @@ export default {
         }
       })
         .then((res) => {
+          console.log(res.data)
           {
             for (let crew of res.data.crew) {
               if (crew.department === "Directing") {
