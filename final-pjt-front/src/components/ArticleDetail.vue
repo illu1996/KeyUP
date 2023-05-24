@@ -45,7 +45,7 @@
                 @comment-deleted="getArticleDetail" />
             </div>
             <form @submit.prevent="createComment">
-              <input id="commentbox" type="text" v-model="content">
+              <textarea id="commentbox" type="text" v-model="content"></textarea>
               <div class="d-flex justify-content-between">
                 <button id="submit1" @click="goList" @click.prevent="preventCreateComment">목록보기</button>
                 <button id="submit">댓글쓰기</button>
@@ -258,6 +258,8 @@ export default {
   width: 100%;
   height: 89px;
   border: solid 1px rgb(187, 187, 187);
+  outline: none;
+  text-align: left;
 }
 
 

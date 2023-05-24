@@ -6,7 +6,7 @@
     </div>
       <div class="row">
         <label for="exampleFormControlTextarea1" class="form-label"></label>
-        <input v-model="content" class="updateinput" id="exampleFormControlTextarea1" rows="2">
+        <textarea v-model="content" class="updateinput" id="exampleFormControlTextarea1" rows="2"></textarea>
         </div>
         <div class="d-flex justify-content-end align-items-center">
         <button @click="addReview" type="button" class="submit">작성하기</button>
@@ -92,6 +92,7 @@ export default {
   margin-top:10px; 
   margin-left:20px;
   margin-right: 20px;
+  outline: none;
 }
 
 .submit {

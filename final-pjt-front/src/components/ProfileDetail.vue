@@ -14,6 +14,7 @@
           <div class="row">
             <div class="col-lg-4" data-aos="fade-right">
               <img v-if="imgInfo" :src=imgInfo class="img-fluid" alt="">
+              <img v-else class="img-fluid" src="@/assets/default.png" alt="">
             </div>
             <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
               <div class="followbox d-flex justify-content-between">
@@ -27,12 +28,12 @@
                 </div>
                 <div class="follownum d-flex text-center">
                   <div>
-                    <p class="follower">팔로워</p>
-                    <p>{{ follower }}</p>
+                    <p>팔로워</p>
+                    <p class="follower">{{ follower }}</p>
                   </div>
                   <div>
-                    <p class="following">팔로잉</p>
-                    <p>{{ following }}</p>
+                    <p>팔로잉</p>
+                    <p class="following">{{ following }}</p>
                   </div>
                 </div>
               </div>
@@ -90,13 +91,17 @@ export default {
 
   },
   computed: {
+    // imgInfo() {
+    //   return 'http://127.0.0.1:8000' + this.$store.state.profileimg
+    // },
     heroBackground() {
       return {
-        'background': `url(${this.imgInfo}) top center`,
-        'background-size': 'cover',
-        'background-repeat': 'no-repeat'
+        'background': `url(${this.imgInfo}) top center no-repeat`,
+        'background-size': 'contain',
+        // 'background-repeat': '',
       };
     },
+      
   },
   watch: {
     $route(to) {
@@ -111,7 +116,17 @@ export default {
           this.getMovies();
         }
       }
-    }
+    },
+    'this.$store.state.profileimg': {
+      immediate: true,
+      handler() {
+        if (this.userInfo && !this.userInfo.profileimg) {
+          this.$nextTick(() => {
+            this.$forceUpdate();
+          });
+        }
+      }
+    },
   },
   methods: {
     changeMovie(movie) {
@@ -139,9 +154,6 @@ export default {
               return;
             }
             this.movielist.push(res.data)
-            if (this.userInfo.profileimg) {
-              this.imgInfo = `http://127.0.0.1:8000` + this.userInfo.profileimg
-            }
           })
       }
     },
@@ -154,6 +166,9 @@ export default {
       })
         .then((res) => {
           this.userInfo = res.data
+          if (this.userInfo.profileimg) {
+              this.imgInfo = `http://127.0.0.1:8000` + this.userInfo.profileimg
+            }
           this.getMovies()
           this.creatfollow()
         })

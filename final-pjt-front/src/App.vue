@@ -4,7 +4,7 @@
       <div v-if="displayLogin">
         <nav id="navbar" class="navbar">
           <ul>
-            <img id="logo" src="@/assets/logo.png" alt="">
+            <router-link class="nav-lin" to="/"><img id="logo" src="@/assets/logo.png" alt=""></router-link>
             <router-link class="nav-link" to="/">홈</router-link>
             <router-link class="nav-link" to="/movies">영화</router-link>
             <router-link class="nav-link" to="/recommend">나만을 위한 추천</router-link>
@@ -126,7 +126,11 @@ export default {
 
 #searchInput {
   border: none;
-  border-bottom: solid 3px rgb(158, 158, 158);
+  border-bottom: solid 3px rgb(196, 196, 196);
+}
+
+#searchInput:focus {
+  outline: none;
 }
 
 #searchbox {

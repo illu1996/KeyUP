@@ -15,7 +15,7 @@
 
           <nav id="navbar" class="nav-menu navbar">
             <ul>
-              <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>♥</span></a></li>
+              <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>♡</span></a></li>
               <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>AboutMOVIES</span></a></li>
               <div v-if="this.$route.params.username === this.$store.state.username">
                 <li ><a href="#profile" @click="openModal" class="nav-link scrollto"><i class="bx bx-user"></i>
@@ -49,6 +49,14 @@ export default {
       isModalOpen: false,
     }
   },
+  watch: {
+    '$store.state.profileimg': {
+      immediate: true,
+      handler() {
+        this.getUserProfile();
+      }
+    }
+  },
   methods: {
     getUserProfile() {
       axios({
@@ -61,7 +69,7 @@ export default {
         .then((res) => {
           this.user = res.data
           if (this.user.profileimg) {
-            this.imgInfo = `http://127.0.0.1:8000` + this.user.profileimg
+            this.imgInfo = `http://127.0.0.1:8000` + this.$store.state.profileimg
           }
           this.changeProfile()
         })
@@ -95,7 +103,7 @@ export default {
   opacity: 0.9;
   border-radius: 10px;
   padding: 10px;
-  width: 270px
+  width: 220px
 }
 
 
@@ -123,7 +131,7 @@ export default {
   top: 57.5px;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: 250px;
   transition: all ease-in-out 0.5s;
   z-index: 9997;
   transition: all 0.5s;
@@ -153,7 +161,7 @@ export default {
   font-weight: 600;
   -moz-text-align-last: center;
   text-align-last: center;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
 }
 
 #header .profile h1 a,
