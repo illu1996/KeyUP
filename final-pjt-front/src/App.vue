@@ -82,9 +82,23 @@ export default {
           console.log(err)
         })
     },
+
     searchMovie() {
-      this.$router.push({ path: '/search', query: { keyword: this.search } })
-      this.search = null
+      const search = this.search
+      if (!search) {
+        alert('검색어를 입력해주세요')
+        return
+      }
+      const currentKeyword = this.search;
+      const previousKeyword = this.$route.query.keyword || '';
+
+      if (currentKeyword !== previousKeyword) {
+        const newFullPath = `/search?keyword=${currentKeyword}`;
+
+        if (this.$route.fullPath !== newFullPath) {
+          this.$router.push(newFullPath).catch(() => {});
+        }
+      }
     },
   },
 }

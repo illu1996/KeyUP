@@ -14,8 +14,8 @@
         <div class="row" id="comment">
           <p class="col content">{{ comment.content }}</p>
           <div class="d-flex col-2 justify-content-end align-items-center">
-            <p class="btnon" v-if="compareUser" @click="updateComment" v-show="!compared">수정</p>
-            <p v-if="compareUser">&nbsp;|&nbsp;</p>
+            <p class="btnon" v-if="compareUser" @click="updateComment" v-show="!compared">수정|</p>
+
             <p class="btnon" v-if="compareUser" @click="deleteComment" v-show="!compared">삭제</p>
           </div>
         </div>
@@ -87,6 +87,11 @@ export default {
         })
     },
     updateReview() {
+      const editContent = this.editContent
+      if (!editContent){
+        alert('내용을 입력해주세요')
+        return
+      }
       axios({
         method: 'PUT',
         url: `${API_URL}/articles/comments/${this.comment.id}/`,
@@ -117,7 +122,11 @@ export default {
         }
       })
         .then((res) => {
-          this.imgInfo = `http://127.0.0.1:8000` + res.data.profileimg
+          if (res.data.profileimg) {
+        this.imgInfo = `http://127.0.0.1:8000` + res.data.profileimg            
+      } else {
+        this.imgInfo = null
+      }
         })
     },
   },

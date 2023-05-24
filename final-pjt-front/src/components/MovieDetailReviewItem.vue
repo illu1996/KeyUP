@@ -8,8 +8,8 @@
       </div>
 
       <div class="col d-flex justify-content-end" id="updatedelete">
-        <span class='btnon' v-if="compareUser" @click="editing = true, compared = true" v-show="!compared">수정</span>
-        <span>|</span>
+        <span class='btnon' v-if="compareUser" @click="editing = true, compared = true" v-show="!compared">수정|</span>
+
         <span class='btnon' v-if="compareUser" @click="deleteReview" v-show="!compared">삭제</span>
       </div>
 
@@ -40,7 +40,7 @@ export default {
     return {
       compared: false,
       editing: false,
-      editContent: '',
+      editContent: null,
       imgInfo: null,
     };
   },
@@ -70,6 +70,11 @@ export default {
         })
     },
     updateReview() {
+      const editContent = this.editContent
+      if (!editContent) {
+        alert('내용을 입력해주세요')
+        return
+      }
       axios({
         method: 'PUT',
         url: `${MY_URL}/movies/reviews/${this.review.id}/`,
@@ -118,6 +123,9 @@ export default {
 </script>
 
 <style scoped>
+#updatedelete {
+  margin-right: 2%;
+}
 .imginfo {
   margin-right: 7px;
 }
@@ -134,9 +142,7 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
 }
-span {
-  margin-right: 10px;
-}
+
 
 .btnon:hover {
   text-decoration: underline;

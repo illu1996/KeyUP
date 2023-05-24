@@ -15,12 +15,12 @@
                   <div class="row row-cols-auto">
                     <div class="col imgnick">
                       <img v-if="imgInfo" class="img-info" :src=imgInfo>
-                      <img v-else src="@/assets/user.png" alt="">
+                      <img v-else src="@/assets/user.png" class="img-info" alt="">
                       <span @click="goUser">{{ article?.username }}</span>
                     </div>
                     <p class="col align-middle">{{ article?.created_at.replace('T', ' ').slice(0, 16) }}</p>
                     <p class="col align-middle comt">댓글</p>
-                    <p class="comlen">{{ commentList.length }}</p>
+                    <p class="comlen">{{ commentList?.length }}</p>
                   </div>
                 </div>
               </div>
@@ -40,7 +40,7 @@
           </div>
           <div>
             <div v-if="commentList">
-              <p>댓글({{ commentList.length }})</p>
+              <p>댓글({{ commentList?.length }})</p>
               <ArticleDetailComment v-for="comment in commentList" :key="comment.id" :comment="comment"
                 @comment-deleted="getArticleDetail" />
             </div>
@@ -50,7 +50,7 @@
                 <button id="submit1" @click="goList" @click.prevent="preventCreateComment">목록보기</button>
                 <button id="submit">댓글쓰기</button>
               </div>
-              </form>
+            </form>
           </div>
         </div>
       </div>
@@ -75,21 +75,13 @@ export default {
       commentList: null,
       content: null,
       imgInfo: null,
+      compareUser: null,
     }
   },
   created() {
     this.getArticleDetail()
   },
-  computed: {
-    compareUser() {
-      if (this.article.username === this.$store.state.username) {
-        return true
-      }
-      else {
-        return false
-      }
-    }
-  },
+
   methods: {
     goUser() {
       this.$router.push(`/profile/detail/${this.article.username}`)
@@ -106,7 +98,11 @@ export default {
         }
       })
         .then((res) => {
-          this.imgInfo = `http://127.0.0.1:8000` + res.data.profileimg
+          if (res.data.profileimg) {
+        this.imgInfo = `http://127.0.0.1:8000` + res.data.profileimg            
+      } else {
+        this.imgInfo = null
+      }
         })
     },
     deleteArticle() {
@@ -132,6 +128,12 @@ export default {
           this.article = res.data
           this.commentList = res.data.comment_set
           this.getUserProfile()
+          if (this.article.username === this.$store.state.username) {
+            this.compareUser = true
+          }
+          else {
+            this.compareUser = false
+          }
         })
         .catch((err) => {
           console.log(err)
