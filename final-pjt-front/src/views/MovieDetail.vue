@@ -81,7 +81,7 @@
               <h2>캐스트</h2>
             </div>
             <div class="row">
-              <MovieDetailCast class="col-4" v-for="cast in this.cast_list_ko" :key="cast" :cast="cast"
+              <MovieDetailCast class="col-2" v-for="(cast, index) in this.cast_list_ko" :key="index" :cast="cast" :index="index"
                 :original_language="original_language" />
             </div>
           </div>

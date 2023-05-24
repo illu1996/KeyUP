@@ -134,18 +134,18 @@ export default {
 
 .title-container {
   margin-bottom: 10px;
-  margin-left: 50px;
+  margin-left: 10%;
 }
 
 @media screen and (min-width: 768px) {
   .title-container {
-    margin-left: 100px;
+    margin-left: 10%;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .title-container {
-    margin-left: 160px;
+    margin-left: 9%;
   }
 }
 
