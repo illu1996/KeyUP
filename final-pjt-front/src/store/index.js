@@ -20,6 +20,8 @@ export default new Vuex.Store({
     userInfo : null,
     usersInfo : [],
     profileimg : null,
+    nickname : null,
+    introduce : null,
   },
   getters: {
     isLogin(state) {
@@ -52,24 +54,33 @@ export default new Vuex.Store({
       state.username = null
       state.userInfo = null
     },
+    CHANGE_INFO(state, payload) {
+      state.profileimg = payload.profileimg
+      state.nickname = payload.nickname
+      state.introduce = payload.introduce
+    }
   },
   actions: {
     login(context, payload) {
       const username = payload.username
       const password = payload.password
       const profileimg = payload.pimg
+      const nickname = payload.nickname
+      const introduce = payload.introduce
       
       axios({
         method : 'post',
         url : `${API_URL}/accounts/login/`,
         data : {
-          username, password, profileimg
+          username, password, profileimg, nickname, introduce
         }
       })
       .then((res)=>{
         console.log(res)
         this.state.username = username
         this.state.profileimg = profileimg
+        this.state.nickname = nickname
+        this.state.introduce = introduce
         context.commit('SAVE_TOKEN', res.data.key)
       })
       .catch((err)=>{
@@ -90,6 +101,7 @@ export default new Vuex.Store({
       })
       .then((res)=>{
         this.state.username = username
+        this.state.profileimg = null
         context.commit('SAVE_TOKEN', res.data.key)
       })
       .catch((err)=>{
@@ -101,6 +113,9 @@ export default new Vuex.Store({
     },
     changeProfile(context, payload) {
       context.commit('CHANGE_PROFILE', payload)
+    },
+    changeInfo(context, payload) {
+      context.commit('CHANGE_INFO', payload)
     }
   },
   modules: {

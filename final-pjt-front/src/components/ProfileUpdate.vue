@@ -44,8 +44,8 @@ export default {
   name :'ProfileUpdate',
   data() {
     return {
-      nickname : null,
-      introduce : null,
+      nickname : this.$store.state.nickname,
+      introduce : this.$store.state.introduce,
       selectedFile : null,
       selectedFileName: '',
     }
@@ -73,6 +73,13 @@ export default {
         this.changeProfile(res.data)
         this.$router.push(`/profile/detail/${this.$store.state.username}`).catch(()=>{})
         this.disappear()
+        const payload = {
+          nickname : res.data.nickname,
+          introduce : res.data.introduce,
+          profileimg : res.data.profileimg
+
+        }
+        this.$store.dispatch('changeInfo', payload)
       })
     },
     changeProfile(info) {
