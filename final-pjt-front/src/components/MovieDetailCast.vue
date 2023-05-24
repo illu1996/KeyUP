@@ -1,12 +1,14 @@
 <template>
   <div>
     <div v-if="index===0">
-      <img :src=imgsrc>
+      <img v-if="imgsrc" :src=imgsrc>
+      <img v-else class="imgtmb" src="@/assets/default_2.jpg">
         <p class="role">감독</p>
         <p>{{ peopleName }}</p>
     </div>
     <div div v-else>
-      <img :src=imgsrc>
+      <img v-if="imgsrc" :src=imgsrc>
+      <img v-else class="imgtmb" src="@/assets/default_2.jpg">
         <p class="role">배우</p>
         <p>{{ peopleName }}</p>
     </div>
@@ -37,7 +39,9 @@ export default {
   },
   methods: {
     getImage() {
-      this.imgsrc = `https://image.tmdb.org/t/p/original/${this.people.profile_path}`
+      if (this.people.profile_path) {
+        this.imgsrc = `https://image.tmdb.org/t/p/original/${this.people.profile_path}`        
+      }
     },
     getPeopleInfo() {
       axios({
@@ -74,6 +78,12 @@ export default {
 </script>
 
 <style scoped>
+.imgtmb {
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+}
+
 .role {
   color: gray;
   margin-bottom: 0px;
