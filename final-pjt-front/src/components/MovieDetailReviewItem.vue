@@ -4,7 +4,7 @@
       <div class="col d-flex row-cols-auto">
         <img class="col me-2" v-if="imgInfo" :src="imgInfo" alt="">
         <img class="col" v-else src="@/assets/user.png" alt="">
-        <p @click="goUser" class="col name align-middle">{{ review.username }}</p>
+        <p @click="goUser" class="col name align-middle comuser">{{ review.username }}</p>
       </div>
 
       <div class="col d-flex justify-content-end" id="updatedelete">
@@ -116,6 +116,15 @@ export default {
 </script>
 
 <style scoped>
+.comuser:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.comuser {
+  font-weight: 700;
+}
+
 #updatedelete span {
   margin-top: auto;
   margin-bottom: auto;
@@ -172,6 +181,7 @@ span {
 
 #review {
   margin-left: 4%;
+  margin-top: 5px;
 }
 
 img {

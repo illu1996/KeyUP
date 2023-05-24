@@ -1,19 +1,14 @@
 <template>
   <div>
-    <div v-if="director" class="card m-1">
-      <img :src=imgsrc alt="" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">감독</h5>
-        <p class="card-text">{{ peopleName }}</p>
-      </div>
+    <div v-if="index===0">
+      <img :src=imgsrc>
+        <p class="role">감독</p>
+        <p>{{ peopleName }}</p>
     </div>
-
-    <div div v-else class="card m-1">
-      <img :src=imgsrc alt="" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">배우</h5>
-        <p class="card-text">{{ peopleName }}</p>
-      </div>
+    <div div v-else>
+      <img :src=imgsrc>
+        <p class="role">배우</p>
+        <p>{{ peopleName }}</p>
     </div>
   </div>
 </template>
@@ -35,6 +30,7 @@ export default {
   props: {
     cast: Number,
     original_language: String,
+    index : Number,
   },
   computed: {
 
@@ -78,6 +74,12 @@ export default {
 </script>
 
 <style scoped>
+.role {
+  color: gray;
+  margin-bottom: 0px;
+}
+
+
 img {
   width: 100%;
 }

@@ -2,7 +2,7 @@
   <div>
     <div class="fullbox">
       <div id="banner">
-        <img src="@/assets/banner.png">
+        <img src="@/assets/banner2.png">
       </div>
       <div class="articledetail">
         <div class="articlein">
