@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container articlelist">
+    <div class="articlelist">
       <div class="art-parent">
         <h6 class="art-ani">게시글 수 <span><b>{{ articlelen }}</b></span></h6>
       </div>
@@ -75,23 +75,27 @@ export default {
 <style scoped>
 
 .art-ani{
-
   display: inline-block;
   padding-bottom: 4px;
   letter-spacing: 1px;
   border-bottom: 3px solid #149ddd;
-
 }
 
 @media screen and (min-width: 768px) {
-  .title-container {
-    margin-left: 10%;
+  .art-ani {
+    margin-left: 3%;
   }
 }
 
-@media screen and (min-width: 720px) {
-  .title-container {
-    margin-left: 9%;
+@media screen and (min-width: 1200px) {
+  .art-ani {
+    margin-left: 3%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .art-ani {
+    margin-left: 8%;
   }
 }
 .articlelist {
