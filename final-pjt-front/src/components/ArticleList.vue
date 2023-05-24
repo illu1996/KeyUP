@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h6>게시글 수 <span><b>{{ articlelen }}</b></span></h6>
-    <div class="articlelist">
-      <div class="container text-center ">
+    <div class="container articlelist">
+      <div class="art-parent">
+        <h6 class="art-ani">게시글 수 <span><b>{{ articlelen }}</b></span></h6>
+      </div>
+      <div class="container text-center">
         <div class="row align-items-center">
           <p class="col-1">글번호</p>
           <p class="col-8">제목</p>
@@ -17,8 +19,8 @@
         </div>
       </div>
       <div class="d-flex justify-content-end">
-      <button @click="createPage">글쓰기</button>
-    </div>
+        <button @click="createPage">글쓰기</button>
+      </div>
     </div>
   </div>
 </template>
@@ -61,7 +63,7 @@ export default {
         })
     },
     createPage() {
-    this.$router.push('/community/create');
+      this.$router.push('/community/create');
     }
   },
   created() {
@@ -71,7 +73,29 @@ export default {
 </script>
 
 <style scoped>
+
+.art-ani{
+
+  display: inline-block;
+  padding-bottom: 4px;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #149ddd;
+
+}
+
+@media screen and (min-width: 768px) {
+  .title-container {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .title-container {
+    margin-left: 9%;
+  }
+}
 .articlelist {
+  /* position: relative; */
   /* border: solid 1px rgb(221, 221, 221); */
   margin-left: 10%;
   margin-right: 10%;
@@ -92,7 +116,7 @@ export default {
 
 h6 {
   margin-top: 4%;
-  margin-left: 9.5%;
+
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
