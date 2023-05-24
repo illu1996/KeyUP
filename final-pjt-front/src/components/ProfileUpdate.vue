@@ -25,9 +25,11 @@
         >
       </div>
       <div class="file-input-container">
-        <span>{{ selectedFileName }}</span>
-        <input type="file" id="file-input" class="file-input" @change="onFileChange">
-        <label for="file-input" class="file-input-label"></label>
+
+          <span>{{ selectedFileName }}</span>
+          <input type="file" id="file-input" class="file-input" @change="onFileChange">
+          <label for="file-input" class="file-input-label"></label>
+
       </div>
       <button>수정하기</button>
     </form>

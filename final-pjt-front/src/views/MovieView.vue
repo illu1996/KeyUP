@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <nav>
-      <router-link to="/movies/all">전체 영화 </router-link> <span>|</span>
+      <router-link to="/movies/all" active-class="item">전체 영화 </router-link> <span>|</span>
 
       <router-link to="/movies/genre">장르별</router-link> <span>|</span>
       <router-link to="/movies/latest">신작</router-link> <span>|</span>
@@ -16,24 +16,10 @@
 
 export default {
   name: 'MovieView',
-  data(){
-    return {
-      isActive:false,
-
-    }
-  },
-
+  
   methods :{
-    addclass(){
-      this.isActive=true
-    },
-    removeclass(){
-      this.isActive=null
-    }
   },
-  created(){
-    this.addclass()
-  }
+
 }
 </script>
 

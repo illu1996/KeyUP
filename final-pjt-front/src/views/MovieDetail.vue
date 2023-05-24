@@ -58,11 +58,13 @@
                       <li><i class="bi bi-chevron-right"></i> <strong>줄거리 :</strong> <span>{{ this.movie.overview
                       }}</span>
                       </li>
-                      <br>
-                      <br>
-                      <div class="d-flex justify-content-center"> <input @click="likewithForm" type="button" :value=likevalue>
-                        <p>좋아요 수 : {{ like_users_cnt }}</p>
-                      </div>
+                      
+                      
+                      <div class="mt-4 d-flex justify-content-center align-items-center">
+                        <i class="m-4 bi bi-hand-thumbs-up like" @click="likewithForm" v-if="!likevalue" ></i>
+                        <i class="m-4 bi bi-hand-thumbs-up-fill like" @click="likewithForm" v-if="likevalue" ></i>
+                        <h4>추천 수 : {{ like_users_cnt }}</h4>
+                      </div> 
                     </ul>
                   </div>
                 </div>
@@ -179,10 +181,10 @@ export default {
           this.like_users_cnt = res.data.like_users_cnt
           this.like_users = res.data.like_users
           if (res.data.like_users.includes(this.$store.state.username)) {
-            this.likevalue = '좋아요 취소'
+            this.likevalue = true
           }
           else {
-            this.likevalue = '좋아요'
+            this.likevalue = false
           }
         })
         .catch((err) => {
@@ -207,10 +209,10 @@ export default {
           this.like_users_cnt = res.data.like_users_cnt
           this.like_users = res.data.like_users
           if (res.data.like_users.includes(`${this.$store.state.username}`)) {
-            this.likevalue = '좋아요 취소'
+            this.likevalue = true
           }
           else {
-            this.likevalue = '좋아요'
+            this.likevalue = false
           }
         })
         .catch((err) => {
@@ -321,7 +323,11 @@ export default {
 </script>
 
 <style scoped>
-
+.like
+{
+  font-size: 30px !important ; 
+  color: rgb(202, 49, 49) !important  ;
+}
 .commentbox {
   /* box-sizing: content-box; */
   border: solid 1px rgb(187, 187, 187);

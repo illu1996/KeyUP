@@ -18,7 +18,7 @@
               <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>♥</span></a></li>
               <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>AboutMOVIES</span></a></li>
               <div v-if="this.$route.params.username === this.$store.state.username">
-                <li ><a @click="openModal" class="nav-link scrollto"><i class="bx bx-user"></i>
+                <li ><a href="#profile" @click="openModal" class="nav-link scrollto"><i class="bx bx-user"></i>
                   <span>내 정보 수정</span></a></li>
                   <ProfileUpdate id="update" v-if="isModalOpen" @disappearComp="closeModal"/>
               </div>
