@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+SITE_ID = 1
+
 AUTH_USER_MODEL='accounts.User'
 
 REST_AUTH = {  # 회원가입시 토큰 발급

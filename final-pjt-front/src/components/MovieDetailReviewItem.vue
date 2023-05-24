@@ -16,11 +16,11 @@
       <p id="review">{{ review.content }}</p>
     </div>
 
-    <div>
-      <input class="updateinput col" type="text" v-model="editContent" v-if="editing">
+    <div class="inputbox">
+      <textarea class="updateinput col" type="text" v-model="editContent" v-if="editing"></textarea>
       <div class="d-flex justify-content-end align-items-center">
-        <button class='submit' v-if="editing" @click="changeEditing">취소</button>
         <button class='submit' v-if="editing" @click="updateReview">완료</button>
+        <button class='submit' v-if="editing" @click="changeEditing">취소</button>
       </div>
     </div>
     <hr>
@@ -123,6 +123,11 @@ export default {
 </script>
 
 <style scoped>
+
+.inputbox {
+  margin-left: 3.5%;
+}
+
 #updatedelete {
   margin-right: 2%;
 }
@@ -154,6 +159,7 @@ export default {
   height: 89px;
   border: solid 1px rgb(187, 187, 187);
   /* margin-right: auto; */
+  outline: none;
 }
 
 .submit {
@@ -180,6 +186,7 @@ export default {
   transition: all 0.3s;
   opacity: 0.7;
   margin-left: 5px;
+  margin-top: 3px;
 }
 
 .updateinput {

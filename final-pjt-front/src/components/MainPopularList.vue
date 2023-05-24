@@ -172,6 +172,7 @@ export default {
 .more-link {
   font-size: 18px;
   color: rgb(75, 75, 75);
+  margin-bottom: 3px;
 }
 
 #carouselExample1 {

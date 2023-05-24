@@ -21,7 +21,7 @@
         </div>
       </div>
       <div v-if="updateform">
-        <input type="text" v-model="editContent" class="updateinput">
+        <textarea type="text" v-model="editContent" class="updateinput"></textarea>
         <div class="d-flex justify-content-end">
           <button class="submit" @click="updateReview">수정하기</button>
           <button class="submit" @click="changeEditing">취소</button>
@@ -176,6 +176,7 @@ img {
   height: 89px;
   border: solid 1px rgb(187, 187, 187);
   margin-right: auto;
+  outline: none;
 }
 
 .submit {

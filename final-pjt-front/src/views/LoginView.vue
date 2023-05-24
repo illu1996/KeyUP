@@ -176,7 +176,9 @@ video.bg-video {
 .login-html {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
   position: absolute;
+  margin-top: 10%;
   padding: 90px 70px 50px 70px;
   background: rgb(228, 228, 228);
 }
