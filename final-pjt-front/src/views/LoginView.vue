@@ -285,7 +285,7 @@ video.bg-video {
   content: '';
   width: 10px;
   height: 2px;
-  background: #fff;
+  background: #ffffff;
   position: absolute;
   transition: all .2s ease-in-out 0s;
 }
@@ -334,7 +334,7 @@ input::placeholder{
 .hr {
   height: 2px;
   margin: 60px 0 50px 0;
-  background: rgba(255, 255, 255, .2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .foot-lnk {

@@ -96,9 +96,9 @@ export default {
     // },
     heroBackground() {
       return {
-        'background': `url(${this.imgInfo}) top center no-repeat`,
+        'background': `url(${this.imgInfo}) top center`,
         'background-size': 'contain',
-        // 'background-repeat': '',
+        'background-repeat': 'no-repeat',
       };
     },
       
@@ -357,7 +357,7 @@ export default {
   color: #fff;
   /* margin-bottom: 50px; */
   font-size: 26px;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
 }
 
 #hero p span {
