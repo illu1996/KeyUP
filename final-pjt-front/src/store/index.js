@@ -19,6 +19,7 @@ export default new Vuex.Store({
     username : null,
     userInfo : null,
     usersInfo : [],
+    profileimg : null,
   },
   getters: {
     isLogin(state) {
@@ -56,17 +57,19 @@ export default new Vuex.Store({
     login(context, payload) {
       const username = payload.username
       const password = payload.password
+      const profileimg = payload.pimg
       
       axios({
         method : 'post',
         url : `${API_URL}/accounts/login/`,
         data : {
-          username, password
+          username, password, profileimg
         }
       })
       .then((res)=>{
         console.log(res)
         this.state.username = username
+        this.state.profileimg = profileimg
         context.commit('SAVE_TOKEN', res.data.key)
       })
       .catch((err)=>{

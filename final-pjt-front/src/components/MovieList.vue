@@ -16,11 +16,14 @@
       <div class="col-3">
         <MovieListItem class="col" v-for="movie in randomMovieList.slice(6, 11)" :key="movie.id" :movie="movie" />
       </div>
-
       <div class="col-4">
         <MovieListItem class="col" v-for="movie in randomMovieList.slice(11, 15)" :key="movie.id" :movie="movie" />
       </div>
-
+    </div>
+    <div v-if="isLoading">
+      <div class="spinner-border text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
   </div>
 </template>
@@ -42,12 +45,13 @@ export default {
     return {
       movieList: [],
       randomMovieList: [],
+      isLoading: true,
     }
   },
   methods: {
     randomList() {
       this.randomMovieList = _.sampleSize(this.movieList, 15)
-
+      this.isLoading = false
     },
     getMovieList() {
       axios({
@@ -57,7 +61,6 @@ export default {
         .then((res) => {
           this.movieList = res.data
           this.randomList()
-          console.log(this.randomMovieList)
         })
         .catch((err) => {
           console.log(err)
@@ -71,4 +74,59 @@ export default {
 }
 </script>
 
-<style scoped></style> 
+<style scoped>
+.spinner-border {
+  margin: 50px;
+}
+
+.loader1 {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  border-radius: 80px;
+  border: 3px solid rgba(228, 11, 11, 0.7);
+
+  top: 28%;
+  top: -webkit-calc(50% - 43px);
+  top: calc(50% - 43px);
+  left: 35%;
+  left: -webkit-calc(50% - 43px);
+  left: calc(50% - 43px);
+
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: loader1 3s linear infinite;
+  animation: loader1 3s linear infinite;
+}
+
+.loader1:after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 10px;
+  background-color: rgba(228, 11, 11, 0.7);
+}
+
+@-webkit-keyframes loader1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes loader1 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style> 

@@ -80,7 +80,7 @@
           <br>
           <div class="container">
             <div class="section-title">
-              <h2>캐스트</h2>
+              <h2>출연</h2>
             </div>
             <div class="row">
               <MovieDetailCast class="col-2" v-for="(cast, index) in this.cast_list_ko" :key="index" :cast="cast" :index="index"

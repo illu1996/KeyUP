@@ -2,8 +2,8 @@
   <div class="">
     <div class="row">
       <div class="col d-flex row-cols-auto">
-        <img class="col me-2" v-if="imgInfo" :src="imgInfo" alt="">
-        <img class="col" v-else src="@/assets/user.png" alt="">
+        <img class="col me-2 imginfo" v-if="imgInfo" :src="imgInfo" alt="">
+        <img class="col imginfo" v-else src="@/assets/user.png" alt="">
         <p @click="goUser" class="col name align-middle comuser">{{ review.username }}</p>
       </div>
 
@@ -104,7 +104,9 @@ export default {
         }
       })
         .then((res) => {
-          this.imgInfo = `http://127.0.0.1:8000` + res.data.profileimg
+          if (res.data.profileimg) {
+            this.imgInfo = `http://127.0.0.1:8000` + res.data.profileimg           
+          }
         })
     },
   },
@@ -116,6 +118,9 @@ export default {
 </script>
 
 <style scoped>
+.imginfo {
+  margin-right: 7px;
+}
 .comuser:hover {
   text-decoration: underline;
   cursor: pointer;

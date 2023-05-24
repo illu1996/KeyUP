@@ -21,8 +21,8 @@
                 <i @click="searchMovie" class="bi bi-search"></i>
               </div>
               <router-link :to="`/profile/detail/${username}`">
-                <img class="profileimg" v-if="!imgAdd" src="@/assets/user.png" alt="">
-                <img class="profileimg" v-else :src=imgAdd>
+                <img class="profileimg" v-if="!profileimg" src="@/assets/user.png" alt="">
+                <img class="profileimg" v-else :src=profileimg>
               </router-link >
               <span id="logout" @click="logout">로그아웃</span>
             </div>
@@ -50,12 +50,18 @@ export default {
     },
     username() {
       return this.$store.state.username
+    },
+    profileimg() {
+      if (this.$store.state.profileimg) {
+        return `http://127.0.0.1:8000` + this.$store.state.profileimg    
+      } else {
+        return null
+      }
     }
   },
   data() {
     return {
       search: null,
-      imgAdd: null,
     }
   },
   methods: {
@@ -80,21 +86,7 @@ export default {
       this.$router.push({ path: '/search', query: { keyword: this.search } })
       this.search = null
     },
-    infoOfuser() {
-      axios({
-        method: 'get',
-        url: `http://127.0.0.1:8000/accounts/about/${this.$store.state.username}/profile/`
-      })
-        .then((res) => {
-          if (res.data.profileimg) {
-            this.imgAdd = `http://127.0.0.1:8000` + res.data.profileimg
-          }
-        })
-    },
   },
-  created() {
-    this.infoOfuser()
-  }
 }
 </script>
 

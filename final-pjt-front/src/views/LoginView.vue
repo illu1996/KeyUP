@@ -70,6 +70,8 @@
 </template>
 
 <script scoped>
+import axios from 'axios';
+
 export default {
   name: 'LoginView',
   data() {
@@ -79,6 +81,7 @@ export default {
       upusername : null,
       uppassword1 : null,
       uppassword2 : null,
+      pimg : null,
     }
   },
 
@@ -86,10 +89,20 @@ export default {
     login() {
       const username = this.username
       const password = this.password
-      const payload = {
-        username, password
-      }
-      this.$store.dispatch('login', payload)
+
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/accounts/about/${username}/profile/`
+      })
+      .then((res) => {
+        this.pimg = res.data.profileimg    
+        const pimg = this.pimg
+        console.log(this.pimg)
+        const payload = {
+          username, password, pimg
+        }
+        this.$store.dispatch('login', payload)
+      })
     },
     signup() {
         const username = this.upusername
