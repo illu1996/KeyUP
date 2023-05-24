@@ -71,13 +71,12 @@ export default {
       })
       .then((res)=>{
         this.changeProfile(res.data)
-        this.$router.push(`/profile/detail/${this.$store.state.username}`).catch(()=>{})
         this.disappear()
+        this.$router.push(`/profile/detail/${this.$store.state.username}`).catch(()=>{})
         const payload = {
           nickname : res.data.nickname,
           introduce : res.data.introduce,
           profileimg : res.data.profileimg
-
         }
         this.$store.dispatch('changeInfo', payload)
       })
