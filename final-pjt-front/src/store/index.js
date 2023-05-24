@@ -53,12 +53,15 @@ export default new Vuex.Store({
       state.movie_info = null
       state.username = null
       state.userInfo = null
+      state.profileimg = null
+      state.nickname = null
+      state.introduce = null
     },
     CHANGE_INFO(state, payload) {
       state.profileimg = payload.profileimg
       state.nickname = payload.nickname
       state.introduce = payload.introduce
-    }
+    },
   },
   actions: {
     login(context, payload) {
@@ -116,7 +119,7 @@ export default new Vuex.Store({
     },
     changeInfo(context, payload) {
       context.commit('CHANGE_INFO', payload)
-    }
+    },
   },
   modules: {
   }
