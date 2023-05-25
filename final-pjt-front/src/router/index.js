@@ -95,11 +95,7 @@ const routes = [
     name: 'SearchView',
     component: SearchView
   },
-  {
-    path: '/search',
-    name: 'SearchView',
-    component: SearchView
-  },
+
 ]
 
 // const originalPush = VueRouter.prototype.push;

@@ -183,7 +183,6 @@ export default {
         },
       })
         .then((res) => {
-          console.log(res.data)
           this.follower = res.data.followers_count
           this.following = res.data.followings_count
           this.followers = res.data.person.followers
@@ -196,7 +195,7 @@ export default {
         url: `http://127.0.0.1:8000/accounts/about/${this.userInfo.id}/follow/`,
       })
         .then((res) => {
-          console.log(res.data.person.followers)
+
           this.follower = res.data.followers_count
           this.following = res.data.followings_count
           this.followers = res.data.person.followers

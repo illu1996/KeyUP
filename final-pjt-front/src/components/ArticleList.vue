@@ -15,7 +15,7 @@
       <div>
         <div class="container">
           <hr class="hihi">
-          <ArticleListItem v-for="article in articleList" :key="article.id" :article="article" />
+          <ArticleListItem v-for="article in articleList" :key="article?.id" :article="article" />
         </div>
       </div>
       <div class="d-flex justify-content-end">

@@ -44,6 +44,7 @@ const API_URL = 'http://127.0.0.1:8000'
 
 export default {
   name: 'app',
+  
   computed: {
     displayLogin() {
       return this.$store.getters.isLogin
@@ -62,6 +63,7 @@ export default {
   data() {
     return {
       search: null,
+      // username : this.$store.state.username
     }
   },
   methods: {
@@ -195,7 +197,7 @@ nav a {
 
 nav #logout:hover,
 nav a:hover {
-  color: #35e888;
+ color: rgb(68, 92, 226);
 }
 
 .navbar {
@@ -257,7 +259,7 @@ nav a:hover {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: #18d26e;
+  background-color: rgb(68, 92, 226);;
   visibility: hidden;
   width: 0px;
   transition: all 0.3s ease-in-out 0s;

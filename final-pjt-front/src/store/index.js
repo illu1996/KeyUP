@@ -79,7 +79,7 @@ export default new Vuex.Store({
         }
       })
       .then((res)=>{
-        console.log(res)
+
         this.state.username = username
         this.state.profileimg = profileimg
         this.state.nickname = nickname
@@ -107,8 +107,16 @@ export default new Vuex.Store({
         this.state.profileimg = null
         context.commit('SAVE_TOKEN', res.data.key)
       })
-      .catch((err)=>{
-        console.log(err)
+      .catch(()=>{
+        if (username === password1) {
+          alert ('아이디는 비밀번호로 사용하실 수 없습니다.')
+        }
+        else if (password1!==password2) {
+          alert ('비밀번호와 비밀번호 확인이 다릅니다.')
+        }
+        else {
+          alert ('사용할 수 없는 아이디 입니다.')
+        }
       })
     },
     changeMovie(context, payload) {

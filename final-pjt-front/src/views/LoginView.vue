@@ -70,7 +70,8 @@
 </template>
 
 <script scoped>
-import axios from 'axios';
+import axios from 'axios'
+
 
 export default {
   name: 'LoginView',
@@ -114,7 +115,7 @@ export default {
         const payload = {
           username, password1, password2
         }
-        console.log(payload)
+
         this.$store.dispatch('signup', payload)
       }
   },

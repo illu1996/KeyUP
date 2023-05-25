@@ -2,22 +2,22 @@
   <div class="container">
     <div class="row">
       <div class="col-5">
-        <div class="row">
-          <MovieListItem v-for="movie in randomMovieList.slice(4, 5)" :key="movie.id" :movie="movie" />
+        <div class="row movie-item">
+          <MovieListItem v-for="movie in movieList.slice(4, 5)" :key="movie.id" :movie="movie" />
         </div>
-        <div class="row">
-          <MovieListItem class="col-6" v-for="movie in randomMovieList.slice(0, 4)" :key="movie.id" :movie="movie" />
+        <div class="row movie-item">
+          <MovieListItem class="col-6" v-for="movie in movieList.slice(0, 4)" :key="movie.id" :movie="movie" />
         </div>
 
-        <div class="row">
-          <MovieListItem v-for="movie in randomMovieList.slice(5, 6)" :key="movie.id" :movie="movie" />
+        <div class="row movie-item">
+          <MovieListItem v-for="movie in movieList.slice(5, 6)" :key="movie.id" :movie="movie" />
         </div>
       </div>
-      <div class="col-3">
-        <MovieListItem class="col" v-for="movie in randomMovieList.slice(6, 11)" :key="movie.id" :movie="movie" />
+      <div class="col-3 movie-item">
+        <MovieListItem class="col" v-for="movie in movieList.slice(6, 11)" :key="movie.id" :movie="movie" />
       </div>
-      <div class="col-4">
-        <MovieListItem class="col" v-for="movie in randomMovieList.slice(11, 15)" :key="movie.id" :movie="movie" />
+      <div class="col-4 movie-item">
+        <MovieListItem class="col" v-for="movie in movieList.slice(11, 15)" :key="movie.id" :movie="movie" />
       </div>
     </div>
     <div v-if="isLoading">
@@ -31,7 +31,7 @@
 <script>
 import MovieListItem from './MovieListItem.vue'
 import axios from 'axios'
-import _ from 'lodash'
+
 const MY_URL = 'http://127.0.0.1:8000'
 // const MY_KEY =''
 
@@ -44,13 +44,13 @@ export default {
   data() {
     return {
       movieList: [],
-      randomMovieList: [],
+
       isLoading: true,
     }
   },
   methods: {
     randomList() {
-      this.randomMovieList = _.sampleSize(this.movieList, 15)
+
       this.isLoading = false
     },
     getMovieList() {

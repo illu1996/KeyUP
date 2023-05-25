@@ -23,10 +23,17 @@ router.beforeEach((to, from, next) => {
 axios.interceptors.response.use(
   response => response,
   error => {
-    if (error.response.status === 404) {
-      alert('아이디 혹은 비밀번호가 잘못되었습니다.');
-      window.location.reload()
+    // 현재 URL을 확인
+    const currentURL = window.location.href;
+
+    // 현재 URL이 로그인 화면의 경로 패턴과 일치하는지 확인
+    if (currentURL.includes('/login')) {
+      if (error.response.status === 404) {
+        alert('아이디 혹은 비밀번호가 잘못되었습니다.');
+        window.location.reload();
+      }
     }
+    
     return Promise.reject(error);
   }
 );

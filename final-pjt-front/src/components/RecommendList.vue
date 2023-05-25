@@ -22,7 +22,7 @@
               <span><strong>추천 키워드 :</strong></span>
               <button class="btn col border" v-for="randomkeyword in randomKeywordList" :key="randomkeyword.id"
                 @click="getkeywordMovie(randomkeyword.id)">
-                <b>{{ randomkeyword.translated }}</b> </button>
+                {{ randomkeyword.translated }} </button>
             </div>
 
             <div class="text-center row mt-2">
@@ -93,7 +93,6 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data)
           this.keywordList = res.data
           this.randomKeyword()
         })
@@ -122,7 +121,7 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data)
+
           this.searchkeywordList = []
           this.keywordMovieList = res.data
           this.inputbox = null

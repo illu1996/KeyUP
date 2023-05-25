@@ -16,8 +16,10 @@ from .models import Article, Comment
 # @permission_classes([IsAuthenticated])
 def article_list(request):
     if request.method == 'GET':
-        # articles = Article.objects.all()
-        articles = get_list_or_404(Article)
+        articles = Article.objects.all()
+        # articles = get_list_or_404(Article)
+        if not len(articles) :
+            return Response(status=status.HTTP_200_OK)
         serializer = ArticleListSerializer(articles, many=True)
         return Response(serializer.data)
 

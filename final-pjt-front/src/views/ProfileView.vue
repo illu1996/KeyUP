@@ -67,10 +67,15 @@ export default {
         }
       })
         .then((res) => {
+          
           this.user = res.data
+          console.log(this.user)
           if (this.user.profileimg) {
             this.imgInfo = `http://127.0.0.1:8000` + this.$store.state.profileimg
+            console.log(890890)
           }
+          console.log(990909)
+          
           this.changeProfile()
         })
     },
@@ -90,7 +95,9 @@ export default {
     },
   },
   created() {
+    console.log(2)
     this.getUserProfile()
+    console.log(333)
   },
 
 }

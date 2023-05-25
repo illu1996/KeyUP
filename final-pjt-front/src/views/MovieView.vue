@@ -52,7 +52,7 @@ a span {
   color: rgb(68, 92, 226);
 }
 a:hover {
-  color: rgb(26, 124, 83);
+  color: rgb(68, 92, 226);
 }
 
 a:focus {

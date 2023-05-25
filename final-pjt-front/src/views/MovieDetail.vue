@@ -16,7 +16,7 @@
         </div>
       </header>
       <div class="information" v-if="this.movie">
-        <div class="background" id="background"
+        <div v-if="backdrops" class="background" id="background"
         :style="{ 'background-image': `url(https://image.tmdb.org/t/p/original/${this.backdrops})` }" >
         </div>
         <section id="hero" class="d-flex flex-column justify-content-center align-items-center" >
@@ -176,7 +176,6 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data)
 
           this.like_users_cnt = res.data.like_users_cnt
           this.like_users = res.data.like_users
@@ -203,9 +202,6 @@ export default {
         // }
       })
         .then((res) => {
-          console.log(res.data)
-          console.log(this.$store.state.username)
-
           this.like_users_cnt = res.data.like_users_cnt
           this.like_users = res.data.like_users
           if (res.data.like_users.includes(`${this.$store.state.username}`)) {
@@ -232,14 +228,14 @@ export default {
         },
       })
         .then((res) => {
-          console.log(res.data)
+
           this.original_language = res.data.original_language
           this.movie_id = res.data.id
           this.movie = res.data
           this.title = res.data.title
+=
           this.getImage()
           this.getImagesPath()
-          console.log(this.movie_imgs)
           this.getLike()
           this.vote_average = Math.round(res.data.vote_average * 10) / 10
           for (let genre of res.data.genres) {
@@ -248,6 +244,7 @@ export default {
             }
           }
           this.getMovieCredit()
+
         })
     },
     getMovieCredit() {
@@ -260,7 +257,7 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data)
+
           {
             for (let crew of res.data.crew) {
               if (crew.department === "Directing") {
@@ -287,9 +284,7 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data)
           {
-            console.log(res.data.backdrops)
             for (let backdrop_path of res.data.backdrops) {
               if (backdrop_path.iso_639_1 === 'en' || backdrop_path.iso_639_1 === "ko" || backdrop_path.iso_639_1 === null)
                 this.movie_imgs.push(backdrop_path.file_path)

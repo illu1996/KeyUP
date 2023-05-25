@@ -13,6 +13,8 @@ from .models import Movie, Review, Keyword, Genre
 from .serializers import MovieDetailSerializer, ReviewSerializer,\
     MovieLikeSerializer, MovieListSerializer, KeywordListSerializer,\
     KeywordMovieSerializer, GenreSerializer
+
+from random import sample
 # Create your views here.
 
 @api_view(['GET'])
@@ -21,6 +23,7 @@ def movie_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
         movies = get_list_or_404(Movie)
+        movies = sample(movies, 15)
         serializer = MovieListSerializer(movies, many=True)
         return Response(serializer.data)
 

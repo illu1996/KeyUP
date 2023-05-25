@@ -82,7 +82,6 @@ export default {
         url: `${MY_URL}/movies/genres/`
       })
         .then((res) => {
-          console.log(res.data)
           this.genreList = res.data
 
         })
@@ -101,7 +100,6 @@ export default {
           }
         })
           .then((res) => {
-            console.log(res.data)
             this.genreMovieList = res.data.results
           })
           .catch((err) => {

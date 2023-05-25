@@ -64,8 +64,8 @@ export default {
           "Authorization": `Token ${this.$store.state.token}`,
         },
       })
-        .then((res) => {
-          console.log(res.data)
+        .then(() => {
+
           this.$emit('review-deleted')
         })
     },
@@ -85,8 +85,8 @@ export default {
           content: this.editContent,
         },
       })
-        .then((res) => {
-          console.log(res.data);
+        .then(() => {
+
           this.editing = false;
           this.compared = !this.compared
 

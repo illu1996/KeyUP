@@ -3,14 +3,14 @@
     <div class="title-container d-flex justify-content-start align-items-end">
       <div class="title-line"></div>
       <span class="title-text ml-3">인기 박스오피스</span>
-      <span class="more-link" @click="goPopular">더보기</span>
+      <span class="more-link movie-item" @click="goPopular">더보기</span>
     </div>
     <div id="carouselExample1" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item " v-for="(chunk, index) in chunkedMovieList"
         :key="index" :class="{ active: index === currentIndex }">
           <div class="row d-flex justify-content-center">
-            <div class="col-2" v-for="movie in chunk" :key="movie.id">
+            <div class="col-2 movie-item" v-for="movie in chunk" :key="movie.id">
               <MainPopularListItem :movie="movie" />
             </div>
           </div>
@@ -70,7 +70,6 @@ export default {
         },
       })
       .then((res) => {
-        console.log(res.data);
         this.movieList = res.data.results;
       });
     },

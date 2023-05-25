@@ -11,8 +11,8 @@
       <div class="carousel-inner">
         <div class="carousel-item " v-for="(chunk, index) in chunkedMovieList" :key="index"
           :class="{ active: index === currentIndex }">
-          <div class="row d-flex justify-content-center">
-            <div class="col-2" v-for="movie in chunk" :key="movie.id">
+          <div class="row d-flex justify-content-center ">
+            <div class="col-2 movie-item" v-for="movie in chunk" :key="movie.id">
               <MainLatestListItem :movie="movie" />
             </div>
           </div>
@@ -73,7 +73,6 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data)
           this.movieList = res.data.results
         })
     },
@@ -173,5 +172,6 @@ export default {
   font-size: 18px;
   color: rgb(75, 75, 75);
   margin-bottom: 2px;
+  cursor: pointer;
 }
 </style>

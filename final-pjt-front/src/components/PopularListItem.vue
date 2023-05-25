@@ -4,7 +4,8 @@
       <div class="card" @mouseover="showDetails = true" @mouseout="showDetails = false">
         <img :src="getImage" class="card-img-top" alt="NONONO">
         <div class="box">
-          <h1>{{ index }}</h1>
+          <h1 v-if="index===1" class="bigh1">{{ index }}</h1>
+          <h1 v-else>{{ index }}</h1>
         </div>
         <div class="card-overlay" :class="{ 'show-details': showDetails }">
           <h5 class="card-title">{{ movie.title }}</h5>
@@ -56,17 +57,31 @@ export default {
   position: relative;
 }
 .box {
+
+  margin: 0px;
   opacity: 1;
-  border-radius: 5px;
+  border-end-end-radius: 5px;
+  border-top-left-radius: 5px;
   position: absolute;
-  /* background: white; */
-  width: 45px;
+  background: rgb(180, 180, 180, 0.3);
+  /* width: 55px; */
   z-index: 19;
 }
 .box h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  box-sizing: content-box;
+  margin: 0px;
   color: white;
-
+  text-align: left;
+  padding-left: 4px;
+  padding-right: 6px;
+  z-index: 19;
+  font-size: bold;
 }
+.bigh1 {
+  font-size:6em;
+}
+
 .card-overlay {
   position: absolute;
   top: 0;

@@ -53,7 +53,6 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res.data)
           this.movieList = res.data.results
         })
     }
