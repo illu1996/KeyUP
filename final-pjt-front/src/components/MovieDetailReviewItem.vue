@@ -126,6 +126,7 @@ export default {
 
 .inputbox {
   margin-left: 3.5%;
+  margin-bottom: 1%;
 }
 
 #updatedelete {
