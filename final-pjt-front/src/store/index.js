@@ -107,15 +107,19 @@ export default new Vuex.Store({
         this.state.profileimg = null
         context.commit('SAVE_TOKEN', res.data.key)
       })
-      .catch(()=>{
+      .catch((err)=>{
+        console.log(err)
         if (username === password1) {
           alert ('아이디는 비밀번호로 사용하실 수 없습니다.')
         }
         else if (password1!==password2) {
           alert ('비밀번호와 비밀번호 확인이 다릅니다.')
         }
+        else if (password1.length < 8){
+          alert ('비밀번호가 너무 짧습니다.')
+        }
         else {
-          alert ('사용할 수 없는 아이디 입니다.')
+          alert ('이미 있는 아이디입니다.')
         }
       })
     },
