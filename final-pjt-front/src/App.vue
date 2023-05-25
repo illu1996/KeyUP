@@ -105,6 +105,9 @@ export default {
 </script>
 
 <style scoped>
+span{
+  cursor: pointer;
+}
 /* .nav-link {
   font-family: 'Noto Sans KR', sans-serif;
 } */
