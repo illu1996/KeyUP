@@ -126,7 +126,7 @@ export default {
 
 #searchInput {
   border: none;
-  border-bottom: solid 3px rgb(196, 196, 196);
+  border-bottom: solid 2px rgb(196, 196, 196);
 }
 
 #searchInput:focus {
