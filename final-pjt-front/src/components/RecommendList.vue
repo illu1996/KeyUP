@@ -22,7 +22,7 @@
               <span><strong>추천 키워드 :</strong></span>
               <button class="btn col border" v-for="randomkeyword in randomKeywordList" :key="randomkeyword.id"
                 @click="getkeywordMovie(randomkeyword.id)">
-                {{ randomkeyword.translated }} </button>
+                #{{ randomkeyword.translated }} </button>
             </div>
 
             <div class="text-center row mt-2">
