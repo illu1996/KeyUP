@@ -45,7 +45,6 @@ def profile(request, username):
     
     user = get_object_or_404(get_user_model(), username=username)
     serializer = UserProfileSerializer(user)
-    print(serializer.data)
     return Response(serializer.data)
 
 

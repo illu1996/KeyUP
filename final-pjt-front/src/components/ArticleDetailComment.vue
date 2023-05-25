@@ -70,7 +70,6 @@ export default {
       this.compared = !this.compared
     },
     deleteComment() {
-      console.log(this.comment)
       axios({
         method: 'DELETE',
         url: `${API_URL}/articles/comments/${this.comment.id}/`,
@@ -78,8 +77,7 @@ export default {
           "Authorization": `Token ${this.$store.state.token}`,
         },
       })
-        .then((res) => {
-          console.log(res.data)
+        .then(() => {
           this.$emit('comment-deleted');
         })
         .catch((err) => {
@@ -102,8 +100,7 @@ export default {
           content: this.editContent,
         },
       })
-        .then((res) => {
-          console.log(res.data);
+        .then(() => {
           this.updateform = false;
           this.compared = !this.compared
           this.$emit('comment-deleted');

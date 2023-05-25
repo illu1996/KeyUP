@@ -86,7 +86,6 @@ export default {
       this.$store.dispatch('changeProfile', userInfo)
     },
     onFileChange(event) {
-      console.log(event.target.files[0].name)
       this.selectedFile = event.target.files[0];
       if (event.target.files[0].name.length > 13) {
         this.selectedFileName = event.target.files[0].name.slice(0, 13) + '...'

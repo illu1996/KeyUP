@@ -227,7 +227,6 @@ export default {
         },
       })
         .then((res) => {
-          console.log(res.data)
           this.original_language = res.data.original_language
           this.movie_id = res.data.id
           this.movie = res.data

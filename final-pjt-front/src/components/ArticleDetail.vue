@@ -113,8 +113,8 @@ export default {
           "Authorization": `Token ${this.$store.state.token}`,
         },
       })
-        .then((res) => {
-          console.log(res.data)
+        .then(() => {
+
           this.$router.push({ path: '/community/list' })
         })
     },
@@ -124,7 +124,6 @@ export default {
         url: `${API_URL}/articles/${this.$route.params.id}/`,
       })
         .then((res) => {
-          console.log(res.data)
           this.article = res.data
           this.commentList = res.data.comment_set
           this.getUserProfile()
@@ -154,8 +153,8 @@ export default {
           Authorization: `Token ${this.$store.state.token}`
         }
       })
-        .then((res) => {
-          console.log(res.data)
+        .then(() => {
+
           this.getArticleDetail()
           this.content = null
         })

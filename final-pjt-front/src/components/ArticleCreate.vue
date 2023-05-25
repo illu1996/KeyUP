@@ -86,7 +86,7 @@ export default {
       })
       .then(() => {
         // console.log(res)
-        this.$router.push({name: 'ArticleList'})
+        this.$router.push({name: 'ArticleDetail', params: { id: this.$route.params.article.id }})
       })
       .catch((err) => {
         console.log(err)

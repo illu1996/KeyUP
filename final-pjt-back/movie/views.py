@@ -107,7 +107,6 @@ def like(request, movie_pk):
         # print(movieIdList)
         for movie in movies:
             if movie.movie_id == movie_pk:
-
                 break
             else:
                 continue
@@ -117,9 +116,7 @@ def like(request, movie_pk):
             if serializer.is_valid(raise_exception=True):
 
                 serializer.save()
-
         movie = get_object_or_404(Movie, movie_id=movie_pk)
-
         user = request.user
         if movie.like_users.filter(pk=user.pk).exists():
             movie.like_users.remove(user)
@@ -143,7 +140,6 @@ def keyword_list(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def keyword_detail_movies(request, keyword_pk):
-    keyword = get_object_or_404(Keyword, pk=keyword_pk)
     movies = get_list_or_404(Movie, movie_keyword=keyword_pk)
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
@@ -153,6 +149,5 @@ def keyword_detail_movies(request, keyword_pk):
 def search_movies_list(request, keyword_str):
     movies = Movie.objects.all()
     movies = Movie.objects.filter(title__icontains=keyword_str)
-    print(movies)
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
