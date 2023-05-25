@@ -21,10 +21,9 @@
         </div>
         <section id="hero" class="d-flex flex-column justify-content-center align-items-center" >
           <div class="hero-container" data-aos="fade-in">
-            <h1>{{ this.movie.title }}</h1>
+            <h1>{{ movie.title }}</h1>
           </div>
         </section>
-
         <section id="about" class="about">
           <div class="container">
             <div class="section-title">
@@ -35,7 +34,7 @@
                 <img :src=poster_path alt="" style="width:80%">
               </div>
               <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                <h3>{{ this.movie.title }}</h3>
+                <h3>{{ movie.title }}</h3>
                 <div class="row">
                   <div class="col-lg-12">
                     <ul class="no_dot">
@@ -228,12 +227,12 @@ export default {
         },
       })
         .then((res) => {
-
+          console.log(res.data)
           this.original_language = res.data.original_language
           this.movie_id = res.data.id
           this.movie = res.data
           this.title = res.data.title
-=
+
           this.getImage()
           this.getImagesPath()
           this.getLike()
